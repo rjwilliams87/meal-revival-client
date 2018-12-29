@@ -1,5 +1,12 @@
 language: node_js
 node_js: node
-cache: 
-  directories: 
-    - node_modules
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: bNZrPm1b8UGoLmBmaWqiclRDrBSBfTyEQSkDPG4PfYZxz4x+K67N9WMfPb3+iXra/Stdg1B8qhLaj0E8l40jMi06eKPaDP4FtQGtisQH2GCkCIuuORPmWBBIaZ6xIHeyuKL8r8U5F6zMwbT8KpFLhG29qGYHOP+aPE6EGKdixhCC/Wj8fOS/AOBBIuzO2fw/n6SxtMSWq2V3wbbErJzUuXpQUB7hfimnO51C54q/Wx2tLKLdI7RCz9Tf379RLYyGnzaxWifuyrGylewG5rrdtA4igKe45ZHSep+I869QE5vJR4IlIqYjAoYWEabB4EQ8deG/uHjXRQ6MBBHdJnGlc1+8ENb4msA3UFSBur1KJjLqChpAPFaI4PA8h3IrUhy1OiXOH/bFWcMWmS4dJGQVcwwwIcuIOeleSngVR3dMz2xhwUwXSKhJiorNaC6JXHgqfoc8mUijoqGiC9UbIXD5gtK68qiBLi8J+6aGnGM+Aew/WLS64t7pCDXPK8Lv4dbu5SHvvJz8Ko5q06bBeyMCzYaPE9/NBppQBR4PJgFfc273NK3da5FOl8dBaKYE4MFDnUkVaUB09z2fgOTxAu8Tvega9CChtDZxLueXgk818flC/iA2GkWxnirjV+I9HhtNeU4qnDbvcLtJeFis5QFA60WH/sCzBdXMN4KS1WMvNH4=
+  app: meal-revival
+  on:
+    repo: rjwilliams87/meal-revival-client
