@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './Landing-Nav.css';
+import './Nav.css';
 
-export default function LandingNav(props) {
+export default function Nav(props) {
     return (
         <div>
             <header>

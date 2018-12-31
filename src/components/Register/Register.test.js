@@ -1,11 +1,12 @@
 import React from 'react';
 import {configure, shallow} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import LandingNav from './Landing-Nav';
+import Register from './Register';
+
 configure({adapter: new Adapter()});
 
-describe('<LandingNav />', ()=>{
+describe('<Register />', () => {
     it('Renders without crashing', () => {
-        shallow(<LandingNav />);
+        shallow(<Register />)
     })
 })
