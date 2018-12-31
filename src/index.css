@@ -1,1 +1,10 @@
+* {
+    margin: 0;
+    padding: 0;
+}
 
+.landing-sec {
+    height: 70vh;
+    width: 100vw;
+    border-bottom: 1px solid black;
+}

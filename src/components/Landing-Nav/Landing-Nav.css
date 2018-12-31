@@ -1,0 +1,41 @@
+header,
+.nav {
+    height: 65px; 
+    width: 100%
+}
+
+header {
+    top: 0;
+    left: 0;
+    background-color: grey;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav__head {
+    margin-left: 20px; 
+}
+
+.nav__ul {
+    display: flex;
+}
+
+.nav__li {
+    list-style: none;
+    margin-right: 20px; 
+}
+
+@media only screen and (min-width: 1000px) {
+    header {
+        display: flex;
+        justify-content: center;
+    }
+
+    .nav {
+        max-width: 960px; 
+    }
+}
