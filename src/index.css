@@ -8,3 +8,8 @@
     width: 100vw;
     border-bottom: 1px solid black;
 }
+
+.leaflet-container {
+    width: 70vw;
+    height: 100vh;
+}

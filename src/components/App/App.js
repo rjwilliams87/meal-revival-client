@@ -4,6 +4,9 @@ import Nav from '../Nav/Nav';
 import Landing from '../Landing/Landing'
 import Login from '../Login/Login';
 import Register from '../Register/Register';
+import Dashboard from '../Dashboard/Dashboard';
+import Map from '../Map/Map';
+import DonationsView from '../DonationsView/DonationsView';
 
 export default function App(props) {
     return (
@@ -15,6 +18,8 @@ export default function App(props) {
                         <Route exact path="/" component={Landing} />
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/register" component={Register} />
+                        <Route path="/dashboard/:id" render={(...props) => <Dashboard />} />
+                        <Route exact path="/map" component={DonationsView} />
                         {/* <Route path="/dashboard/:id" render={()=>(
                             this.state.loggedIn ? (<Dashboard />) : (<Redirect to="/" />)
                         )} />
