@@ -1,0 +1,153 @@
+.landing__container {
+  padding: 30px;
+  height: 120vh;
+  color: white;
+}
+
+.wave {
+  position: relative;
+  background: #39b18d;
+}
+
+.wave:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 250px;
+  background: url("https://uploads.codesandbox.io/uploads/user/14efc214-6667-491a-83e8-91c60da79942/T9or-wave.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.img__container {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+.landing__img {
+  width: 40%;
+  height: 45%;
+  position: relative;
+  top: 100px;
+}
+
+.landing__header {
+  text-align: center;
+}
+
+h1 {
+  font-family: "Monoton";
+  font-weight: 500;
+}
+
+.landing__header--margin {
+  margin-bottom: 45px;
+}
+
+.header--bold {
+  font-weight: bold;
+}
+
+.header--light {
+  font-weight: 300;
+}
+
+.header--large {
+  font-size: 48px;
+}
+
+.header--med {
+  font-size: 32px;
+}
+
+.header--margin {
+  margin-bottom: 20px;
+}
+
+.landing__form {
+  text-align: center;
+}
+
+.form__p {
+  padding: 10px;
+}
+
+.results__container {
+  background: #fff;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  position: relative;
+  right: 85px;
+  border-radius: 5px;
+}
+
+.results__li {
+  width: 100%;
+  list-style: none;
+  padding: 10px;
+}
+
+.results__btn {
+  width: 100%;
+  border: none;
+  background-color: #fff;
+  font-size: 16px;
+  padding: 5px;
+  text-align: left;
+}
+
+.results__btn:hover {
+  background-color: rgba(165, 212, 230, 0.445);
+  cursor: pointer;
+}
+
+.landing__places {
+  display: block;
+}
+
+.section {
+  height: 100vh;
+}
+
+.section--sm {
+  height: 30vh;
+  border-top: 1px solid #d3d3d3;
+  border-bottom: 1px solid #d3d3d3;
+}
+
+.section--margin {
+  margin-bottom: 100px;
+}
+
+.flex--column {
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.section__container p {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.p--bold {
+  font-weight: 700;
+}
+
+.p--lrg {
+  font-size: 32px;
+}
+
+.join__btn {
+  margin-bottom: 40px;
+}
+
+.join__btn:hover {
+  cursor: pointer;
+}

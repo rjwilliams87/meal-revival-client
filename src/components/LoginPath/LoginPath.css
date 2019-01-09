@@ -1,0 +1,22 @@
+.login__link {
+  border: 1px solid #fff;
+  text-align: center;
+  width: 80px;
+  padding: 10px;
+  float: right;
+}
+
+.login__link:hover {
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  width: 80px;
+  color: #fff;
+}
+
+.link:hover {
+  cursor: pointer;
+  background: #ffffff42;
+}

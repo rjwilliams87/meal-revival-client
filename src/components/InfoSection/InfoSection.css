@@ -1,0 +1,21 @@
+.section__container {
+  display: flex;
+  width: 960px;
+  margin: 0 auto;
+  justify-content: space-around;
+  margin-top: 100px;
+}
+
+.section__box {
+  padding: 10px;
+  margin: 10px;
+}
+
+.landing__icon {
+  display: block;
+  margin-bottom: 20px;
+}
+
+span__header {
+  font-weight: bold;
+}

@@ -1,46 +1,16 @@
-.register-form {
-    padding: 20px;
-    width: 70vw;
-    margin: 0 auto;
-    margin-top: 15vh;
-    background-color: grey;
+.register__container {
+  height: 100vh;
 }
 
-.register-form__fieldset {
-    border: none;
-    width: 100%;
+.container--green {
+  background-color: #39b18d;
+  color: #fff;
 }
 
-.register-form__legend {
-    text-align: center;
-}
-
-.register-form__sec {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-}
-
-.register-form__padding {
-    padding-bottom: 30px;
-}
-
-.register-form__label {
-    display: block;
-    margin: 10px;
-}
-
-.register-form__input {
-    display: block;
-}
-
-.path__container {
-    text-align: center;
-    margin-top: 20px; 
-}
-
-@media only screen and (min-width: 668px) {
-    .register-form {
-        max-width: 550px;
-    }
+.register__top {
+  margin: 0 auto;
+  max-width: 960px;
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
 }

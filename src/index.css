@@ -1,15 +1,29 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  overflow-x: hidden;
 }
 
 .landing-sec {
-    height: 70vh;
-    width: 100vw;
-    border-bottom: 1px solid black;
+  height: 70vh;
+  width: 100vw;
+  border-bottom: 1px solid black;
+}
+
+.landing-sec__signup {
+  height: 90vh;
 }
 
 .leaflet-container {
-    width: 70vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
+}
+
+.map {
+  height: 90vh;
 }
