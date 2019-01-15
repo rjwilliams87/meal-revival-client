@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import Profile from "../Profile/Profile";
 import LightBox from "lightbox-react";
+import DeleteModal from "../DeleteModal/DeleteModal";
 
 class ProfileTable extends React.Component {
   constructor(props) {
@@ -9,26 +9,32 @@ class ProfileTable extends React.Component {
     this.state = { isOpen: false };
     this.handleClick = this.handleClick.bind(this);
   }
-  handleClick() {
+  handleClick(e) {
+    const id = e.target.id;
     this.setState({
-      isOpen: true
+      isOpen: true,
+      deleteId: id
     });
   }
   render() {
-    const updateRow = (
-      <td className="td__white">
-        <button>Update</button>
-        <button onClick={this.handleClick}>Delete</button>
-      </td>
-    );
-    const tableData = this.props.donations.map((donation, id) => (
-      <tr key={id}>
-        <td>{donation.expiry}</td>
-        <td>{donation.info}</td>
-        <td>{donation.delivery}</td>
-        {this.props.loggedIn ? updateRow : null}
-      </tr>
-    ));
+    const tableData = this.props.donations.map((donation, id) => {
+      const updateRow = (
+        <td>
+          <button onClick={this.handleClick} id={donation.id}>
+            Delete
+          </button>
+        </td>
+      );
+      return (
+        <tr key={id}>
+          <td>{donation.expiry}</td>
+          <td>{donation.info}</td>
+          <td>{donation.delivery}</td>
+          {this.props.loggedIn ? updateRow : null}
+        </tr>
+      );
+    });
+
     return (
       <div className="info__box box-2">
         <div className="table__container">
@@ -38,15 +44,20 @@ class ProfileTable extends React.Component {
               <th>Expires</th>
               <th>Info</th>
               <th>Delivery</th>
-              {this.props.loggedIn ? <th>Update/Delete</th> : null}
+              {this.props.loggedIn ? <th>Delete</th> : null}
             </tr>
             {tableData}
           </table>
         </div>
         {this.state.isOpen && (
           <LightBox
-            mainSrc={<h1>Delete Event Permanetly?</h1>}
-            onCloseRequest={() => this.setState({ isOpen: false })}
+            mainSrc={<DeleteModal btn_id={this.state.deleteId} />}
+            onCloseRequest={() =>
+              this.setState({
+                isOpen: false,
+                deleteId: null
+              })
+            }
           />
         )}
       </div>

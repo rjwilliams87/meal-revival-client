@@ -12,10 +12,13 @@ export const getRequest = () => ({
   type: GET_REQUEST
 });
 
-export const getUserInfo = getState => dispatch => {
-  const id = getState().currentUser.id;
+export const getUserInfo = id => dispatch => {
   dispatch(getRequest());
-  fetch(`${API_BASE_URL}/users/${id}`)
+  fetch(`${API_BASE_URL}/users/${id}`, {
+    method: "GET",
+    "Content-Type": "application/json",
+    body: JSON.stringify(id)
+  })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(user => dispatch(getUserInfoSuccess(user)))

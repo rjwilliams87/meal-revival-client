@@ -8,7 +8,7 @@ import {
 } from "../actions";
 
 const initialState = {
-  userLoggedIn: false,
+  userLoggedIn: true,
   mapCoords: {
     Latitude: 30,
     Longitude: -90
