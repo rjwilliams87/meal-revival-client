@@ -1,19 +1,12 @@
 import React from "react";
-import { connect } from "react-redux";
-import { changeCoords } from "../../actions/sync";
-import Geosearch from "../Geosearch/Geosearch";
-import InfoSection from "../InfoSection/InfoSection";
-import LandingNav from "../LandingNav/LandingNav";
-import LoginPath from "../LoginPath/LoginPath";
-import Footer from "../Footer/Footer";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import "./Landing.css";
+import Geosearch from "../Geosearch/Geosearch";
+import "./ProfileForm.css";
 
 const HERE_APP_ID = process.env.REACT_APP_HEREAPPID;
 const HERE_APP_CODE = process.env.REACT_APP_HEREAPPCODE;
 
-class Landing extends React.Component {
+export default class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -48,6 +41,7 @@ class Landing extends React.Component {
       })
       .then(response => {
         if (response.data.suggestions.length > 0) {
+          console.log(response.data.suggestions);
           this.setState({
             options: response.data.suggestions,
             query: query
@@ -78,65 +72,57 @@ class Landing extends React.Component {
         const coords =
           result.data.Response.View[0].Result[0].Location.DisplayPosition;
 
-        this.props.dispatch(changeCoords(coords));
         this.setState({ query: text });
       });
   }
-
   render() {
     let places;
     if (this.state.options) {
       places = this.state.options.map((option, index) => (
         <li className="results__li" key={index}>
           <button className="results__btn" onClick={this.handleClick}>
-            {option.address.city}, {option.address.state}{" "}
-            {option.address.postalCode} {option.countryCode}
+            {option.address.houseNumber ? option.address.houseNumber : null}{" "}
+            {option.address.street} {option.address.city},{" "}
+            {option.address.state} {option.address.postalCode}{" "}
+            {option.countryCode}
           </button>
         </li>
       ));
     }
     return (
-      <div>
-        <div className="landing__container wave">
-          <LoginPath />
-          <h1 className="landing__header landing__header--margin">
-            Meal Revival
-          </h1>
-          <h2 className="landing__header header--margin header--bold header--large">
-            Help feed those in need!
-          </h2>
-          <h3 className="landing__header header--light header--med">
-            Explore donations from local restaurants
-          </h3>
-          <form className="landing__form" onSubmit={this.handleSubmit}>
-            <Geosearch
+      <div className="profile-form__container">
+        <h2 className="profile-form__header">Finish setting up your profile</h2>
+        <p className="profile-form__p">
+          This makes it easier for us to list your donations!
+        </p>
+        <form className="profile-form">
+          <div>
+            <label className="profile-form__label">Address</label>
+            <input
+              className="profile-form__input"
+              type="text"
+              value={this.state.query}
               onChange={this.onQuery}
-              query={this.state.query}
-              placeholder={"Enter City"}
-              btnText={"Search"}
             />
             {this.state.query.length !== 0 ? (
-              <ul className="results__container">{places}</ul>
-            ) : (
-              <p className="form__p">
-                Search your city for free food donations.
-              </p>
-            )}
-          </form>
-        </div>
-        <InfoSection />
-        <div className="section__container flex--column section--sm section--margin">
-          <p className="p--bold p--lrg">Want to list your donations?</p>
-          <Link to="/register">
-            <button className="join__btn search__btn search__btn--border">
-              Join Here
-            </button>
-          </Link>
-        </div>
-        <Footer />
+              <ul className="places__container">{places}</ul>
+            ) : null}
+          </div>
+          <div>
+            <label className="profile-form__label">Phone</label>
+            <input className="profile-form__input" type="phone" />
+          </div>
+          <div>
+            <label className="profile-form__label">
+              Brief description your organization
+            </label>
+            <input className="profile-form__input input--lrg" type="text" />
+          </div>
+          <button className="btn--red add__btn btn--margin" type="submit">
+            Complete
+          </button>
+        </form>
       </div>
     );
   }
 }
-
-export default connect()(Landing);

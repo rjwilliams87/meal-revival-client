@@ -1,0 +1,50 @@
+.profile-form__container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #39b18d;
+  border-radius: 5px;
+  height: 375px;
+  width: 60%;
+  margin: 0 auto;
+  align-items: center;
+  padding: 20px;
+}
+
+.profile-form__header,
+.profile-form__p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.profile-form__label {
+  display: block;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  color: #ffffff;
+}
+
+.profile-form__input {
+  display: block;
+  height: 30px;
+  width: 300px;
+}
+
+.input--lrg {
+  height: 80px;
+}
+
+.btn--margin {
+  margin-top: 20px;
+}
+
+.places__container {
+  background-color: #ffffff;
+  width: 300px;
+  position: absolute;
+}

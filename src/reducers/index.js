@@ -1,6 +1,14 @@
-import * as actions from "../actions";
+import {
+  sync_actions,
+  get_actions,
+  delete_actions,
+  put_actions,
+  post_actions,
+  auth_actions
+} from "../actions";
 
 const initialState = {
+  userLoggedIn: false,
   mapCoords: {
     Latitude: 30,
     Longitude: -90
@@ -117,23 +125,102 @@ const initialState = {
 };
 
 export const reducer = (state = initialState, action) => {
-  if (action.type === actions.CHANGE_COORDS) {
+  if (action.type === sync_actions.CHANGE_COORDS) {
     return Object.assign({}, state, {
       mapCoords: action.coords
     });
-  } else if (action.type === actions.GET_USER_INFO_SUCCESS) {
+  } else if (action.type === get_actions.GET_USER_INFO_SUCCESS) {
     return Object.assign({}, state, {
-      profileView: action.user
+      profileView: action.user,
+      profileError: false
+    });
+  } else if (action.type === get_actions.GET_USER_INFO_ERROR) {
+    return Object.assign({}, state, {
+      profileError: true
+    });
+  } else if (action.type === get_actions.GET_ALL_DONATIONS_SUCCESS) {
+    return Object.assign({}, state, {
+      donations: action.donations,
+      donationsError: false
+    });
+  } else if (action.type === get_actions.GET_ALL_DONATIONS_ERROR) {
+    return Object.assign({}, state, {
+      donationsError: true
+    });
+  } else if (action.type === post_actions.COMPLETE_PROFILE_SUCCESS) {
+    return Object.assign({}, state, {
+      profileComplete: action.profileComplete,
+      profileError: false,
+      userError: false
+    });
+  } else if (action.type === post_actions.COMPLETE_PROFILE_ERROR) {
+    return Object.assign({}, state, {
+      profileError: action.error,
+      userError: true
+    });
+  } else if (action.type === post_actions.ADD_DONATION_SUCCESS) {
+    return Object.assign({}, state, {
+      donations: [...state.donations, action.donation],
+      userError: false,
+      donationError: false
+    });
+  } else if (action.type === post_actions.ADD_DONATION_ERROR) {
+    return Object.assign({}, state, {
+      donationError: action.error,
+      userError: true
+    });
+  } else if (action.type === post_actions.SIGN_IN_SUCCESS) {
+    return Object.assign({}, state, {
+      currentUser: action.user,
+      LoginError: false
+    });
+  } else if (action.type === post_actions.SIGN_IN_ERROR) {
+    return Object.assign({}, state, {
+      LoginError: true
+    });
+  } else if (action.type === post_actions.LOG_OUT_SUCCESS) {
+  } else if (action.type === post_actions.LOG_OUT_ERROR) {
+  } else if (action.type === post_actions.CREATE_NEW_USER_SUCCESS) {
+    return Object.assign({}, state, {
+      currentUser: action.user,
+      userLoggedIn: true,
+      userError: false,
+      signUpError: false
+    });
+  } else if (action.type === post_actions.CREATE_NEW_USER_ERROR) {
+    return Object.assign({}, state, {
+      userError: true,
+      signUpError: action.error
+    });
+  } else if (action.type === put_actions.UPDATE_DONATION_DETAILS_SUCCESS) {
+  } else if (action.type === put_actions.UPDATE_DONATION_DETAILS_ERROR) {
+  } else if (action.type === delete_actions.DELETE_DONATION_SUCCESS) {
+  } else if (action.type === delete_actions.DELETE_DONATION_ERROR) {
+  } else if (action.type === auth_actions.AUTH_REQUEST) {
+    return Object.assign({}, state, {
+      loading: true,
+      error: null
+    });
+  } else if (action.type === auth_actions.SET_AUTH_TOKEN) {
+    return Object.assign({}, state, {
+      authToken: action.authToken
+    });
+  } else if (action.type === auth_actions.AUTH_SUCCESS) {
+    return Object.assign({}, state, {
+      loading: false,
+      currentUser: action.currentUser
+    });
+  } else if (action.type === auth_actions.AUTH_ERROR) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.error
+    });
+  } else if (action.type === auth_actions.CLEAR_AUTH) {
+    return Object.assign({}, state, {
+      authToken: null,
+      currentUser: null
     });
   } else {
     return state;
   }
 };
-
-//   } else if (action.type === actions.ADD_DONATION) {
-//     //add donation to donations and add donation id to users donation array
-//   } else if (action.type === actions.UPDATE_DONATION) {
-//     //update the donation and donation id in user donation array
-//   } else if (action.type === actions.DELETE_DONATION) {
-//     //delete donation from donations and from user donation array
-//   }

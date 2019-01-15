@@ -27,3 +27,20 @@ body {
 .map {
   height: 90vh;
 }
+
+button {
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.btn--red {
+  background-color: #db3742;
+  color: #ffffff;
+}
+
+.btn--red:hover {
+  background-color: #db3742c5;
+}

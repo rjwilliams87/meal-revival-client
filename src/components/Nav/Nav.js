@@ -1,20 +1,24 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import './Nav.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import NavVisitor from "../NavVisitor/NavVisitor";
+import NavUser from "../NavUser/NavUser";
+import "./Nav.css";
 
-export default function Nav(props) {
+export default class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isLoggedIn: true };
+  }
+  render() {
     return (
-        <div>
-            <header>
-                <nav className="nav">
-                    <h2 className="nav__head">Meal Revival</h2>
-                    <ul className="nav__ul">
-                        <li className="nav__li"><Link to="/">Home</Link></li>
-                        <li className="nav__li"><Link to="/donations">Donations</Link></li>
-                        <li className="nav__li"><Link to="/login">Login</Link></li>
-                    </ul>
-                </nav>
-            </header>
-        </div>
-    )
+      <div>
+        <header>
+          <nav className="nav">
+            <h2 className="nav__head">Meal Revival</h2>
+            {this.state.isLoggedIn ? <NavUser /> : <NavVisitor />}
+          </nav>
+        </header>
+      </div>
+    );
+  }
 }

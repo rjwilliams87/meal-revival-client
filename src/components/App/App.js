@@ -16,8 +16,19 @@ class App extends React.Component {
           <main>
             <Switch>
               <Route exact path="/" render={() => <Landing />} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
+              <Route
+                exact
+                path="/register"
+                render={() =>
+                  !this.props.loggedIn ? <Register /> : <Profile />
+                }
+              />
+              {/* need to be redirects */}
+              <Route
+                exact
+                path="/login"
+                render={() => (!this.props.loggedIn ? <Login /> : <Profile />)}
+              />
               <Route
                 exact
                 path="/donations/map"
@@ -37,16 +48,9 @@ class App extends React.Component {
 App.defaultProps = {};
 
 const mapStateToProps = state => ({
-  lat: state.mapCoords.Latitude,
-  lng: state.mapCoords.Longitude
+  lat: state.mealRevival.mapCoords.Latitude,
+  lng: state.mealRevival.mapCoords.Longitude,
+  loggedIn: state.mealRevival.userLoggedIn
 });
 
 export default connect(mapStateToProps)(App);
-
-//             <Route exact path="/search" component={Search} />
-//             {/* <Route path="/dashboard/:id" render={()=>(
-//                             this.state.loggedIn ? (<Dashboard />) : (<Redirect to="/" />)
-//                         )} />
-//                         <Route exact path="/donations" render={()=> (
-//                             this.state.loggedIn ? (<Donations />) : (<Redirect to="/" />)
-//                         )} /> */}

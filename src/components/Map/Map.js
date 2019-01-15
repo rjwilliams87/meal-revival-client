@@ -1,4 +1,5 @@
 import React from "react";
+import Nav from "../Nav/Nav";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
@@ -22,20 +23,23 @@ class Map extends React.Component {
       </Marker>
     ));
     return (
-      <LeafletMap center={positionX} zoom={13}>
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
-        />
-        {markers}
-        <GeoSearchBar />
-      </LeafletMap>
+      <div>
+        <Nav />
+        <LeafletMap center={positionX} zoom={13}>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
+          />
+          {markers}
+          <GeoSearchBar />
+        </LeafletMap>
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  donations: state.donations
+  donations: state.mealRevival.donations
 });
 
 export default connect(mapStateToProps)(Map);

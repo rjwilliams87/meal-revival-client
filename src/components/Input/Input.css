@@ -1,0 +1,9 @@
+.form__error {
+  padding: 8px;
+  color: #ffffff;
+  font-weight: 700;
+  font-style: italic;
+  background-color: #da3843;
+  margin-top: 5px;
+  display: inline-block;
+}

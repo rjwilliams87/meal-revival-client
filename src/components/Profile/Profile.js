@@ -3,16 +3,23 @@ import { connect } from "react-redux";
 import ProfileTop from "../ProfileTop/ProfileTop";
 import ProfileAbout from "../ProfileAbout/ProfileAbout";
 import ProfileTable from "../ProfileTable/ProfileTable";
+import ProfileForm from "../ProfileForm/ProfileForm";
+import Nav from "../Nav/Nav";
 import AddForm from "../AddForm/AddForm";
 import { getUserInfo, getUserInfoSuccess } from "../../actions";
 import "./Profile.css";
 
 class Profile extends React.Component {
-  componentWillMount() {
+  constructor(props) {
+    super(props);
+    this.state = { loggedIn: true, profileComplete: false };
+  }
+  componentDidMount() {
     // this.props.dispatch(getUserInfo(this.props.match.params.id));
     this.props.dispatch(
       getUserInfo({
         id: 2,
+        profileComplete: true,
         company: "Company 2",
         contact: "This Works",
         email: "company1@email.com",
@@ -41,27 +48,36 @@ class Profile extends React.Component {
     );
   }
   render() {
-    console.log("1" + this.props.user);
-    return (
-      <div>
-        <ProfileTop
-          organization={this.props.user.company}
-          contact={this.props.user.contact}
-          email={this.props.user.email}
-          address={this.props.user.address}
-          phone="816.123.1234"
-        />
-        <div className="info__container">
-          <ProfileAbout about={this.props.user.about} />
-          <ProfileTable donations={this.props.user.donations} />
+    if (this.state.loggedIn && !this.props.user.profileComplete) {
+      return (
+        <div>
+          <Nav />
+          <ProfileForm />
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div>
+          <Nav />
+          <ProfileTop
+            organization={this.props.user.company}
+            contact={this.props.user.contact}
+            email={this.props.user.email}
+            address={this.props.user.address}
+            phone="816.123.1234"
+          />
+          <div className="info__container">
+            <ProfileAbout about={this.props.user.about} />
+            <ProfileTable donations={this.props.user.donations} />
+          </div>
+        </div>
+      );
+    }
   }
 }
 
 const mapPropsToState = state => ({
-  user: state.profileView
+  user: state.mealRevival.profileView
 });
 
 export default connect(mapPropsToState)(Profile);
