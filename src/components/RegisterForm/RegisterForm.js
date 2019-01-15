@@ -56,6 +56,7 @@ class RegisterForm extends React.Component {
                 label="company name"
                 labelClass="register-form__label"
                 name="companyName"
+                type="text"
                 component={Input}
                 validate={[required, nonEmpty]}
               />

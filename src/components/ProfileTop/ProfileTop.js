@@ -1,15 +1,15 @@
 import React from "react";
-// import { connect } from "react-redux";
+import { connect } from "react-redux";
 import "./ProfileTop.css";
 import LightBox from "lightbox-react";
 import "lightbox-react/style.css";
 import AddForm from "../AddForm/AddForm";
 // import { getUserInfoSuccess } from "../../actions";
 
-export default class ProfileTop extends React.Component {
+class ProfileTop extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loggedIn: true, isOpen: false };
+    this.state = { isOpen: false };
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -29,7 +29,7 @@ export default class ProfileTop extends React.Component {
             />
             <h2>{this.props.organization}</h2>
           </div>
-          {this.state.loggedIn ? (
+          {this.props.loggedIn ? (
             <button onClick={this.handleClick} className="add__btn">
               Add Donation
             </button>
@@ -51,3 +51,9 @@ export default class ProfileTop extends React.Component {
     );
   }
 }
+
+const mapPropsToState = state => ({
+  loggedIn: state.mealRevival.userLoggedIn
+});
+
+export default connect(mapPropsToState)(ProfileTop);

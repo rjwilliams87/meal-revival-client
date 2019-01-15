@@ -12,14 +12,14 @@ import "./Profile.css";
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loggedIn: true, profileComplete: false };
+    this.state = { loggedIn: false, profileComplete: true };
   }
   componentDidMount() {
     // this.props.dispatch(getUserInfo(this.props.match.params.id));
     this.props.dispatch(
       getUserInfo({
         id: 2,
-        profileComplete: true,
+        profileComplete: false,
         company: "Company 2",
         contact: "This Works",
         email: "company1@email.com",

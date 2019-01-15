@@ -121,7 +121,10 @@ const initialState = {
       delivery: "no",
       userId: 2
     }
-  ]
+  ],
+  error: null,
+  loading: null,
+  authToken: null
 };
 
 export const reducer = (state = initialState, action) => {
@@ -132,11 +135,11 @@ export const reducer = (state = initialState, action) => {
   } else if (action.type === get_actions.GET_USER_INFO_SUCCESS) {
     return Object.assign({}, state, {
       profileView: action.user,
-      profileError: false
+      error: null
     });
   } else if (action.type === get_actions.GET_USER_INFO_ERROR) {
     return Object.assign({}, state, {
-      profileError: true
+      error: true
     });
   } else if (action.type === get_actions.GET_ALL_DONATIONS_SUCCESS) {
     return Object.assign({}, state, {
