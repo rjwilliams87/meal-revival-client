@@ -3,8 +3,8 @@ import "./AddForm.css";
 import { reduxForm, Field, SubmissionError, focus } from "redux-form";
 import { required, nonEmpty } from "../../validators";
 import Input from "../Input/Input";
-import { addUserDonation } from "../../actions/postRequest";
-import { getUserInfo } from "../../actions/getRequest";
+import { addUserDonation } from "../../actions/postActions";
+import { getUserInfo } from "../../actions/getActions";
 class AddForm extends React.Component {
   onSubmit(values) {
     const { expiry, info, delivery } = values;

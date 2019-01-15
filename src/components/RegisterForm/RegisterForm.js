@@ -3,8 +3,9 @@ import { reduxForm, Field, SubmissionError, focus } from "redux-form";
 import Input from "../Input/Input";
 import { required, nonEmpty, email, isTrimmed, length } from "../../validators";
 import "./RegisterForm.css";
-import { createNewUser } from "../../actions/postRequest";
+import { createNewUser } from "../../actions/postActions";
 import { userLogin } from "../../actions/auth";
+import { getUserInfo } from "../../actions/getActions";
 const passwordLength = length({ min: 10, max: 72 });
 
 class RegisterForm extends React.Component {
@@ -13,7 +14,8 @@ class RegisterForm extends React.Component {
     const user = { email, password, companyName, contactName };
     return this.props
       .dispatch(createNewUser(user))
-      .then(() => this.props.dispatch(userLogin(email, password)));
+      .then(() => this.props.dispatch(userLogin(email, password)))
+      .then(() => this.props.dispatch(getUserInfo()));
   }
   render() {
     return (

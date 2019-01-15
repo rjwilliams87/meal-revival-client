@@ -1,7 +1,7 @@
 import React from "react";
 import "./DeleteModal.css";
 import { connect } from "react-redux";
-import { deleteDonation } from "../../actions/deleteResults";
+import { deleteDonation } from "../../actions/deleteActions";
 
 class DeleteModal extends React.Component {
   constructor(props) {

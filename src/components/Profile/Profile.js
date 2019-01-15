@@ -6,7 +6,7 @@ import ProfileTable from "../ProfileTable/ProfileTable";
 import ProfileForm from "../ProfileForm/ProfileForm";
 import Nav from "../Nav/Nav";
 import AddForm from "../AddForm/AddForm";
-import { getUserInfo, getUserInfoSuccess } from "../../actions";
+import { getUserInfo, getUserInfoSuccess } from "../../actions/getActions";
 import "./Profile.css";
 
 class Profile extends React.Component {

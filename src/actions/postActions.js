@@ -1,15 +1,35 @@
-import {
-  CREATE_NEW_USER_SUCCESS,
-  CREATE_NEW_USER_ERROR,
-  createNewUserSuccess,
-  createNewUserError,
-  signInSuccess,
-  signInError,
-  addDonationSuccess
-} from "./PostResults";
 import { normalizeResponseErrors } from "./utils";
 import { SubmissionError } from "redux-form";
 import { API_BASE_URL } from "../config";
+
+export const POST_REQUEST = "POST_REQUEST";
+export const postRequest = () => ({
+  type: POST_REQUEST
+});
+
+export const CREATE_NEW_USER_SUCCESS = "CREATE_NEW_USER_SUCCESS";
+export const createNewUserSuccess = user => ({
+  type: CREATE_NEW_USER_SUCCESS,
+  user
+});
+
+export const CREATE_NEW_USER_ERROR = "CREATE_NEW_USER_ERROR";
+export const createNewUserError = error => ({
+  type: CREATE_NEW_USER_ERROR,
+  error
+});
+
+export const ADD_DONATION_SUCCESS = "ADD_DONATION_SUCCESS";
+export const addDonationSuccess = donation => ({
+  type: ADD_DONATION_SUCCESS,
+  donation
+});
+
+export const ADD_DONATION_ERROR = "ADD_DONATION_ERROR";
+export const addDonationError = error => ({
+  type: ADD_DONATION_ERROR,
+  error
+});
 
 export const createNewUser = user => dispatch => {
   return fetch(`${API_BASE_URL}/users`, {
