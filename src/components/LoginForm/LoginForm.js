@@ -30,9 +30,9 @@ class LoginForm extends React.Component {
           <div className="login-form__sec">
             <Field
               className="login-form__input"
-              label="Username"
+              label="email"
               labelClass="login-form__label"
-              name="username"
+              name="email"
               type="text"
               component={Input}
               validate={[required, nonEmpty]}

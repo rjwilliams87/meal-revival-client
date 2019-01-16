@@ -4,6 +4,7 @@ import { SubmissionError } from "redux-form";
 import { API_BASE_URL } from "../config";
 import { normalizeResponseErrors } from "./utils";
 import { saveAuthToken, clearAuthToken } from "../local-storage";
+import { decode } from "punycode";
 
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 export const setAuthToken = authToken => ({
@@ -35,6 +36,7 @@ export const authError = error => ({
 
 export const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
+  console.log(decodedToken);
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken.user));
   saveAuthToken(authToken);
@@ -52,6 +54,7 @@ export const userLogin = (email, password) => dispatch => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(({ authToken }) => {
+      console.log(authToken);
       storeAuthInfo(authToken, dispatch);
     })
     .catch(err => {

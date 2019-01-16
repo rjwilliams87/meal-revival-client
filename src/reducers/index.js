@@ -9,23 +9,8 @@ const initialState = {
     Latitude: 39.105,
     Longitude: -94.58
   },
-  profileView: {
-    id: 123,
-    coords: {
-      lat: 39.105,
-      lng: -94.58
-    },
-    address: "1111 Main Kansas City, MO",
-    profileComplete: false,
-    companyName: "Company1",
-    contactName: "Daryl",
-    email: "company1@email.com",
-    phone: "111.111.1111",
-    about: "Company 1 since the dawn of time",
-    donations: [
-      { id: 123, expiry: "1-1-2019", delivery: "No", info: "food", userId: 123 }
-    ]
-  },
+  user: null,
+  userDonations: null,
   donations: null,
   error: null,
   loading: false
@@ -43,7 +28,7 @@ export const reducer = (state = initialState, action) => {
     });
   } else if (action.type === get_actions.GET_USER_INFO_SUCCESS) {
     return Object.assign({}, state, {
-      profileView: action.user,
+      user: action.user,
       error: null,
       loading: false
     });
@@ -51,6 +36,18 @@ export const reducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       error: action.error,
       loading: false
+    });
+  } else if (action.type === get_actions.GET_USER_DONATIONS_SUCCESS) {
+    console.log(action);
+    return Object.assign({}, state, {
+      loading: false,
+      error: null,
+      userDonations: action.donations
+    });
+  } else if (action.type === get_actions.GET_USER_DONATIONS_ERROR) {
+    return Object.assign({}, state, {
+      loading: false,
+      error: action.error
     });
   } else if (action.type === get_actions.GET_ALL_DONATIONS_SUCCESS) {
     return Object.assign({}, state, {

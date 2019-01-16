@@ -1,8 +1,8 @@
 import * as actions from "../actions/auth";
 
 const initialState = {
-  currentUser: { id: 1 },
-  userLoggedIn: true,
+  currentUser: null,
+  userLoggedIn: false,
   authToken: null,
   error: null,
   loading: false

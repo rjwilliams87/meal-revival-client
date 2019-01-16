@@ -6,21 +6,19 @@ import ProfileAbout from "../ProfileAbout/ProfileAbout";
 import ProfileTable from "../ProfileTable/ProfileTable";
 import ProfileForm from "../ProfileForm/ProfileForm";
 import Nav from "../Nav/Nav";
-import { getUserInfo } from "../../actions/getActions";
+import { getUserInfo, getUserDonations } from "../../actions/getActions";
 import "./Profile.css";
 
 class Profile extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { loggedIn: false, profileComplete: true };
-  }
   componentDidMount() {
-    this.props.dispatch(getUserInfo(this.props.match.params.id));
+    const id = this.props.match.params.id;
+    this.props
+      .dispatch(getUserInfo(id))
+      .then(this.props.dispatch(getUserDonations(id)))
+      .then(console.log("dispatch ran"));
   }
   render() {
-    if (this.props.user === null) {
-      return <Redirect to="/" />;
-    } else if (this.props.loggedIn && !this.props.user.profileComplete) {
+    if (this.props.loggedIn && !this.props.user.profileComplete) {
       return (
         <div>
           <Nav />
@@ -31,26 +29,32 @@ class Profile extends React.Component {
       return (
         <div>
           <Nav />
-          <ProfileTop
-            organization={this.props.user.company}
-            contact={this.props.user.contact}
-            email={this.props.user.email}
-            address={this.props.user.address}
-            phone={this.props.user.phone || ""}
-          />
-          <div className="info__container">
-            <ProfileAbout about={this.props.user.about || ""} />
-            <ProfileTable donations={this.props.user.donations} />
-          </div>
+          {this.props.user && this.props.donations && (
+            <div>
+              <ProfileTop user={this.props.user} />
+              <div className="info__container">
+                <ProfileAbout user={this.props.user} />
+                <ProfileTable
+                  loggedIn={this.props.loggedIn}
+                  donations={this.props.donations}
+                />
+              </div>
+            </div>
+          )}
         </div>
       );
     }
   }
 }
 
-const mapPropsToState = state => ({
-  user: state.app.profileView,
-  loggedIn: state.auth.userLoggedIn
-});
+const mapPropsToState = state => {
+  console.log("Profile.js state");
+  console.log(state);
+  return {
+    user: state.app.user,
+    loggedIn: state.auth.userLoggedIn,
+    donations: state.app.userDonations
+  };
+};
 
 export default connect(mapPropsToState)(Profile);

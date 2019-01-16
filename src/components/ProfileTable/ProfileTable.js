@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import LightBox from "lightbox-react";
 import DeleteModal from "../DeleteModal/DeleteModal";
 
-class ProfileTable extends React.Component {
+export default class ProfileTable extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isOpen: false };
@@ -17,6 +17,7 @@ class ProfileTable extends React.Component {
     });
   }
   render() {
+    console.log(this.props);
     const tableData = this.props.donations.map((donation, id) => {
       const updateRow = (
         <td>
@@ -64,10 +65,3 @@ class ProfileTable extends React.Component {
     );
   }
 }
-
-const mapPropsToState = state => ({
-  loggedIn: state.auth.userLoggedIn,
-  donations: state.app.profileView.donations
-});
-
-export default connect(mapPropsToState)(ProfileTable);

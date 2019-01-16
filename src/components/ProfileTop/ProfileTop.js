@@ -6,7 +6,7 @@ import "lightbox-react/style.css";
 import AddForm from "../AddForm/AddForm";
 // import { getUserInfoSuccess } from "../../actions";
 
-class ProfileTop extends React.Component {
+export default class ProfileTop extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isOpen: false };
@@ -19,6 +19,8 @@ class ProfileTop extends React.Component {
     });
   }
   render() {
+    console.log(this.props);
+    const { address, phone, email, companyName, contactName } = this.props.user;
     return (
       <div>
         <div className="company__box">
@@ -27,7 +29,7 @@ class ProfileTop extends React.Component {
               className="profile-img"
               src="https://propertymarketersllc.com/wp-content/uploads/2018/05/profile-picture-placeholder.png"
             />
-            <h2>{this.props.organization}</h2>
+            <h2>{companyName}</h2>
           </div>
           {this.props.loggedIn ? (
             <button onClick={this.handleClick} className="add__btn">
@@ -36,10 +38,10 @@ class ProfileTop extends React.Component {
           ) : null}
         </div>
         <div className="company-contact__box">
-          <p className="contact__p">{this.props.address}</p>
-          <p className="contact__p">Contact: {this.props.contact}</p>
-          <p className="contact__p">{this.props.email}</p>
-          <p className="contact__p">{this.props.phone}</p>
+          <p className="contact__p">{address}</p>
+          <p className="contact__p">Contact: {contactName}</p>
+          <p className="contact__p">{email}</p>
+          <p className="contact__p">{phone}</p>
         </div>
         {this.state.isOpen && (
           <LightBox
@@ -51,9 +53,3 @@ class ProfileTop extends React.Component {
     );
   }
 }
-
-const mapPropsToState = state => ({
-  loggedIn: state.auth.userLoggedIn
-});
-
-export default connect(mapPropsToState)(ProfileTop);
