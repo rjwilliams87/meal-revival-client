@@ -9,7 +9,23 @@ const initialState = {
     Latitude: 39.105,
     Longitude: -94.58
   },
-  profileView: null,
+  profileView: {
+    id: 123,
+    coords: {
+      lat: 39.105,
+      lng: -94.58
+    },
+    address: "1111 Main Kansas City, MO",
+    profileComplete: false,
+    companyName: "Company1",
+    contactName: "Daryl",
+    email: "company1@email.com",
+    phone: "111.111.1111",
+    about: "Company 1 since the dawn of time",
+    donations: [
+      { id: 123, expiry: "1-1-2019", delivery: "No", info: "food", userId: 123 }
+    ]
+  },
   donations: null,
   error: null,
   loading: false
@@ -93,7 +109,7 @@ export const reducer = (state = initialState, action) => {
       error: null,
       loading: true
     });
-  } else if (action.type === put_actions.COMPLETE_PROFILE_ERROR) {
+  } else if (action.type === put_actions.COMPLETE_PROFILE_SUCCESS) {
     return Object.assign({}, state, {
       error: null,
       loading: false

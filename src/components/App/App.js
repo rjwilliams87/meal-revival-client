@@ -45,12 +45,10 @@ class App extends React.Component {
   }
 }
 
-App.defaultProps = {};
-
 const mapStateToProps = state => ({
-  lat: state.mealRevival.mapCoords.Latitude,
-  lng: state.mealRevival.mapCoords.Longitude,
-  loggedIn: state.mealRevival.userLoggedIn
+  lat: state.app.mapCoords.Latitude,
+  lng: state.app.mapCoords.Longitude,
+  loggedIn: state.auth.userLoggedIn
 });
 
 export default connect(mapStateToProps)(App);

@@ -17,7 +17,12 @@ export const completeProfileError = error => ({
   error
 });
 
-export const completeUserProfile = (getState, values) => dispatch => {
+export const completeUserProfile = (
+  values,
+  coords,
+  profileComplete,
+  getState
+) => dispatch => {
   const id = getState().currentUser.id;
   const authToken = getState().authToken;
   dispatch(putRequest());
@@ -25,7 +30,7 @@ export const completeUserProfile = (getState, values) => dispatch => {
     method: "PUT",
     "Content-Type": "application/json",
     Authorization: `Bearer ${authToken}`,
-    body: JSON.stringify(values)
+    body: JSON.stringify(values, coords, profileComplete)
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())

@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import ProfileTop from "../ProfileTop/ProfileTop";
 import ProfileAbout from "../ProfileAbout/ProfileAbout";
 import ProfileTable from "../ProfileTable/ProfileTable";
 import ProfileForm from "../ProfileForm/ProfileForm";
 import Nav from "../Nav/Nav";
-import AddForm from "../AddForm/AddForm";
-import { getUserInfo, getUserInfoSuccess } from "../../actions/getActions";
+import { getUserInfo } from "../../actions/getActions";
 import "./Profile.css";
 
 class Profile extends React.Component {
@@ -15,40 +15,12 @@ class Profile extends React.Component {
     this.state = { loggedIn: false, profileComplete: true };
   }
   componentDidMount() {
-    // this.props.dispatch(getUserInfo(this.props.match.params.id));
-    this.props.dispatch(
-      getUserInfo({
-        id: 2,
-        profileComplete: false,
-        company: "Company 2",
-        contact: "This Works",
-        email: "company1@email.com",
-        address: "4567 Main St Kansas City, MO",
-        coords: {
-          lat: 39.11,
-          lng: -94.57
-        },
-        about:
-          "Awesome company doing awesome things since the beginning of freaking time!",
-        donations: [
-          {
-            id: 567,
-            expiry: "1-20-2019",
-            info: "catering leftovers",
-            delivery: "yes"
-          },
-          {
-            id: 890,
-            expiry: "1-21-2019",
-            info: "Soup and sandwiches",
-            delivery: "yes"
-          }
-        ]
-      })
-    );
+    this.props.dispatch(getUserInfo(this.props.match.params.id));
   }
   render() {
-    if (this.state.loggedIn && !this.props.user.profileComplete) {
+    if (this.props.user === null) {
+      return <Redirect to="/" />;
+    } else if (this.props.loggedIn && !this.props.user.profileComplete) {
       return (
         <div>
           <Nav />
@@ -64,10 +36,10 @@ class Profile extends React.Component {
             contact={this.props.user.contact}
             email={this.props.user.email}
             address={this.props.user.address}
-            phone="816.123.1234"
+            phone={this.props.user.phone || ""}
           />
           <div className="info__container">
-            <ProfileAbout about={this.props.user.about} />
+            <ProfileAbout about={this.props.user.about || ""} />
             <ProfileTable donations={this.props.user.donations} />
           </div>
         </div>
@@ -77,7 +49,8 @@ class Profile extends React.Component {
 }
 
 const mapPropsToState = state => ({
-  user: state.mealRevival.profileView
+  user: state.app.profileView,
+  loggedIn: state.auth.userLoggedIn
 });
 
 export default connect(mapPropsToState)(Profile);

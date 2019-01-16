@@ -66,8 +66,8 @@ class ProfileTable extends React.Component {
 }
 
 const mapPropsToState = state => ({
-  loggedIn: state.mealRevival.userLoggedIn,
-  donations: state.mealRevival.profileView.donations
+  loggedIn: state.auth.userLoggedIn,
+  donations: state.app.profileView.donations
 });
 
 export default connect(mapPropsToState)(ProfileTable);

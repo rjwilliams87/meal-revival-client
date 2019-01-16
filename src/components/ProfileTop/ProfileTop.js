@@ -53,7 +53,7 @@ class ProfileTop extends React.Component {
 }
 
 const mapPropsToState = state => ({
-  loggedIn: state.mealRevival.userLoggedIn
+  loggedIn: state.auth.userLoggedIn
 });
 
 export default connect(mapPropsToState)(ProfileTop);

@@ -34,8 +34,7 @@ export const getUserInfo = id => dispatch => {
   dispatch(getRequest());
   return fetch(`${API_BASE_URL}/users/${id}`, {
     method: "GET",
-    "Content-Type": "application/json",
-    body: JSON.stringify(id)
+    "Content-Type": "application/json"
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())

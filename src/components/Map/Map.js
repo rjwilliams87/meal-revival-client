@@ -4,24 +4,30 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import GeoSearchBar from "../GeoSearchBar/GeoSearchBar";
+import { getAllDonations } from "../../actions/getActions";
 
 class Map extends React.Component {
-  //there will be an async action to get the donation info
+  componentDidMount() {
+    this.props.dispatch(getAllDonations());
+  }
   render() {
     const positionX = [this.props.lat, this.props.lng];
-    const markers = this.props.donations.map((donation, id) => (
-      <Marker
-        position={[donation.coords.lat, donation.coords.lng]}
-        key={donation.id}
-      >
-        <Popup>
-          {donation.company} <br />
-          Expires: {donation.expiry} <br />
-          Info: {donation.info} <br />
-          <Link to={`/profile/${donation.userId}`}>View Company Profile</Link>
-        </Popup>
-      </Marker>
-    ));
+    let markers;
+    if (this.props.donations !== null) {
+      markers = this.props.donations.map((donation, id) => (
+        <Marker
+          position={[donation.coords.lat, donation.coords.lng]}
+          key={donation.id}
+        >
+          <Popup>
+            {donation.company} <br />
+            Expires: {donation.expiry} <br />
+            Info: {donation.info} <br />
+            <Link to={`/profile/${donation.userId}`}>View Company Profile</Link>
+          </Popup>
+        </Marker>
+      ));
+    }
     return (
       <div>
         <Nav />
@@ -30,7 +36,7 @@ class Map extends React.Component {
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
           />
-          {markers}
+          {this.props.donations !== null ? markers : null}
           <GeoSearchBar />
         </LeafletMap>
       </div>
@@ -39,7 +45,7 @@ class Map extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  donations: state.mealRevival.donations
+  donations: state.app.donations
 });
 
 export default connect(mapStateToProps)(Map);

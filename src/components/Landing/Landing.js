@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { changeCoords } from "../../actions/sync";
 import Geosearch from "../Geosearch/Geosearch";
 import InfoSection from "../InfoSection/InfoSection";
-import LandingNav from "../LandingNav/LandingNav";
 import LoginPath from "../LoginPath/LoginPath";
 import Footer from "../Footer/Footer";
 import axios from "axios";

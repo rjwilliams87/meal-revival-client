@@ -11,10 +11,11 @@ class NavUser extends React.Component {
     this.props.dispatch(clearAuth());
   }
   render() {
+    const id = this.props.user.id;
     return (
       <ul className="nav__ul">
         <li className="nav__li">
-          <Link to="/">Profile</Link>
+          <Link to={`/profile/${id}`}>Profile</Link>
         </li>
         <li className="nav__li">
           <Link to="/donations/map">Donations</Link>
@@ -27,4 +28,8 @@ class NavUser extends React.Component {
   }
 }
 
-export default connect()(NavUser);
+const mapPropsToState = state => ({
+  user: state.auth.currentUser
+});
+
+export default connect(mapPropsToState)(NavUser);
