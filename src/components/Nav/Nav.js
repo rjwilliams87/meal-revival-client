@@ -5,7 +5,6 @@ import "./Nav.css";
 
 export default class Nav extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div>
         <header>

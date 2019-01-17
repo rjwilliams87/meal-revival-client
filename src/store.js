@@ -17,12 +17,8 @@ const store = createStore(
 const authToken = loadAuthToken();
 if (authToken) {
   const token = authToken;
-  console.log("from store");
-  console.log(token);
   store.dispatch(setAuthToken(token));
-  console.log("ran first");
   store.dispatch(refreshAuthToken());
-  console.log("ran second");
 }
 
 export default store;

@@ -14,8 +14,7 @@ class Profile extends React.Component {
       const id = this.props.auth.id;
       this.props
         .dispatch(getUserInfo(id))
-        .then(this.props.dispatch(getUserDonations(id)))
-        .then(console.log("dispatch ran"));
+        .then(this.props.dispatch(getUserDonations(id)));
     }
   }
   render() {
@@ -33,7 +32,6 @@ class Profile extends React.Component {
       return (
         <div>
           <Nav loggedIn={this.props.loggedIn} />
-          <h1>this is fucked</h1>
           {this.props.user && this.props.donations && (
             <div>
               <ProfileTop

@@ -17,7 +17,6 @@ export default class ProfileTable extends React.Component {
     });
   }
   render() {
-    console.log(this.props);
     const tableData = this.props.donations.map((donation, id) => {
       const updateRow = (
         <td>

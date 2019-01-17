@@ -17,7 +17,6 @@ export default class ProfileTop extends React.Component {
     });
   }
   render() {
-    console.log(this.props);
     const { address, phone, email, companyName, contactName } = this.props.user;
     return (
       <div>

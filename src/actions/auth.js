@@ -36,11 +36,8 @@ export const authError = error => ({
 
 export const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
-  console.log(decodedToken);
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken.user));
-  console.log("saving auth token");
-  console.log(authToken);
   saveAuthToken(authToken);
 };
 
@@ -56,7 +53,6 @@ export const userLogin = (email, password) => dispatch => {
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
     .then(({ authToken }) => {
-      console.log(authToken);
       return storeAuthInfo(authToken, dispatch);
     })
     .catch(err => {
@@ -76,8 +72,6 @@ export const userLogin = (email, password) => dispatch => {
 
 export const refreshAuthToken = () => dispatch => {
   const token = localStorage.getItem("authToken");
-  console.log("from refresh");
-  console.log(token);
   return fetch(`${API_BASE_URL}/auth/refresh`, {
     method: "POST",
     headers: {
@@ -88,11 +82,9 @@ export const refreshAuthToken = () => dispatch => {
       return normalizeResponseErrors(res);
     })
     .then(res => {
-      console.log("fuck fucker");
       return res.json();
     })
     .then(({ authToken }) => {
-      console.log("fuck");
       return storeAuthInfo(authToken, dispatch);
     })
     .catch(err => {

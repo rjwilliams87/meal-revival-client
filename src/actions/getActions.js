@@ -43,9 +43,7 @@ export const getUserDonationsError = error => ({
 });
 
 export const getUserInfo = id => dispatch => {
-  console.log("id in dispatch" + id);
   dispatch(getRequest());
-  console.log("sending req to " + API_BASE_URL + "/users/" + id);
   return fetch(`${API_BASE_URL}/users/${id}`, {
     method: "GET"
   })
@@ -61,13 +59,9 @@ export const getUserDonations = id => dispatch => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => {
-      console.log("fetch donations");
-      console.log(res);
       return res.json();
     })
     .then(res => {
-      console.log("json res");
-      console.log(res);
       dispatch(getUserDonationsSuccess(res));
     })
     .then(err => dispatch(getUserDonationsError(err)));

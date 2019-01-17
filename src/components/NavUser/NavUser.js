@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { clearAuth } from "../../actions/auth";
+import { clearAuthToken } from "../../local-storage";
 import { connect } from "react-redux";
 
 class NavUser extends React.Component {
@@ -10,6 +11,7 @@ class NavUser extends React.Component {
   }
   handleClick() {
     this.props.dispatch(clearAuth());
+    clearAuthToken();
   }
   render() {
     const id = this.props.user.id;
