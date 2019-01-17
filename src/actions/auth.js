@@ -39,6 +39,8 @@ export const storeAuthInfo = (authToken, dispatch) => {
   console.log(decodedToken);
   dispatch(setAuthToken(authToken));
   dispatch(authSuccess(decodedToken.user));
+  console.log("saving auth token");
+  console.log(authToken);
   saveAuthToken(authToken);
 };
 
@@ -55,7 +57,7 @@ export const userLogin = (email, password) => dispatch => {
     .then(res => res.json())
     .then(({ authToken }) => {
       console.log(authToken);
-      storeAuthInfo(authToken, dispatch);
+      return storeAuthInfo(authToken, dispatch);
     })
     .catch(err => {
       const { code } = err;

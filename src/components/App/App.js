@@ -25,11 +25,16 @@ class App extends React.Component {
               />
               {/* need to be redirects */}
               <Route exact path="/login" component={Login} />
+              <Route exact path="/dashboard/:id" component={Profile} />
               <Route
                 exact
                 path="/donations/map"
                 render={props => (
-                  <Map lat={this.props.lat} lng={this.props.lng} />
+                  <Map
+                    loggedIn={this.props.loggedIn}
+                    lat={this.props.lat}
+                    lng={this.props.lng}
+                  />
                 )}
               />
               <Route exact path="/profile/:id" component={Profile} />
@@ -44,7 +49,7 @@ class App extends React.Component {
 const mapStateToProps = state => ({
   lat: state.app.mapCoords.Latitude,
   lng: state.app.mapCoords.Longitude,
-  loggedIn: state.auth.currentUser !== null,
+  loggedIn: state.auth.loggedIn,
   user: state.auth.currentUser || ""
 });
 

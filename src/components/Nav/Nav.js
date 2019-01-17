@@ -5,8 +5,9 @@ import NavVisitor from "../NavVisitor/NavVisitor";
 import NavUser from "../NavUser/NavUser";
 import "./Nav.css";
 
-class Nav extends React.Component {
+export default class Nav extends React.Component {
   render() {
+    console.log(this.props);
     return (
       <div>
         <header>
@@ -19,9 +20,3 @@ class Nav extends React.Component {
     );
   }
 }
-
-const mapPropsToState = state => ({
-  loggedIn: state.auth.userLoggedIn
-});
-
-export default connect(mapPropsToState)(Nav);

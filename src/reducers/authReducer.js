@@ -2,7 +2,7 @@ import * as actions from "../actions/auth";
 
 const initialState = {
   currentUser: null,
-  userLoggedIn: false,
+  loggedIn: false,
   authToken: null,
   error: null,
   loading: false
@@ -17,7 +17,7 @@ export const authReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       authToken: null,
       currentUser: null,
-      userLoggedIn: null
+      loggedIn: null
     });
   } else if (action.type === actions.AUTH_REQUEST) {
     return Object.assign({
@@ -27,6 +27,7 @@ export const authReducer = (state = initialState, action) => {
   } else if (action.type === actions.AUTH_SUCCESS) {
     return Object.assign({
       currentUser: action.currentUser,
+      loggedIn: true,
       loading: false,
       error: null
     });

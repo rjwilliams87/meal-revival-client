@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 class NavUser extends React.Component {
   constructor(props) {
     super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
   handleClick() {
     this.props.dispatch(clearAuth());
@@ -15,7 +16,7 @@ class NavUser extends React.Component {
     return (
       <ul className="nav__ul">
         <li className="nav__li">
-          <Link to={`/profile/${id}`}>Profile</Link>
+          <Link to={`/dashboard/${id}`}>Profile</Link>
         </li>
         <li className="nav__li">
           <Link to="/donations/map">Donations</Link>

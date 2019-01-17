@@ -38,6 +38,7 @@ export const reducer = (state = initialState, action) => {
       loading: false
     });
   } else if (action.type === get_actions.GET_USER_DONATIONS_SUCCESS) {
+    console.log("setting donations");
     console.log(action);
     return Object.assign({}, state, {
       loading: false,

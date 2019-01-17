@@ -79,6 +79,6 @@ export const getAllDonations = () => dispatch => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(donations => dispatch(getAllDonationsSuccess(donations)))
+    .then(res => dispatch(getAllDonationsSuccess(res)))
     .catch(err => dispatch(getAllDonationsError(err)));
 };

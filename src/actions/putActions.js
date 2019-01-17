@@ -1,5 +1,6 @@
 import { API_BASE_URL } from "../config";
 import { normalizeResponseErrors } from "./utils";
+import store from "../store";
 
 export const PUT_REQUEST = "PUT_REQUEST";
 export const putRequest = () => ({
@@ -18,22 +19,29 @@ export const completeProfileError = error => ({
 });
 
 export const completeUserProfile = (
-  values,
+  phone,
+  about,
+  address,
   coords,
   profileComplete,
   getState
 ) => dispatch => {
-  const id = getState().currentUser.id;
-  const authToken = getState().authToken;
+  const id = store.getState().auth.currentUser.id;
+  const token = localStorage.getItem("authToken");
+  console.log("id and token");
+  console.log(id);
+  console.log(token);
   dispatch(putRequest());
   return fetch(`${API_BASE_URL}/users/${id}`, {
-    method: "PUT",
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${authToken}`,
-    body: JSON.stringify(values, coords, profileComplete)
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ phone, about, address, coords, profileComplete })
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
-    .then(res => dispatch(completeProfileSuccess()))
+    .then(res => dispatch(completeProfileSuccess(res)))
     .catch(err => dispatch(completeProfileError(err)));
 };

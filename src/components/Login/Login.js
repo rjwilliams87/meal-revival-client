@@ -9,9 +9,16 @@ class Login extends React.Component {
   render() {
     console.log(this.props.loggedIn);
     console.log(this.props.user);
-    // if (this.props.loggedIn && this.props.user.id) {
-    //   return <Redirect to={`/profile/${this.props.user.id}`} />;
-    // }
+    if (
+      this.props.loggedIn &&
+      this.props.user !== null &&
+      this.props.user !== undefined &&
+      this.props.user.id !== null &&
+      this.props.user.id !== undefined
+    ) {
+      console.log(this.props.user.id);
+      return <Redirect to={`/profile/${this.props.user.id}`} />;
+    }
     return (
       <div>
         <Link className="link link--green" to="/">
@@ -30,9 +37,13 @@ class Login extends React.Component {
   }
 }
 
-const mapPropsToState = state => ({
-  loggedIn: state.auth.currentUser !== null,
-  user: state.auth.currentUser
-});
+const mapPropsToState = state => {
+  console.log("login state");
+  console.log(state);
+  return {
+    loggedIn: state.auth.currentUser !== null,
+    user: state.auth.currentUser
+  };
+};
 
 export default connect(mapPropsToState)(Login);

@@ -81,10 +81,19 @@ class ProfileForm extends React.Component {
   onSubmit(values) {
     const coords = this.state.coords;
     const profileComplete = true;
-    // console.log(values);
-    // console.log(coords);
+    const address = this.state.address;
+    console.log(values);
+    console.log(coords);
     return this.props
-      .dispatch(completeUserProfile(values, coords, profileComplete))
+      .dispatch(
+        completeUserProfile(
+          values.phone,
+          values.about,
+          address,
+          coords,
+          profileComplete
+        )
+      )
       .then(this.props.dispatch(getUserInfo()));
   }
   render() {

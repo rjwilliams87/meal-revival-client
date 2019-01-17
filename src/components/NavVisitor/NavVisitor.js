@@ -8,7 +8,7 @@ export default function NavVisitor(props) {
         <Link to="/">Home</Link>
       </li>
       <li className="nav__li">
-        <Link to="/donations">Donations</Link>
+        <Link to="/donations/map">Donations</Link>
       </li>
       <li className="nav__li">
         <Link to="/login">Login</Link>
