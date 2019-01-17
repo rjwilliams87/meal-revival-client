@@ -1,10 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
 import "./ProfileTop.css";
 import LightBox from "lightbox-react";
 import "lightbox-react/style.css";
 import AddForm from "../AddForm/AddForm";
-// import { getUserInfoSuccess } from "../../actions";
 
 export default class ProfileTop extends React.Component {
   constructor(props) {
@@ -45,7 +43,7 @@ export default class ProfileTop extends React.Component {
         </div>
         {this.state.isOpen && (
           <LightBox
-            mainSrc={<AddForm />}
+            mainSrc={<AddForm id={this.props.id} />}
             onCloseRequest={() => this.setState({ isOpen: false })}
           />
         )}

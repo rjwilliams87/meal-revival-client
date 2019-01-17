@@ -16,8 +16,7 @@ class Login extends React.Component {
       this.props.user.id !== null &&
       this.props.user.id !== undefined
     ) {
-      console.log(this.props.user.id);
-      return <Redirect to={`/profile/${this.props.user.id}`} />;
+      return <Redirect to={`/dashboard/${this.props.user.id}`} />;
     }
     return (
       <div>
@@ -25,7 +24,7 @@ class Login extends React.Component {
           <h1 className="text--center">Meal Revival</h1>
         </Link>
         <div className="login__container">
-          <LoginForm />
+          <LoginForm error={this.props.error} />
           <div className="path__container">
             <p>
               Not a member? <Link to="/register">Sign up here!</Link>
@@ -42,7 +41,8 @@ const mapPropsToState = state => {
   console.log(state);
   return {
     loggedIn: state.auth.currentUser !== null,
-    user: state.auth.currentUser
+    user: state.auth.currentUser,
+    error: state.auth.error
   };
 };
 

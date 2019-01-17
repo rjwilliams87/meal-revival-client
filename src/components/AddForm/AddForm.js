@@ -1,21 +1,33 @@
 import React from "react";
 import "./AddForm.css";
+import { Redirect } from "react-router-dom";
 import { reduxForm, Field, SubmissionError, focus } from "redux-form";
 import { required, nonEmpty } from "../../validators";
 import Input from "../Input/Input";
 import { addUserDonation } from "../../actions/postActions";
-import { getUserInfo } from "../../actions/getActions";
 class AddForm extends React.Component {
   onSubmit(values) {
     const { expiry, info, delivery } = values;
     this.props
       .dispatch(addUserDonation(expiry, info, delivery))
-      .then(this.props.dispatch(getUserInfo()));
+      .then(window.location.reload());
   }
   render() {
+    let successMessage;
+    if (this.props.submitSucceeded) {
+      successMessage = successMessage = (
+        <div>
+          <h2>Success!</h2>
+        </div>
+      );
+    }
     return (
       <div className="add-form__container">
-        <form className="add-form">
+        <form
+          className="add-form"
+          onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+        >
+          {successMessage}
           <legend className="add-form__legend">New Donation</legend>
           <Field
             className="add-form__input"

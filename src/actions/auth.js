@@ -73,3 +73,31 @@ export const userLogin = (email, password) => dispatch => {
       );
     });
 };
+
+export const refreshAuthToken = () => dispatch => {
+  const token = localStorage.getItem("authToken");
+  console.log("from refresh");
+  console.log(token);
+  return fetch(`${API_BASE_URL}/auth/refresh`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  })
+    .then(res => {
+      return normalizeResponseErrors(res);
+    })
+    .then(res => {
+      console.log("fuck fucker");
+      return res.json();
+    })
+    .then(({ authToken }) => {
+      console.log("fuck");
+      return storeAuthInfo(authToken, dispatch);
+    })
+    .catch(err => {
+      dispatch(authError(err));
+      dispatch(clearAuth());
+      clearAuthToken(token);
+    });
+};

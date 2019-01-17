@@ -6,16 +6,54 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Map from "../Map/Map";
 import Profile from "../Profile/Profile";
+import UserDashboard from "../UserDashboard/UserDashboard";
+import { refreshAuthToken } from "../../actions/auth";
 require("dotenv").config();
 
 class App extends React.Component {
+  componentDidUpdate(prevProps) {
+    if (!prevProps.loggedIn && this.props.loggedIn) {
+      this.startPeriodicRefresh();
+    } else if (prevProps.loggedIn && !this.props.loggedIn) {
+      this.stopPeriodicRefresh();
+    }
+  }
+
+  componentWillUnmount() {
+    this.stopPeriodicRefresh();
+  }
+
+  startPeriodicRefresh() {
+    this.refreshInterval = setInterval(
+      () => this.props.dispatch(refreshAuthToken()),
+      60 * 60 * 1000
+    );
+  }
+
+  stopPeriodicRefresh() {
+    if (!this.refreshInterval) {
+      return;
+    }
+    clearInterval(this.refreshInterval);
+  }
+
   render() {
     return (
       <BrowserRouter>
         <div>
           <main>
             <Switch>
-              <Route exact path="/" render={() => <Landing />} />
+              <Route
+                exact
+                path="/"
+                render={() =>
+                  !this.props.loggedIn ? (
+                    <Landing />
+                  ) : (
+                    <Redirect to={`/dashboard/${this.props.user.id}`} />
+                  )
+                }
+              />
               <Route
                 exact
                 path="/register"
@@ -25,7 +63,7 @@ class App extends React.Component {
               />
               {/* need to be redirects */}
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard/:id" component={Profile} />
+              <Route exact path="/dashboard/:id" component={UserDashboard} />
               <Route
                 exact
                 path="/donations/map"
@@ -50,7 +88,7 @@ const mapStateToProps = state => ({
   lat: state.app.mapCoords.Latitude,
   lng: state.app.mapCoords.Longitude,
   loggedIn: state.auth.loggedIn,
-  user: state.auth.currentUser || ""
+  user: state.auth.currentUser
 });
 
 export default connect(mapStateToProps)(App);

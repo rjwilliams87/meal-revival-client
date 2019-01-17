@@ -7,22 +7,22 @@ import ProfileTable from "../ProfileTable/ProfileTable";
 import ProfileForm from "../ProfileForm/ProfileForm";
 import Nav from "../Nav/Nav";
 import { getUserInfo, getUserDonations } from "../../actions/getActions";
-import "./Profile.css";
-// import { clearAuth } from "../../actions/auth";
 
 class Profile extends React.Component {
   componentDidMount() {
-    const id = this.props.match.params.id;
-    this.props
-      .dispatch(getUserInfo(id))
-      .then(this.props.dispatch(getUserDonations(id)))
-      .then(console.log("dispatch ran"));
+    if (this.props.auth) {
+      const id = this.props.auth.id;
+      this.props
+        .dispatch(getUserInfo(id))
+        .then(this.props.dispatch(getUserDonations(id)))
+        .then(console.log("dispatch ran"));
+    }
   }
-  // handleLogout() {
-  //   this.props.dispatch(clearAuth());
-  // }
   render() {
-    if (this.props.loggedIn && !this.props.user.profileComplete) {
+    if (!this.props.loggedIn) {
+      return <Redirect to="/" />;
+    }
+    if (this.props.loggedIn && !this.props.auth.profileComplete) {
       return (
         <div>
           <Nav loggedIn={this.props.loggedIn} />
@@ -33,9 +33,11 @@ class Profile extends React.Component {
       return (
         <div>
           <Nav loggedIn={this.props.loggedIn} />
+          <h1>this is fucked</h1>
           {this.props.user && this.props.donations && (
             <div>
               <ProfileTop
+                id={this.props.auth.id}
                 user={this.props.user}
                 loggedIn={this.props.loggedIn}
               />
@@ -58,7 +60,8 @@ const mapPropsToState = state => {
   return {
     loggedIn: state.auth.loggedIn,
     user: state.app.user,
-    donations: state.app.userDonations
+    donations: state.app.userDonations,
+    auth: state.auth.currentUser
   };
 };
 

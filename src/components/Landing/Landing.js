@@ -6,7 +6,7 @@ import InfoSection from "../InfoSection/InfoSection";
 import LoginPath from "../LoginPath/LoginPath";
 import Footer from "../Footer/Footer";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import "./Landing.css";
 
 const HERE_APP_ID = process.env.REACT_APP_HEREAPPID;
@@ -93,6 +93,9 @@ class Landing extends React.Component {
           </button>
         </li>
       ));
+    }
+    if (this.props.loggedIn) {
+      return <Redirect to={`/dashboard/${this.props.id}`} />;
     }
     return (
       <div>

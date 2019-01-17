@@ -63,7 +63,6 @@ export const reducer = (state = initialState, action) => {
     });
   } else if (action.type === post_actions.ADD_DONATION_SUCCESS) {
     return Object.assign({}, state, {
-      donations: [...state.donations, action.donation],
       error: null,
       loading: false
     });

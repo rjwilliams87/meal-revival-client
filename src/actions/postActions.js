@@ -1,6 +1,7 @@
 import { normalizeResponseErrors } from "./utils";
 import { SubmissionError } from "redux-form";
 import { API_BASE_URL } from "../config";
+import store from "../store";
 
 export const POST_REQUEST = "POST_REQUEST";
 export const postRequest = () => ({
@@ -53,20 +54,15 @@ export const createNewUser = user => dispatch => {
     });
 };
 
-export const addUserDonation = (
-  expiry,
-  info,
-  delivery,
-  getState
-) => dispatch => {
-  const authToken = getState().authToken;
+export const addUserDonation = (expiry, info, delivery) => dispatch => {
+  const token = localStorage.getItem("authToken");
   return fetch(`${API_BASE_URL}/donations`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${authToken}`,
-      body: JSON.stringify({ expiry, info, delivery })
-    }
+      Authorization: `Bearer ${token}`
+    },
+    body: JSON.stringify({ expiry, info, delivery })
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())

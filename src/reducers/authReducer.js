@@ -10,6 +10,8 @@ const initialState = {
 
 export const authReducer = (state = initialState, action) => {
   if (action.type === actions.SET_AUTH_TOKEN) {
+    console.log("setting token from reducer");
+    console.log(action);
     return Object.assign({}, state, {
       authToken: action.authToken
     });
@@ -20,11 +22,13 @@ export const authReducer = (state = initialState, action) => {
       loggedIn: null
     });
   } else if (action.type === actions.AUTH_REQUEST) {
+    console.log("auth req sent");
     return Object.assign({
       loading: true,
       error: null
     });
   } else if (action.type === actions.AUTH_SUCCESS) {
+    console.log("auth req success");
     return Object.assign({
       currentUser: action.currentUser,
       loggedIn: true,
