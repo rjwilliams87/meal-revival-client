@@ -25,6 +25,8 @@ export const authReducer = (state = initialState, action) => {
       error: null
     });
   } else if (action.type === actions.AUTH_SUCCESS) {
+    console.log("auth success reducer");
+    console.log(action);
     return Object.assign({
       currentUser: action.currentUser,
       loggedIn: true,

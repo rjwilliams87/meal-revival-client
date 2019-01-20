@@ -1,5 +1,4 @@
 import React from "react";
-import LoginPath from "../LoginPath/LoginPath";
 import RegisterForm from "../RegisterForm/RegisterForm";
 import LandingNav from "../LandingNav/LandingNav";
 

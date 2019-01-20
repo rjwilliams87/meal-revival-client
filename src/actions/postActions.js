@@ -33,6 +33,7 @@ export const addDonationError = error => ({
 });
 
 export const createNewUser = user => dispatch => {
+  console.log("running createNewUser from actions");
   return fetch(`${API_BASE_URL}/users`, {
     method: "POST",
     headers: {
@@ -42,6 +43,7 @@ export const createNewUser = user => dispatch => {
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())
+    .then(res => createNewUserSuccess(res))
     .catch(err => {
       const { reason, message, location } = err;
       if (reason === "ValidationError") {

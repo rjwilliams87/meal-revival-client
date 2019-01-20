@@ -21,16 +21,14 @@ export const completeProfileError = error => ({
 export const completeUserProfile = (
   phone,
   about,
-  address,
-  coords,
-  profileComplete,
-  getState
+  companyName,
+  contactName,
+  profileComplete
 ) => dispatch => {
   const id = store.getState().auth.currentUser.id;
   const token = localStorage.getItem("authToken");
-  console.log("id and token");
-  console.log(id);
-  console.log(token);
+  console.log("from action");
+  console.log(`${companyName} ${contactName}`);
   dispatch(putRequest());
   return fetch(`${API_BASE_URL}/users/${id}`, {
     method: "PATCH",
@@ -38,7 +36,13 @@ export const completeUserProfile = (
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`
     },
-    body: JSON.stringify({ phone, about, address, coords, profileComplete })
+    body: JSON.stringify({
+      phone,
+      about,
+      companyName,
+      contactName,
+      profileComplete
+    })
   })
     .then(res => normalizeResponseErrors(res))
     .then(res => res.json())

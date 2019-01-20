@@ -1,6 +1,7 @@
 import { API_BASE_URL } from "../config";
 import { normalize } from "path";
 import { normalizeResponseErrors } from "./utils";
+import store from "../store";
 
 export const DELETE_DONATION_SUCCESS = "DELETE_DONATION_SUCCESS";
 export const deleteDonationSuccess = () => ({
@@ -18,13 +19,13 @@ export const deleteRequest = () => ({
   type: DELETE_REQUEST
 });
 
-export const deleteDonation = (id, getState) => dispatch => {
-  const authToken = getState.authToken;
+export const deleteDonation = id => dispatch => {
+  const token = localStorage.getItem("authToken");
   dispatch(deleteRequest());
-  fetch(`${API_BASE_URL}/donations/${id}`, {
+  return fetch(`${API_BASE_URL}/donations/${id}`, {
     method: "DELETE",
     headers: {
-      Authorizations: `Bearer ${authToken}`
+      Authorization: `Bearer ${token}`
     }
   })
     .then(res => normalizeResponseErrors(res))

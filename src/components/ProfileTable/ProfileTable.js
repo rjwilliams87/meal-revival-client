@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import LightBox from "lightbox-react";
 import DeleteModal from "../DeleteModal/DeleteModal";
 
@@ -11,22 +10,25 @@ export default class ProfileTable extends React.Component {
   }
   handleClick(e) {
     const id = e.target.id;
+    console.log("from table");
+    console.log(id);
+    console.log(e.target);
     this.setState({
       isOpen: true,
       deleteId: id
     });
   }
   render() {
-    const tableData = this.props.donations.map((donation, id) => {
+    const tableData = this.props.donations.map((donation, index) => {
       const updateRow = (
         <td>
-          <button onClick={this.handleClick} id={donation.id}>
+          <button onClick={this.handleClick} id={donation._id}>
             Delete
           </button>
         </td>
       );
       return (
-        <tr key={id}>
+        <tr key={index}>
           <td>{donation.expiry}</td>
           <td>{donation.info}</td>
           <td>{donation.delivery}</td>

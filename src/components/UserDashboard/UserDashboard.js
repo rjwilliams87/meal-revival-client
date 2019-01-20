@@ -7,6 +7,7 @@ import ProfileTable from "../ProfileTable/ProfileTable";
 import ProfileForm from "../ProfileForm/ProfileForm";
 import Nav from "../Nav/Nav";
 import { getUserInfo, getUserDonations } from "../../actions/getActions";
+import { refreshAuthToken } from "../../actions/auth";
 
 class Profile extends React.Component {
   componentDidMount() {
@@ -21,7 +22,10 @@ class Profile extends React.Component {
     if (!this.props.loggedIn) {
       return <Redirect to="/" />;
     }
-    if (this.props.loggedIn && !this.props.auth.profileComplete) {
+    if (!this.props.user) {
+      return <div />;
+    }
+    if (this.props.loggedIn && !this.props.user.profileComplete) {
       return (
         <div>
           <Nav loggedIn={this.props.loggedIn} />
@@ -55,6 +59,8 @@ class Profile extends React.Component {
 }
 
 const mapPropsToState = state => {
+  console.log("state");
+  console.log(state);
   return {
     loggedIn: state.auth.loggedIn,
     user: state.app.user,
