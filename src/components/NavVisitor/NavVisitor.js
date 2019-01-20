@@ -5,13 +5,19 @@ export default function NavVisitor(props) {
   return (
     <ul className="nav__ul">
       <li className="nav__li">
-        <Link to="/">Home</Link>
+        <Link className="nav__link" to="/">
+          Home
+        </Link>
       </li>
       <li className="nav__li">
-        <Link to="/donations/map">Donations</Link>
+        <Link className="nav__link" to="/donations/map">
+          Donations
+        </Link>
       </li>
       <li className="nav__li">
-        <Link to="/login">Login</Link>
+        <Link className="nav__link" to="/login">
+          Login
+        </Link>
       </li>
     </ul>
   );

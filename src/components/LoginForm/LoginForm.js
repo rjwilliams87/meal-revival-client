@@ -49,13 +49,15 @@ class LoginForm extends React.Component {
               validate={[required, nonEmpty]}
             />
           </div>
-          <button
-            className="login__btn btn-red"
-            disabled={this.props.pristine || this.props.submitting}
-            type="submit"
-          >
-            Login
-          </button>
+          <div className="login-btn__container">
+            <button
+              className="login__btn btn-red"
+              disabled={this.props.pristine || this.props.submitting}
+              type="submit"
+            >
+              Login
+            </button>
+          </div>
         </fieldset>
       </form>
     );

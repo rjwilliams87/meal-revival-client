@@ -104,9 +104,11 @@ class RegisterForm extends React.Component {
     let successMessage;
     if (this.props.submitSucceeded) {
       successMessage = successMessage = (
-        <div>
-          <h2>Success!</h2>
-          <Link to="/login">Login Here!</Link>
+        <div className="msg__container">
+          <h2 className="msg__header">Success!</h2>
+          <Link className="msg__link" to="/login">
+            Login Here
+          </Link>
         </div>
       );
       return successMessage;
@@ -176,7 +178,7 @@ class RegisterForm extends React.Component {
               ) : null} */}
               <Field
                 className="register-form__input register-form__input--lrg"
-                label="Address"
+                label="address"
                 labelClass="register-form__label"
                 name="address"
                 type="text"

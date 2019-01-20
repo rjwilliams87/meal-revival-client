@@ -9,7 +9,7 @@
   flex-direction: column;
   background-color: #39b18d;
   border-radius: 5px;
-  height: 375px;
+  /* height: 375px; */
   width: 60%;
   margin: 0 auto;
   align-items: center;
@@ -33,6 +33,7 @@
   display: block;
   height: 30px;
   width: 300px;
+  padding: 8px;
 }
 
 .input--lrg {

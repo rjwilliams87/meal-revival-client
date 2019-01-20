@@ -1,3 +1,7 @@
 .info__container {
   display: flex;
 }
+
+.icon--delete {
+  color: red;
+}

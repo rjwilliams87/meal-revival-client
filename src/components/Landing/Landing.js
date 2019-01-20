@@ -7,7 +7,6 @@ import LoginPath from "../LoginPath/LoginPath";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
-import { getLocationSuggestions } from "../../HEREutils";
 import "./Landing.css";
 
 const HERE_APP_ID = process.env.REACT_APP_HEREAPPID;
@@ -102,7 +101,7 @@ class Landing extends React.Component {
       <div>
         <div className="landing__container wave">
           <LoginPath />
-          <h1 className="landing__header landing__header--margin">
+          <h1 className="landing__header landing__header--margin header__1">
             Meal Revival
           </h1>
           <h2 className="landing__header header--margin header--bold header--large">

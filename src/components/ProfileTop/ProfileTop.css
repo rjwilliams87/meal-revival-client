@@ -87,7 +87,7 @@
 }
 
 .table tr:nth-child(odd) {
-  background-color: rgba(128, 128, 128, 0.459);
+  background-color: #39b18d54;
 }
 
 td {

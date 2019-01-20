@@ -1,6 +1,5 @@
 import React from "react";
 import "./AddForm.css";
-import { Redirect } from "react-router-dom";
 import { reduxForm, Field, SubmissionError, focus } from "redux-form";
 import { required, nonEmpty } from "../../validators";
 import Input from "../Input/Input";

@@ -24,11 +24,13 @@
 .add-form__label {
   margin-bottom: 5px;
   margin-top: 15px;
+  display: block;
 }
 
 .add-form__input {
   height: 30px;
   padding: 12px;
+  display: block;
 }
 
 .add-form__radio {

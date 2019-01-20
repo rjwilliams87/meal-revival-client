@@ -55,7 +55,7 @@ class ProfileForm extends React.Component {
             <Field
               className="profile-form__input"
               name="phone"
-              type="phone"
+              type="text"
               component="input"
             />
           </div>
@@ -67,7 +67,7 @@ class ProfileForm extends React.Component {
               className="profile-form__input input--lrg"
               type="text"
               name="about"
-              component="input"
+              component="textarea"
             />
           </div>
           <button

@@ -18,13 +18,19 @@ class NavUser extends React.Component {
     return (
       <ul className="nav__ul">
         <li className="nav__li">
-          <Link to={`/dashboard/${id}`}>Profile</Link>
+          <Link className="nav__link" to={`/dashboard/${id}`}>
+            Profile
+          </Link>
         </li>
         <li className="nav__li">
-          <Link to="/donations/map">Donations</Link>
+          <Link className="nav__link" to="/donations/map">
+            Donations
+          </Link>
         </li>
         <li className="nav__li" onClick={this.handleClick}>
-          <Link to="/login">Log Out</Link>
+          <Link className="nav__link" to="/login">
+            Log Out
+          </Link>
         </li>
       </ul>
     );

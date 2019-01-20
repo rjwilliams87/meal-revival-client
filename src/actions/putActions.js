@@ -25,6 +25,8 @@ export const completeUserProfile = (
   contactName,
   profileComplete
 ) => dispatch => {
+  console.log("logging phone");
+  console.log(phone);
   const id = store.getState().auth.currentUser.id;
   const token = localStorage.getItem("authToken");
   console.log("from action");

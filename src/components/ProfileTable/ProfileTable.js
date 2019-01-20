@@ -23,7 +23,7 @@ export default class ProfileTable extends React.Component {
       const updateRow = (
         <td>
           <button onClick={this.handleClick} id={donation._id}>
-            Delete
+            <i class="fas fa-trash-alt fa-2x icon--delete" />
           </button>
         </td>
       );

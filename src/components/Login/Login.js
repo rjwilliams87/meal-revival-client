@@ -21,7 +21,7 @@ class Login extends React.Component {
     return (
       <div>
         <Link className="link link--green" to="/">
-          <h1 className="text--center">Meal Revival</h1>
+          <h1 className="text--center login__header">Meal Revival</h1>
         </Link>
         <div className="login__container">
           <LoginForm error={this.props.error} />

@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.login__header {
+  margin-top: 20px;
+}
+
 .link--green {
   color: #39b18d;
 }
