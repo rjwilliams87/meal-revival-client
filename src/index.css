@@ -7,6 +7,24 @@
 
 body {
   overflow-x: hidden;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+main {
+  height: 100%;
+}
+
+/* headers */
+.header--bold {
+  font-weight: 700;
+}
+
+.header--light {
+  font-weight: 300;
 }
 
 .landing-sec {
@@ -30,6 +48,7 @@ body {
 
 button {
   border: none;
+  border-radius: 5px;
 }
 
 button:hover {
@@ -43,4 +62,19 @@ button:hover {
 
 .btn--red:hover {
   background-color: #db3742c5;
+}
+
+.btn--green {
+  background-color: #00887a;
+  color: #ffffff;
+}
+
+@media only screen and (min-width: 768px) {
+  .header--large {
+    font-size: 48px;
+  }
+
+  .header--med {
+    font-size: 32px;
+  }
 }

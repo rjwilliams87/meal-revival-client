@@ -17,13 +17,12 @@ class Profile extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="grey">
         <Nav loggedIn={this.props.loggedIn} />
         {this.props.user && this.props.donations && (
-          <div>
+          <div className="top__wrapper">
             <ProfileTop user={this.props.user} loggedIn={null} />
-            <div className="info__container">
-              <ProfileAbout user={this.props.user} />
+            <div className="table__sec">
               <ProfileTable loggedIn={null} donations={this.props.donations} />
             </div>
           </div>

@@ -122,7 +122,7 @@ class RegisterForm extends React.Component {
           <legend className="register-form__legend">
             Sign up for your free account
           </legend>
-          <div className="register-form__row">
+          <div className="register-form__row flex--column">
             <div className="register-form__sec">
               <Field
                 className="register-form__input"
@@ -135,7 +135,7 @@ class RegisterForm extends React.Component {
               />
             </div>
           </div>
-          <div className="register-form__row">
+          <div className="register-form__row flex--column">
             <div className="register-form__sec">
               <Field
                 className="register-form__input"
@@ -148,29 +148,6 @@ class RegisterForm extends React.Component {
               />
             </div>
           </div>
-          {/* <div className="register-form__row">
-            <div className="register-form__sec">
-              <Field
-                className="register-form__input"
-                label="company name"
-                labelClass="register-form__label"
-                name="companyName"
-                type="text"
-                component={Input}
-                validate={[required, nonEmpty]}
-              />
-            </div>
-            <div className="register-form__sec">
-              <Field
-                className="register-form__input"
-                label="contact name"
-                labelClass="register-form__label"
-                name="contactName"
-                component={Input}
-                validate={[required, nonEmpty]}
-              />
-            </div>
-          </div> */}
           <div className="register-form__row flex--column">
             <div className="register-form__sec">
               {/* {this.state.query.length !== 0 && !this.state.coords ? (
@@ -189,7 +166,7 @@ class RegisterForm extends React.Component {
               />
             </div>
           </div>
-          <div className="register-form__row">
+          <div className="register-form__row flex--column">
             <div className="register-form__sec">
               <button
                 className="register__btn btn"

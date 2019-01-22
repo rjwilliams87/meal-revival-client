@@ -7,26 +7,24 @@ import { addUserDonation } from "../../actions/postActions";
 class AddForm extends React.Component {
   onSubmit(values) {
     const { expiry, info, delivery } = values;
-    this.props
-      .dispatch(addUserDonation(expiry, info, delivery))
-      .then(window.location.reload());
+    this.props.dispatch(addUserDonation(expiry, info, delivery));
+    // .then(window.location.reload());
   }
   render() {
-    let successMessage;
-    if (this.props.submitSucceeded) {
-      successMessage = successMessage = (
-        <div>
-          <h2>Success!</h2>
-        </div>
-      );
-    }
+    // let successMessage;
+    // if (this.props.submitSucceeded) {
+    //   successMessage = successMessage = (
+    //     <div>
+    //       <h2>Success!</h2>
+    //     </div>
+    //   );
+    // }
     return (
       <div className="add-form__container">
         <form
           className="add-form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
-          {successMessage}
           <legend className="add-form__legend">New Donation</legend>
           <Field
             className="add-form__input"
@@ -60,7 +58,7 @@ class AddForm extends React.Component {
             </label>
             <label>
               <Field
-                className="add-form__radio"
+                className="add-form__radio radio--margin"
                 type="radio"
                 name="delivery"
                 value="No"

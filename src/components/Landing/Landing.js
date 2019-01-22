@@ -100,7 +100,9 @@ class Landing extends React.Component {
     return (
       <div>
         <div className="landing__container wave">
-          <LoginPath />
+          <div className="mobile--hide">
+            <LoginPath />
+          </div>
           <h1 className="landing__header landing__header--margin header__1">
             Meal Revival
           </h1>
@@ -130,9 +132,7 @@ class Landing extends React.Component {
         <div className="section__container flex--column section--sm section--margin">
           <p className="p--bold p--lrg">Want to list your donations?</p>
           <Link to="/register">
-            <button className="join__btn search__btn search__btn--border">
-              Join Here
-            </button>
+            <button className="join__btn btn--red">Join Here</button>
           </Link>
         </div>
         <Footer />

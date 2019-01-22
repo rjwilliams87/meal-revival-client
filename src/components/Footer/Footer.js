@@ -27,7 +27,7 @@ export default function Footer(props) {
             className="footer__a"
             href="http://media.law.uark.edu/arklawnotes/2013/08/08/the-legal-guide-to-the-bill-emerson-good-samaritan-food-donation-act/"
           >
-            Bill Emerson Legal Guide - University of Arkansa
+            Bill Emerson Legal Guide - University of Arkansas
           </a>
         </p>
       </div>

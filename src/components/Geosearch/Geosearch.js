@@ -16,7 +16,10 @@ export default function Geosearch(props) {
       </div>
       <div className="btn__container">
         <Link to="/donations/map">
-          <button className="search__btn search__btn--border" type="submit">
+          <button
+            className="search__btn btn--red search__btn--border"
+            type="submit"
+          >
             {props.btnText}
           </button>
         </Link>

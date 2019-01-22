@@ -1,38 +1,14 @@
 .landing__container {
   padding: 30px;
-  height: 120vh;
+  height: 100vh;
+  width: 100vw;
   color: white;
+  /* background: #39b18d; */
+  background: #1a66eb;
 }
 
-.wave {
-  position: relative;
-  background: #39b18d;
-  /* background: #2451b2; */
-}
-
-.wave:before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 250px;
-  background: url("https://uploads.codesandbox.io/uploads/user/14efc214-6667-491a-83e8-91c60da79942/T9or-wave.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.img__container {
-  display: flex;
-  justify-content: center;
-  position: absolute;
-}
-
-.landing__img {
-  width: 40%;
-  height: 45%;
-  position: relative;
-  top: 100px;
+.mobile--hide {
+  display: none;
 }
 
 .landing__header {
@@ -40,30 +16,12 @@
 }
 
 .header__1 {
-  font-family: "Roboto";
   font-weight: 300;
-  /* position: relative;
-  left: 40px; */
+  font-size: 18px;
 }
 
 .landing__header--margin {
   margin-bottom: 45px;
-}
-
-.header--bold {
-  font-weight: bold;
-}
-
-.header--light {
-  font-weight: 300;
-}
-
-.header--large {
-  font-size: 48px;
-}
-
-.header--med {
-  font-size: 32px;
 }
 
 .header--margin {
@@ -97,7 +55,6 @@
 
 .results__btn {
   width: 100%;
-  border: none;
   background-color: #fff;
   font-size: 16px;
   padding: 5px;
@@ -117,17 +74,12 @@
   height: 100vh;
 }
 
-.section--sm {
-  height: 30vh;
-  border-top: 1px solid #d3d3d3;
-  border-bottom: 1px solid #d3d3d3;
-}
-
 .section--margin {
   margin-bottom: 100px;
 }
 
 .flex--column {
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -149,8 +101,66 @@
 
 .join__btn {
   margin-bottom: 40px;
+  height: 35px;
+  width: 150px;
 }
 
-.join__btn:hover {
-  cursor: pointer;
+@media only screen and (min-width: 568px) {
+  .landing__container {
+    padding: 30px;
+    height: 120vh;
+    color: white;
+  }
+
+  .mobile--hide {
+    display: block;
+  }
+
+  .header__1 {
+    font-size: 24px;
+  }
+
+  .join__btn {
+    height: 50px;
+    width: 150px;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .section--sm {
+    height: 30vh;
+    margin-top: 50px;
+    border-top: 1px solid #d3d3d3;
+    border-bottom: 1px solid #d3d3d3;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .landing__container {
+    background: #ffffff;
+  }
+
+  .wave {
+    position: relative;
+    /* background: #39b18d; */
+    /* background: #2451b2; */
+    background: #1a66eb;
+  }
+
+  .wave:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 250px;
+    background: url("https://uploads.codesandbox.io/uploads/user/14efc214-6667-491a-83e8-91c60da79942/T9or-wave.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .header__1 {
+    font-size: 30px;
+  }
 }

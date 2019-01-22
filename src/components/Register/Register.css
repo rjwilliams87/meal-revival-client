@@ -1,9 +1,16 @@
+.register {
+  height: 100%;
+  /* background-color: #39b18d; */
+  background: #1a66eb;
+}
+
 .register__container {
   height: 100vh;
 }
 
 .container--green {
-  background-color: #39b18d;
+  /* background-color: #39b18d; */
+  background: #1a66eb;
   color: #fff;
 }
 

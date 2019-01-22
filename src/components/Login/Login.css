@@ -3,11 +3,12 @@
 }
 
 .login__header {
-  margin-top: 20px;
+  margin: 20px;
 }
 
 .link--green {
-  color: #39b18d;
+  /* color: #39b18d; */
+  color: #1a66eb;
 }
 
 .login__container {

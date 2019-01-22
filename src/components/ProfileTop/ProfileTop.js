@@ -17,7 +17,14 @@ export default class ProfileTop extends React.Component {
     });
   }
   render() {
-    const { address, phone, email, companyName, contactName } = this.props.user;
+    const {
+      address,
+      phone,
+      email,
+      companyName,
+      contactName,
+      about
+    } = this.props.user;
     return (
       <div>
         <div className="company__box">
@@ -28,11 +35,12 @@ export default class ProfileTop extends React.Component {
             />
             <h2>{companyName}</h2>
           </div>
-          {this.props.loggedIn ? (
-            <button onClick={this.handleClick} className="add__btn">
+          <p>{about}</p>
+          {/* {this.props.loggedIn ? (
+            <button onClick={this.handleClick} className="add__btn btn--green">
               Add Donation
             </button>
-          ) : null}
+          ) : null} */}
         </div>
         <div className="company-contact__box">
           <p className="contact__p">{address}</p>

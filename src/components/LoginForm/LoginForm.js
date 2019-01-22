@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
           </div>
           <div className="login-btn__container">
             <button
-              className="login__btn btn-red"
+              className="login__btn btn--red"
               disabled={this.props.pristine || this.props.submitting}
               type="submit"
             >

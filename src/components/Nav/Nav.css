@@ -7,8 +7,10 @@ header,
 header {
   top: 0;
   left: 0;
-  background-color: #ffffff;
-  color: #39b18d;
+  /* background-color: #ffffff; */
+  background-color: #1a66eb;
+  /* background-color: #945d60; */
+  color: #fff;
   box-shadow: 1px 1px 1px 1px #d3d3d3;
 }
 
@@ -33,7 +35,9 @@ header {
 
 .nav__link {
   text-decoration: none;
-  color: #39b18d;
+  /* color: #39b18d; */
+  /* color: rgb(65, 105, 225); */
+  color: #fff;
 }
 
 .nav__link:hover {
