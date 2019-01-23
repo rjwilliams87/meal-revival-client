@@ -5,7 +5,8 @@
 }
 
 .register__container {
-  height: 100vh;
+  height: 120vh;
+  overflow: hidden;
 }
 
 .container--green {

@@ -19,7 +19,7 @@ class Login extends React.Component {
       return <Redirect to={`/dashboard/${this.props.user.id}`} />;
     }
     return (
-      <div>
+      <div className="white">
         <Link className="link link--green" to="/">
           <h1 className="text--center login__header">Meal Revival</h1>
         </Link>

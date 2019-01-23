@@ -1,7 +1,7 @@
 .login__link {
   border: 1px solid #fff;
   text-align: center;
-  width: 80px;
+  width: 60px;
   padding: 10px;
   float: right;
 }
@@ -12,11 +12,21 @@
 
 .link {
   text-decoration: none;
-  width: 80px;
+  width: 60px;
   color: #fff;
 }
 
 .link:hover {
   cursor: pointer;
   background: #ffffff42;
+}
+
+@media only screen and (min-width: 568px) {
+  .login__link {
+    width: 80px;
+  }
+
+  .link {
+    width: 80px;
+  }
 }

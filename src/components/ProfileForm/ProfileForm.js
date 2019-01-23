@@ -1,7 +1,9 @@
 import React from "react";
 import { reduxForm, Field, SubmissionError, focus } from "redux-form";
+import { length } from "../../validators";
 import "./ProfileForm.css";
 import { completeUserProfile } from "../../actions/putActions";
+const phoneLength = length({ min: 7, max: 10 });
 
 class ProfileForm extends React.Component {
   onSubmit(values) {
@@ -57,6 +59,7 @@ class ProfileForm extends React.Component {
               name="phone"
               type="text"
               component="input"
+              validators={[phoneLength]}
             />
           </div>
           <div>

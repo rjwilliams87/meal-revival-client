@@ -66,6 +66,27 @@
   padding: 10px;
 }
 
+.options__container {
+  background: #fff;
+}
+
+.options__li {
+  list-style: none;
+  padding: 5px;
+}
+
+.options__btn {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  background: #fff;
+}
+
+.options__btn:hover {
+  background-color: #add8e67e;
+  cursor: pointer;
+}
+
 @media only screen and (min-width: 568px) {
   .register-form {
     max-width: 550px;
@@ -90,6 +111,8 @@
 
   .register__btn {
     width: 420px;
+    font-size: 18px;
+    font-weight: 600;
   }
 
   .msg__header {

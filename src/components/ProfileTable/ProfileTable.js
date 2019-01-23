@@ -27,7 +27,7 @@ export default class ProfileTable extends React.Component {
       );
       return (
         <tr key={index}>
-          <td>{donation.expiry}</td>
+          <td>{donation.expiry.replace(/T.*$/, "")}</td>
           <td>{donation.info}</td>
           <td>{donation.delivery}</td>
           {this.props.loggedIn ? updateRow : null}

@@ -8,7 +8,7 @@ import Nav from "../Nav/Nav";
 import AddForm from "../AddForm/AddForm";
 import { getUserInfo, getUserDonations } from "../../actions/getActions";
 
-class UserProfile extends React.Component {
+export class UserProfile extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -37,14 +37,14 @@ class UserProfile extends React.Component {
     }
     if (this.props.loggedIn && !this.props.user.profileComplete) {
       return (
-        <div className="grey">
+        <div className="grey userProfile">
           <Nav loggedIn={this.props.loggedIn} />
           <ProfileForm />
         </div>
       );
     } else {
       return (
-        <div className="grey">
+        <div className="grey userProfile">
           <Nav loggedIn={this.props.loggedIn} />
           {this.props.user && this.props.donations && (
             <div className="top__wrapper">

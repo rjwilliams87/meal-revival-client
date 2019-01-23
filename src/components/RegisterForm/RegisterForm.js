@@ -10,7 +10,7 @@ const passwordLength = length({ min: 10, max: 72 });
 const HERE_APP_ID = process.env.REACT_APP_HEREAPPID;
 const HERE_APP_CODE = process.env.REACT_APP_HEREAPPCODE;
 
-class RegisterForm extends React.Component {
+export class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,6 +19,7 @@ class RegisterForm extends React.Component {
     };
 
     this.onQuery = this.onQuery.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
   getInitialState() {
     this.setState({
@@ -46,6 +47,7 @@ class RegisterForm extends React.Component {
         if (response.data.suggestions.length > 0) {
           this.setState({
             address: response.data.suggestions[0],
+            options: response.data.suggestions,
             query: query
           });
         } else {
@@ -53,8 +55,18 @@ class RegisterForm extends React.Component {
         }
       })
       .catch(err => {
+        console.log(err);
         this.setState(this.getInitialState());
       });
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    const text = e.target.textContent.toString();
+    this.setState({
+      query: text,
+      options: null
+    });
   }
 
   onSubmit(values) {
@@ -90,8 +102,8 @@ class RegisterForm extends React.Component {
     let places;
     if (this.state.options) {
       places = this.state.options.map((option, index) => (
-        <li className="results__li" key={index}>
-          <button className="results__btn" onClick={this.handleClick}>
+        <li className="options__li" key={index}>
+          <button className="options__btn" onClick={this.handleClick}>
             {option.address.houseNumber ? option.address.houseNumber : null}{" "}
             {option.address.street} {option.address.city},{" "}
             {option.address.state} {option.address.postalCode}{" "}
@@ -150,26 +162,23 @@ class RegisterForm extends React.Component {
           </div>
           <div className="register-form__row flex--column">
             <div className="register-form__sec">
-              {/* {this.state.query.length !== 0 && !this.state.coords ? (
-                <ul className="places__container">{places}</ul>
-              ) : null} */}
-              <Field
-                className="register-form__input register-form__input--lrg"
-                label="address"
-                labelClass="register-form__label"
-                name="address"
+              <label className="register-form__label">address</label>
+              {this.state.query.length !== 0 && !this.state.coords ? (
+                <ul className="options__container">{places}</ul>
+              ) : null}
+              <input
                 type="text"
-                component={Input}
-                validate={[required]}
-                value={this.state.query}
+                className="register-form__input register-form__input--lrg"
                 onChange={this.onQuery}
+                value={this.state.query}
+                validate={[require]}
               />
             </div>
           </div>
           <div className="register-form__row flex--column">
             <div className="register-form__sec">
               <button
-                className="register__btn btn"
+                className="register__btn btn btn--red"
                 type="submit"
                 disabled={this.props.pristine || this.props.submitting}
               >

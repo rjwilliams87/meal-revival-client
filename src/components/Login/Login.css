@@ -12,6 +12,7 @@
 }
 
 .login__container {
+  background: #fff;
   width: 100vw;
   height: 90vh;
   display: flex;

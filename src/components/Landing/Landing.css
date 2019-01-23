@@ -5,10 +5,11 @@
   color: white;
   /* background: #39b18d; */
   background: #1a66eb;
+  /* background: #02a702; */
 }
 
-.mobile--hide {
-  display: none;
+.login-path {
+  margin-right: 15px;
 }
 
 .landing__header {
@@ -18,6 +19,7 @@
 .header__1 {
   font-weight: 300;
   font-size: 18px;
+  display: inline-block;
 }
 
 .landing__header--margin {
@@ -112,10 +114,6 @@
     color: white;
   }
 
-  .mobile--hide {
-    display: block;
-  }
-
   .header__1 {
     font-size: 24px;
   }
@@ -146,6 +144,7 @@
     /* background: #39b18d; */
     /* background: #2451b2; */
     background: #1a66eb;
+    /* background: #3c7e3c; */
   }
 
   .wave:before {

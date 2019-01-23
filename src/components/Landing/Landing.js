@@ -100,7 +100,7 @@ class Landing extends React.Component {
     return (
       <div>
         <div className="landing__container wave">
-          <div className="mobile--hide">
+          <div className="login-path">
             <LoginPath />
           </div>
           <h1 className="landing__header landing__header--margin header__1">

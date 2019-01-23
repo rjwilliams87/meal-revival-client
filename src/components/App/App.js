@@ -6,7 +6,7 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Map from "../Map/Map";
 import Profile from "../Profile/Profile";
-import UserDashboard from "../UserDashboard/UserDashboard";
+import UserProfile from "../UserProfile/UserProfile";
 import { refreshAuthToken } from "../../actions/auth";
 require("dotenv").config();
 
@@ -40,7 +40,7 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
+        <div className="app__container">
           <main>
             <Switch>
               <Route
@@ -63,7 +63,7 @@ class App extends React.Component {
               />
               {/* need to be redirects */}
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard/:id" component={UserDashboard} />
+              <Route exact path="/dashboard/:id" component={UserProfile} />
               <Route
                 exact
                 path="/donations/map"
