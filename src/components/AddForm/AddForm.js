@@ -4,11 +4,21 @@ import { reduxForm, Field, SubmissionError, focus } from "redux-form";
 import { required, nonEmpty } from "../../validators";
 import Input from "../Input/Input";
 import { addUserDonation } from "../../actions/postActions";
+import { reset } from "redux-form";
 class AddForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      updated: false
+    };
+  }
+
   onSubmit(values) {
     const { expiry, info, delivery } = values;
-    this.props.dispatch(addUserDonation(expiry, info, delivery));
-    // .then(window.location.reload());
+    this.props
+      .dispatch(addUserDonation(expiry, info, delivery))
+      .then(this.props.dispatch(reset("addDonation")))
+      .then(setTimeout(this.props.updateDonations(), 10000));
   }
   render() {
     // let successMessage;

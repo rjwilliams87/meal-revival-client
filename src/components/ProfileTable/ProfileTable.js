@@ -11,9 +11,6 @@ export default class ProfileTable extends React.Component {
   }
   handleClick(e) {
     const id = e.target.id;
-    console.log("from table");
-    console.log(id);
-    console.log(e.target);
     this.setState({
       isOpen: true,
       deleteId: id

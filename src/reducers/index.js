@@ -60,9 +60,11 @@ export const reducer = (state = initialState, action) => {
       loading: false
     });
   } else if (action.type === post_actions.ADD_DONATION_SUCCESS) {
+    console.log(action);
     return Object.assign({}, state, {
       error: null,
-      loading: false
+      loading: false,
+      userDonations: [...this.state.userDonations, action.donation]
     });
   } else if (action.type === post_actions.ADD_DONATION_ERROR) {
     return Object.assign({}, state, {

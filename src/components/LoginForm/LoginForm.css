@@ -71,6 +71,15 @@
   font-size: 16px;
 }
 
+.login__error {
+  background: #fff;
+  color: #ff0000;
+  margin: 15px auto;
+  width: 60%;
+  text-align: center;
+  padding: 5px;
+}
+
 @media only screen and (min-width: 668px) {
   .login-form {
     max-width: 550px;

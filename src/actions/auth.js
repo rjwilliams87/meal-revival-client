@@ -4,7 +4,6 @@ import { SubmissionError } from "redux-form";
 import { API_BASE_URL } from "../config";
 import { normalizeResponseErrors } from "./utils";
 import { saveAuthToken, clearAuthToken } from "../local-storage";
-import { decode } from "punycode";
 
 export const SET_AUTH_TOKEN = "SET_AUTH_TOKEN";
 export const setAuthToken = authToken => ({
@@ -37,7 +36,6 @@ export const authError = error => ({
 export const storeAuthInfo = (authToken, dispatch) => {
   const decodedToken = jwtDecode(authToken);
   dispatch(setAuthToken(authToken));
-  console.log("running auth success");
   dispatch(authSuccess(decodedToken.user));
   saveAuthToken(authToken);
 };
@@ -62,7 +60,7 @@ export const userLogin = (email, password) => dispatch => {
         code === 401
           ? "Incorrect username or password"
           : "Unable to login, please try again";
-      dispatch(authError(err));
+      dispatch(authError(message));
       return Promise.reject(
         new SubmissionError({
           _error: message

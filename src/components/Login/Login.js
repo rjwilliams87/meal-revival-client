@@ -24,7 +24,7 @@ class Login extends React.Component {
           <h1 className="text--center login__header">Meal Revival</h1>
         </Link>
         <div className="login__container">
-          <LoginForm error={this.props.error} />
+          <LoginForm loginError={this.props.error} />
           <div className="path__container">
             <p>
               Not a member? <Link to="/register">Sign up here!</Link>

@@ -1,6 +1,7 @@
 import { normalizeResponseErrors } from "./utils";
 import { SubmissionError } from "redux-form";
 import { API_BASE_URL } from "../config";
+import axios from "axios";
 import store from "../store";
 
 export const POST_REQUEST = "POST_REQUEST";

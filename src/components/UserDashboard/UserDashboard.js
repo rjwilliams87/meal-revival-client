@@ -8,7 +8,10 @@ import Nav from "../Nav/Nav";
 import AddForm from "../AddForm/AddForm";
 import { getUserInfo, getUserDonations } from "../../actions/getActions";
 
-class Profile extends React.Component {
+class UserProfile extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount() {
     if (this.props.auth) {
       const id = this.props.auth.id;
@@ -17,6 +20,14 @@ class Profile extends React.Component {
         .then(this.props.dispatch(getUserDonations(id)));
     }
   }
+
+  componentDidUpdate() {}
+
+  updateDonations() {
+    const id = this.props.auth.id;
+    this.props.dispatch(getUserDonations(id));
+  }
+
   render() {
     if (!this.props.loggedIn) {
       return <Redirect to="/" />;
@@ -44,7 +55,10 @@ class Profile extends React.Component {
               />
               <div className="donation__sec">
                 <div className="box--sm">
-                  <AddForm />
+                  <AddForm
+                    updateDonations={() => this.updateDonations()}
+                    id={this.props.auth.id}
+                  />
                 </div>
                 <div className="box--md">
                   <ProfileTable
@@ -62,8 +76,8 @@ class Profile extends React.Component {
 }
 
 const mapPropsToState = state => {
-  // console.log("state");
-  // console.log(state);
+  console.log("state");
+  console.log(state);
   return {
     loggedIn: state.auth.loggedIn,
     user: state.app.user,
@@ -72,4 +86,4 @@ const mapPropsToState = state => {
   };
 };
 
-export default connect(mapPropsToState)(Profile);
+export default connect(mapPropsToState)(UserProfile);
