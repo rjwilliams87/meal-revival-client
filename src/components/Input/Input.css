@@ -6,4 +6,6 @@
   background-color: #da3843;
   margin-top: 5px;
   display: inline-block;
+  position: absolute;
+  max-width: 300px;
 }

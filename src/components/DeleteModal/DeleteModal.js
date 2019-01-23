@@ -7,17 +7,13 @@ class DeleteModal extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    //refresh page
   }
 
-  handleClick(e) {
-    console.log("btn_id");
-    console.log(this.props.btn_id);
+  handleClick = async e => {
     const id = e.target.id;
-    console.log(id);
-    this.props.dispatch(deleteDonation(id));
-    // .then(window.location.reload());
-  }
+    await this.props.dispatch(deleteDonation(id));
+    this.props.handleDeleteBtn();
+  };
 
   render() {
     return (

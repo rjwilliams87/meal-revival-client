@@ -13,7 +13,8 @@
 
 .table {
   margin: 10px auto;
-  width: 80%;
+  position: relative;
+  right: 8px;
 }
 
 .table tr:nth-child(odd) {
@@ -23,4 +24,19 @@
 td {
   padding: 5px;
   padding-left: 10px;
+  text-align: center;
+}
+
+.btn__delete {
+  padding: 8px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+@media only screen and (min-width: 321px) {
+  .table {
+    width: 80%;
+    position: relative;
+    right: 0;
+  }
 }

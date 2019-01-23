@@ -8,6 +8,7 @@ export default class ProfileTable extends React.Component {
     super(props);
     this.state = { isOpen: false };
     this.handleClick = this.handleClick.bind(this);
+    this.handleDeleteBtn = this.handleDeleteBtn.bind(this);
   }
   handleClick(e) {
     const id = e.target.id;
@@ -15,13 +16,26 @@ export default class ProfileTable extends React.Component {
       isOpen: true,
       deleteId: id
     });
+    console.log(this.state.deleteId);
+  }
+  handleDeleteBtn() {
+    this.setState({
+      isOpen: false,
+      deleteId: null
+    });
+    this.props.updateTable();
   }
   render() {
     const tableData = this.props.donations.map((donation, index) => {
       const updateRow = (
         <td>
-          <button onClick={this.handleClick} id={donation._id}>
-            <i class="fas fa-trash-alt fa-2x icon--delete" id={donation._id} />
+          <button
+            class="btn__delete"
+            onClick={this.handleClick}
+            id={donation._id}
+          >
+            <i class="fas fa-trash" id={donation._id} />
+            {/* <i class="fas fa-trash-alt fa-2x icon--delete" id={donation._id} /> */}
           </button>
         </td>
       );
@@ -51,7 +65,12 @@ export default class ProfileTable extends React.Component {
         </div>
         {this.state.isOpen && (
           <LightBox
-            mainSrc={<DeleteModal btn_id={this.state.deleteId} />}
+            mainSrc={
+              <DeleteModal
+                btn_id={this.state.deleteId}
+                handleDeleteBtn={this.handleDeleteBtn}
+              />
+            }
             onCloseRequest={() =>
               this.setState({
                 isOpen: false,

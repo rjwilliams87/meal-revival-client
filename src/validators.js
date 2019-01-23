@@ -4,7 +4,7 @@ export const nonEmpty = value =>
 export const email = value =>
   /^\S+@\S+$/.test(value) ? undefined : "Valid email required";
 export const isTrimmed = value =>
-  value.trim() === value ? undefined : "Cannot stare or end with whitespace";
+  value.trim() === value ? undefined : "Cannot start or end with whitespace";
 export const length = length => value => {
   if (length.min && value.length < length.min) {
     return `Must be at least ${length.min} characters`;

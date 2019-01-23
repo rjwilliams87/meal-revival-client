@@ -62,6 +62,7 @@ export class UserProfile extends React.Component {
                 </div>
                 <div className="box--md">
                   <ProfileTable
+                    updateTable={() => this.updateDonations()}
                     loggedIn={this.props.loggedIn}
                     donations={this.props.donations}
                   />

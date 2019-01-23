@@ -117,7 +117,7 @@ export class RegisterForm extends React.Component {
     if (this.props.submitSucceeded) {
       successMessage = successMessage = (
         <div className="msg__container">
-          <h2 className="msg__header">Success!</h2>
+          <h2 className="msg__header">Welcome to Meal Revival!</h2>
           <Link className="msg__link" to="/login">
             Login Here
           </Link>
