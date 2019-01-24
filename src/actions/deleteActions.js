@@ -1,7 +1,5 @@
 import { API_BASE_URL } from "../config";
-import { normalize } from "path";
 import { normalizeResponseErrors } from "./utils";
-import store from "../store";
 
 export const DELETE_DONATION_SUCCESS = "DELETE_DONATION_SUCCESS";
 export const deleteDonationSuccess = () => ({

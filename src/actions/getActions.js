@@ -14,7 +14,7 @@ export const getUserInfoSuccess = user => ({
 
 export const GET_USER_INFO_ERROR = "GET_USER_INFO_ERROR";
 export const getUserInfoError = error => ({
-  type: GET_ALL_DONATIONS_ERROR,
+  type: GET_USER_INFO_ERROR,
   error
 });
 
