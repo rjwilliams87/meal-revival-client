@@ -5,7 +5,8 @@ import { required, nonEmpty } from "../../validators";
 import Input from "../Input/Input";
 import { addUserDonation } from "../../actions/postActions";
 import { reset } from "redux-form";
-class AddForm extends React.Component {
+
+export class AddForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {

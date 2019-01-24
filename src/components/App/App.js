@@ -61,7 +61,6 @@ class App extends React.Component {
                   !this.props.loggedIn ? <Register /> : <Profile />
                 }
               />
-              {/* need to be redirects */}
               <Route exact path="/login" component={Login} />
               <Route exact path="/dashboard/:id" component={UserProfile} />
               <Route

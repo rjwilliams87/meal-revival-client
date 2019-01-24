@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { changeCoords } from "../../actions/sync";
 import Geosearch from "../Geosearch/Geosearch";
 import InfoSection from "../InfoSection/InfoSection";
-import LoginPath from "../LoginPath/LoginPath";
+import LandingNav from "../LandingNav/LandingNav";
 import Footer from "../Footer/Footer";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
@@ -12,7 +12,7 @@ import "./Landing.css";
 const HERE_APP_ID = process.env.REACT_APP_HEREAPPID;
 const HERE_APP_CODE = process.env.REACT_APP_HEREAPPCODE;
 
-class Landing extends React.Component {
+export class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -100,12 +100,7 @@ class Landing extends React.Component {
     return (
       <div>
         <div className="landing__container wave">
-          <div className="login-path">
-            <LoginPath />
-          </div>
-          <h1 className="landing__header landing__header--margin header__1">
-            Meal Revival
-          </h1>
+          <LandingNav />
           <h2 className="landing__header header--margin header--bold header--large">
             Help feed those in need!
           </h2>

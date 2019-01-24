@@ -87,6 +87,12 @@
   cursor: pointer;
 }
 
+.register__error {
+  font-style: italic;
+  font-weight: bold;
+  margin: 10px 0 0 0;
+}
+
 @media only screen and (min-width: 568px) {
   .register-form {
     max-width: 550px;
@@ -121,5 +127,10 @@
 
   .msg__link {
     font-size: 32px;
+  }
+
+  .register__error {
+    position: relative;
+    top: 33px;
   }
 }

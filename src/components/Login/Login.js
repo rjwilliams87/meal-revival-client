@@ -5,10 +5,8 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import "./Login.css";
 
-class Login extends React.Component {
+export class Login extends React.Component {
   render() {
-    console.log(this.props.loggedIn);
-    console.log(this.props.user);
     if (
       this.props.loggedIn &&
       this.props.user !== null &&
@@ -37,8 +35,6 @@ class Login extends React.Component {
 }
 
 const mapPropsToState = state => {
-  console.log("login state");
-  console.log(state);
   return {
     loggedIn: state.auth.currentUser !== null,
     user: state.auth.currentUser,

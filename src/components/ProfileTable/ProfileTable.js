@@ -2,6 +2,7 @@ import React from "react";
 import LightBox from "lightbox-react";
 import DeleteModal from "../DeleteModal/DeleteModal";
 import "./ProfileTable.css";
+import "lightbox-react/style.css";
 
 export default class ProfileTable extends React.Component {
   constructor(props) {
@@ -30,12 +31,11 @@ export default class ProfileTable extends React.Component {
       const updateRow = (
         <td>
           <button
-            class="btn__delete"
+            className="btn__delete"
             onClick={this.handleClick}
             id={donation._id}
           >
             <i class="fas fa-trash" id={donation._id} />
-            {/* <i class="fas fa-trash-alt fa-2x icon--delete" id={donation._id} /> */}
           </button>
         </td>
       );

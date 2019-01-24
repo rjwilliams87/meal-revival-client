@@ -1,5 +1,6 @@
 .landing__container {
-  padding: 30px;
+  padding: 10px;
+  padding-top: 5px;
   height: 100vh;
   width: 100vw;
   color: white;
@@ -28,6 +29,7 @@
 
 .header--margin {
   margin-bottom: 20px;
+  margin-top: 50px;
 }
 
 .landing__form {
@@ -132,11 +134,16 @@
     border-top: 1px solid #d3d3d3;
     border-bottom: 1px solid #d3d3d3;
   }
+
+  .header--margin {
+    margin-top: 25px;
+  }
 }
 
 @media only screen and (min-width: 1000px) {
   .landing__container {
     background: #ffffff;
+    padding-top: 10px;
   }
 
   .wave {

@@ -1,8 +1,6 @@
 import { normalizeResponseErrors } from "./utils";
 import { SubmissionError } from "redux-form";
 import { API_BASE_URL } from "../config";
-import axios from "axios";
-import store from "../store";
 
 export const POST_REQUEST = "POST_REQUEST";
 export const postRequest = () => ({
@@ -46,14 +44,15 @@ export const createNewUser = user => dispatch => {
     .then(res => res.json())
     .then(res => createNewUserSuccess(res))
     .catch(err => {
-      const { reason, message, location } = err;
-      if (reason === "ValidationError") {
-        return Promise.reject(
-          new SubmissionError({
-            [location]: message
-          })
-        );
-      }
+      const { code } = err;
+      const message =
+        code === 422 ? err.message : "Unable to register, please try again";
+      dispatch(createNewUserError(message));
+      return Promise.reject(
+        new SubmissionError({
+          _error: message
+        })
+      );
     });
 };
 

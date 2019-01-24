@@ -5,11 +5,9 @@ import "./ProfileForm.css";
 import { completeUserProfile } from "../../actions/putActions";
 const phoneLength = length({ min: 7, max: 10 });
 
-class ProfileForm extends React.Component {
+export class ProfileForm extends React.Component {
   onSubmit(values) {
     const profileComplete = true;
-    console.log("from submit");
-    console.log(values);
     const { phone, about, companyName, contactName } = values;
     return this.props
       .dispatch(

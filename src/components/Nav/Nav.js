@@ -10,7 +10,11 @@ export default class Nav extends React.Component {
         <header>
           <nav className="nav">
             <h2 className="nav__head">Meal Revival</h2>
-            {this.props.loggedIn ? <NavUser /> : <NavVisitor />}
+            {this.props.loggedIn ? (
+              <NavUser clearAuth={this.props.clearAuth} />
+            ) : (
+              <NavVisitor />
+            )}
           </nav>
         </header>
       </div>

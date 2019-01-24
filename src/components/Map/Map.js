@@ -5,10 +5,15 @@ import { Link } from "react-router-dom";
 import { Map as LeafletMap, TileLayer, Marker, Popup } from "react-leaflet";
 import GeoSearchBar from "../GeoSearchBar/GeoSearchBar";
 import { getAllDonations } from "../../actions/getActions";
-
-class Map extends React.Component {
+import { clearAuth } from "../../actions/auth";
+import { clearAuthToken } from "../../local-storage";
+export class Map extends React.Component {
   componentDidMount() {
     this.props.dispatch(getAllDonations());
+  }
+  clearAuth() {
+    this.props.dispatch(clearAuth());
+    clearAuthToken();
   }
   render() {
     const positionX = [this.props.lat, this.props.lng];
@@ -29,7 +34,10 @@ class Map extends React.Component {
     }
     return (
       <div>
-        <Nav loggedIn={this.props.loggedIn} />
+        <Nav
+          loggedIn={this.props.loggedIn}
+          clearAuth={() => this.clearAuth()}
+        />
         <LeafletMap center={positionX} zoom={13}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'

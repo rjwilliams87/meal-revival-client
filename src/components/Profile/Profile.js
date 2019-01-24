@@ -7,7 +7,7 @@ import Nav from "../Nav/Nav";
 import { getUserInfo, getUserDonations } from "../../actions/getActions";
 import "./Profile.css";
 
-class Profile extends React.Component {
+export class Profile extends React.Component {
   componentDidMount() {
     const id = this.props.match.params.id;
     this.props

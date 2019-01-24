@@ -7,6 +7,8 @@ import ProfileForm from "../ProfileForm/ProfileForm";
 import Nav from "../Nav/Nav";
 import AddForm from "../AddForm/AddForm";
 import { getUserInfo, getUserDonations } from "../../actions/getActions";
+import { clearAuth } from "../../actions/auth";
+import { clearAuthToken } from "../../local-storage";
 
 export class UserProfile extends React.Component {
   constructor(props) {
@@ -28,6 +30,11 @@ export class UserProfile extends React.Component {
     this.props.dispatch(getUserDonations(id));
   }
 
+  clearAuth() {
+    this.props.dispatch(clearAuth());
+    clearAuthToken();
+  }
+
   render() {
     if (!this.props.loggedIn) {
       return <Redirect to="/" />;
@@ -38,14 +45,20 @@ export class UserProfile extends React.Component {
     if (this.props.loggedIn && !this.props.user.profileComplete) {
       return (
         <div className="grey userProfile">
-          <Nav loggedIn={this.props.loggedIn} />
+          <Nav
+            loggedIn={this.props.loggedIn}
+            clearAuth={() => this.clearAuth()}
+          />
           <ProfileForm />
         </div>
       );
     } else {
       return (
         <div className="grey userProfile">
-          <Nav loggedIn={this.props.loggedIn} />
+          <Nav
+            loggedIn={this.props.loggedIn}
+            clearAuth={() => this.clearAuth()}
+          />
           {this.props.user && this.props.donations && (
             <div className="top__wrapper">
               <ProfileTop

@@ -3,7 +3,7 @@ import "./DeleteModal.css";
 import { connect } from "react-redux";
 import { deleteDonation } from "../../actions/deleteActions";
 
-class DeleteModal extends React.Component {
+export class DeleteModal extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);

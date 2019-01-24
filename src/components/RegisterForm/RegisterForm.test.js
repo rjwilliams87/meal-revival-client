@@ -14,4 +14,18 @@ describe("<RegisterForm />", () => {
       />
     );
   });
+
+  // it("should show error message when passed from parent", () => {
+  //   const wrapper = shallow(
+  //     <RegisterForm handleSubmit={jest.fn()} registerError={true} />
+  //   );
+  //   expect(wrapper.hasClass("register__error")).toEqual(true);
+  // });
+
+  // it("should update state on address change", () => {
+  //   const callback = jest.fn();
+  //   const value = "foo";
+  //   const wrapper = shallow(<RegisterForm handleSubmit={jest.fn()} />);
+  //   wrapper.find("#address").simulate("change");
+  // });
 });

@@ -1,5 +1,5 @@
 import React from "react";
-import { reduxForm, Field, SubmissionError, focus } from "redux-form";
+import { reduxForm, Field, reset } from "redux-form";
 import { Link } from "react-router-dom";
 import Input from "../Input/Input";
 import { required, nonEmpty, email, isTrimmed, length } from "../../validators";
@@ -57,6 +57,7 @@ export class RegisterForm extends React.Component {
       .catch(err => {
         console.log(err);
         this.setState(this.getInitialState());
+        this.props.dispatch(reset("createUser"));
       });
   }
 
@@ -94,7 +95,10 @@ export class RegisterForm extends React.Component {
         return user;
       })
       .then(user => this.props.dispatch(createNewUser(user)))
-      .catch(err => this.setState(this.getInitialState()));
+      .catch(err => {
+        console.error(err);
+        this.setState(this.getInitialState());
+      });
   }
 
   render() {
@@ -113,17 +117,27 @@ export class RegisterForm extends React.Component {
       ));
     }
 
-    let successMessage;
-    if (this.props.submitSucceeded) {
-      successMessage = successMessage = (
-        <div className="msg__container">
-          <h2 className="msg__header">Welcome to Meal Revival!</h2>
-          <Link className="msg__link" to="/login">
-            Login Here
-          </Link>
+    // let successMessage;
+    // if (!this.props.error && this.props.submitSucceeded) {
+    //   successMessage = successMessage = (
+    //     <div className="msg__container">
+    //       <h2 className="msg__header">Welcome to Meal Revival!</h2>
+    //       <Link className="msg__link" to="/login">
+    //         Login Here
+    //       </Link>
+    //     </div>
+    //   );
+    //   return successMessage;
+    // }
+
+    let error;
+    if (this.props.registerError) {
+      console.log(this.props.registerError);
+      error = (
+        <div className="register__error" aria-live="polite">
+          {this.props.registerError}
         </div>
       );
-      return successMessage;
     }
     return (
       <form
@@ -135,6 +149,7 @@ export class RegisterForm extends React.Component {
             Sign up for your free account
           </legend>
           <div className="register-form__row flex--column">
+            {error}
             <div className="register-form__sec">
               <Field
                 className="register-form__input"
@@ -167,6 +182,7 @@ export class RegisterForm extends React.Component {
                 <ul className="options__container">{places}</ul>
               ) : null}
               <input
+                id="address"
                 type="text"
                 className="register-form__input register-form__input--lrg"
                 onChange={this.onQuery}

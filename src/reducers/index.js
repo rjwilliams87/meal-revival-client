@@ -12,7 +12,7 @@ const initialState = {
   user: null,
   userDonations: null,
   donations: null,
-  error: null,
+  error: false,
   loading: false
 };
 
