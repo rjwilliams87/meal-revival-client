@@ -64,7 +64,7 @@ export const getUserDonations = id => dispatch => {
     .then(res => {
       dispatch(getUserDonationsSuccess(res));
     })
-    .then(err => dispatch(getUserDonationsError(err)));
+    .catch(err => dispatch(getUserDonationsError(err)));
 };
 
 export const getAllDonations = () => dispatch => {

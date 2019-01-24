@@ -25,12 +25,8 @@ export const completeUserProfile = (
   contactName,
   profileComplete
 ) => dispatch => {
-  console.log("logging phone");
-  console.log(phone);
   const id = store.getState().auth.currentUser.id;
   const token = localStorage.getItem("authToken");
-  console.log("from action");
-  console.log(`${companyName} ${contactName}`);
   dispatch(putRequest());
   return fetch(`${API_BASE_URL}/users/${id}`, {
     method: "PATCH",
