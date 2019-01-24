@@ -77,8 +77,6 @@ export const reducer = (state = initialState, action) => {
       loading: true
     });
   } else if (action.type === post_actions.CREATE_NEW_USER_SUCCESS) {
-    console.log("create new user success reducer");
-    console.log(action);
     return Object.assign({}, state, {
       loading: false,
       error: false
@@ -115,8 +113,8 @@ export const reducer = (state = initialState, action) => {
     });
   } else if (action.type === put_actions.COMPLETE_PROFILE_ERROR) {
     return Object.assign({}, state, {
-      loading: false,
-      error: action.error
+      error: action.error,
+      loading: false
     });
   } else {
     return state;

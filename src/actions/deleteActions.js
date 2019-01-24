@@ -7,9 +7,9 @@ export const deleteDonationSuccess = () => ({
 });
 
 export const DELETE_DONATION_ERROR = "DELETE_DONATION_ERROR";
-export const deleteDonationError = err => ({
+export const deleteDonationError = error => ({
   type: DELETE_DONATION_ERROR,
-  err
+  error
 });
 
 export const DELETE_REQUEST = "DELETE_REQUEST";

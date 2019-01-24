@@ -15,7 +15,7 @@ describe("deleteDonationError", () => {
     const error = "error";
     const action = actions.deleteDonationError(error);
     expect(action.type).toEqual(actions.DELETE_DONATION_ERROR);
-    expect(action.err).toEqual(error);
+    expect(action.error).toEqual(error);
   });
 });
 

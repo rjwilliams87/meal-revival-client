@@ -17,7 +17,7 @@ export const authReducer = (state = initialState, action) => {
     return Object.assign({}, state, {
       authToken: null,
       currentUser: null,
-      loggedIn: null
+      loggedIn: false
     });
   } else if (action.type === actions.AUTH_REQUEST) {
     return Object.assign({
@@ -25,9 +25,7 @@ export const authReducer = (state = initialState, action) => {
       error: null
     });
   } else if (action.type === actions.AUTH_SUCCESS) {
-    console.log("auth success reducer");
-    console.log(action);
-    return Object.assign({
+    return Object.assign({}, state, {
       currentUser: action.currentUser,
       loggedIn: true,
       loading: false,
