@@ -1,10 +1,9 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import Input from "../Input/Input";
-import { length, required } from "../../validators";
+import { normalizePhone } from "../../utils";
 import "./ProfileForm.css";
 import { completeUserProfile } from "../../actions/putActions";
-const phoneLength = length({ min: 7, max: 10 });
 
 export class ProfileForm extends React.Component {
   onSubmit(values) {
@@ -23,6 +22,9 @@ export class ProfileForm extends React.Component {
       .then(window.location.reload());
   }
   render() {
+    // All form fields required for now for simplicity
+    // will update to give user option to finish profile
+    // at later time
     return (
       <div className="profile-form__container">
         <h2 className="profile-form__header">Finish setting up your profile</h2>
@@ -42,7 +44,7 @@ export class ProfileForm extends React.Component {
               name="companyName"
               type="text"
               component={Input}
-              validate={[required]}
+              required
             />
           </div>
           <div>
@@ -52,6 +54,7 @@ export class ProfileForm extends React.Component {
               name="contactName"
               type="text"
               component="input"
+              required
             />
           </div>
           <div>
@@ -59,9 +62,11 @@ export class ProfileForm extends React.Component {
             <Field
               className="profile-form__input"
               name="phone"
+              placeholder="888-888-8888"
               type="tel"
               component="input"
-              maxLength="10"
+              normalize={normalizePhone}
+              required
             />
           </div>
           <div>
@@ -74,6 +79,7 @@ export class ProfileForm extends React.Component {
               maxLength="420"
               name="about"
               component="textarea"
+              required
             />
           </div>
           <button

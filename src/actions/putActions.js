@@ -18,6 +18,8 @@ export const completeProfileError = error => ({
   error
 });
 
+//patch is used for now until updateProfile functionality
+//and update donation functionality are introduced
 export const completeUserProfile = (
   phone,
   about,

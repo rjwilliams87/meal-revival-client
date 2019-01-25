@@ -15,7 +15,10 @@ export class AddForm extends React.Component {
   }
 
   onSubmit = async values => {
-    const { expiry, info, delivery } = values;
+    let { expiry, info, delivery } = values;
+    if (delivery === undefined) {
+      delivery = "Yes";
+    }
     await this.props.dispatch(addUserDonation(expiry, info, delivery));
     await this.props.dispatch(reset("addDonation"));
     this.props.updateDonations();

@@ -30,6 +30,10 @@ export class Landing extends React.Component {
     });
   }
 
+  //checks the input value against api for possible
+  //locations and sets state and input.value to query
+  //also creates list of options user can click on
+  //to set their targeted city/coords
   onQuery(e) {
     const query = e.target.value;
     if (!query.length > 0) {
@@ -62,15 +66,13 @@ export class Landing extends React.Component {
       });
   }
 
+  //gets geocoords needs to be updated to allow user the
+  //option of not clicking on one of btns but just inputing address
+  //all here api calls in app are done inside component
+  //no need to keep this values in app state/redux store
   handleClick(e) {
     e.preventDefault();
     const text = e.target.textContent;
-    // if (!this.state.address.address.city) {
-    //   text = e.target.textContent;
-    // } else {
-    //   const { city, state } = this.state.address.address;
-    //   text = `${city}, ${state}`;
-    // }
     console.log(text);
     axios
       .get("https://geocoder.api.here.com/6.2/geocode.json", {
