@@ -6,21 +6,21 @@ import "./ProfileForm.css";
 import { completeUserProfile } from "../../actions/putActions";
 
 export class ProfileForm extends React.Component {
-  onSubmit(values) {
+  onSubmit = async values => {
     const profileComplete = true;
     const { phone, about, companyName, contactName } = values;
-    return this.props
-      .dispatch(
-        completeUserProfile(
-          phone,
-          about,
-          companyName,
-          contactName,
-          profileComplete
-        )
+    await this.props.dispatch(
+      completeUserProfile(
+        phone,
+        about,
+        companyName,
+        contactName,
+        profileComplete
       )
-      .then(window.location.reload());
-  }
+    );
+    console.log("done");
+    this.props.handleComplete();
+  };
   render() {
     // All form fields required for now for simplicity
     // will update to give user option to finish profile

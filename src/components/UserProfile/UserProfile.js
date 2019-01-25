@@ -13,6 +13,8 @@ import { clearAuthToken } from "../../local-storage";
 export class UserProfile extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {};
+    this.handleComplete = this.handleComplete.bind(this);
   }
   componentDidMount() {
     if (this.props.auth) {
@@ -23,7 +25,11 @@ export class UserProfile extends React.Component {
     }
   }
 
-  componentDidUpdate() {}
+  handleComplete = async () => {
+    await this.props.dispatch(getUserInfo(this.props.auth.id));
+    console.log("done again");
+    this.setState({ updated: true });
+  };
 
   updateDonations() {
     const id = this.props.auth.id;
@@ -42,14 +48,18 @@ export class UserProfile extends React.Component {
     if (!this.props.user) {
       return <div />;
     }
-    if (this.props.loggedIn && !this.props.user.profileComplete) {
+    if (
+      this.props.loggedIn &&
+      !this.state.updated &&
+      !this.props.user.profileComplete
+    ) {
       return (
         <div className="grey userProfile">
           <Nav
             loggedIn={this.props.loggedIn}
             clearAuth={() => this.clearAuth()}
           />
-          <ProfileForm />
+          <ProfileForm handleComplete={this.handleComplete} />
         </div>
       );
     } else {
