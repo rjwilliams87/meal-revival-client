@@ -7,16 +7,13 @@ import "./LoginForm.css";
 
 export class LoginForm extends React.Component {
   onSubmit(values) {
-    this.props
-      .dispatch(userLogin(values.email, values.password))
-      .catch(err => console.error(err));
+    this.props.dispatch(userLogin(values.email, values.password)).catch();
     this.props.dispatch(reset("loginUser"));
   }
 
   render() {
     let error;
     if (this.props.loginError) {
-      console.log(this.props.loginError);
       error = (
         <div className="login__error" aria-live="polite">
           {this.props.loginError}

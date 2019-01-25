@@ -18,7 +18,6 @@ export class ProfileForm extends React.Component {
         profileComplete
       )
     );
-    console.log("done");
     this.props.handleComplete();
   };
   render() {

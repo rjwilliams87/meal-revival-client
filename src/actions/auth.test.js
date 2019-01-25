@@ -6,10 +6,8 @@ configure({ adapter: new Adapter() });
 
 describe("setAuthToken", () => {
   it("should return the action", () => {
-    const token = "fooBarBizBang";
-    const action = actions.setAuthToken(token);
+    const action = actions.setAuthToken();
     expect(action.type).toEqual(actions.SET_AUTH_TOKEN);
-    expect(action.authToken).toEqual(token);
   });
 });
 

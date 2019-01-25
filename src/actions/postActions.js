@@ -32,7 +32,6 @@ export const addDonationError = error => ({
 });
 
 export const createNewUser = user => dispatch => {
-  console.log("running createNewUser from actions");
   return fetch(`${API_BASE_URL}/users`, {
     method: "POST",
     headers: {
@@ -44,7 +43,6 @@ export const createNewUser = user => dispatch => {
     .then(res => res.json())
     .then(res => createNewUserSuccess(res))
     .catch(err => {
-      console.log("error creating new user");
       const { code } = err;
       const message = code === 422 ? err.message : null;
       dispatch(createNewUserError(message));

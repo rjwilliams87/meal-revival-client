@@ -12,8 +12,7 @@ export class Profile extends React.Component {
     const id = this.props.match.params.id;
     this.props
       .dispatch(getUserInfo(id))
-      .then(this.props.dispatch(getUserDonations(id)))
-      .then(console.log("dispatch ran"));
+      .then(this.props.dispatch(getUserDonations(id)));
   }
   render() {
     return (

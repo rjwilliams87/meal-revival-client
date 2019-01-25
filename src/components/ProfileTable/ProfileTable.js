@@ -17,7 +17,6 @@ export default class ProfileTable extends React.Component {
       isOpen: true,
       deleteId: id
     });
-    console.log(this.state.deleteId);
   }
   handleDeleteBtn() {
     this.setState({

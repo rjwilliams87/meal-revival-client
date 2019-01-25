@@ -27,7 +27,6 @@ export class UserProfile extends React.Component {
 
   handleComplete = async () => {
     await this.props.dispatch(getUserInfo(this.props.auth.id));
-    console.log("done again");
     this.setState({ updated: true });
   };
 
@@ -100,8 +99,6 @@ export class UserProfile extends React.Component {
 }
 
 const mapPropsToState = state => {
-  console.log("state");
-  console.log(state);
   return {
     loggedIn: state.auth.loggedIn,
     user: state.app.user,

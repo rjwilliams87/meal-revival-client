@@ -53,7 +53,6 @@ export class RegisterForm extends React.Component {
         }
       })
       .catch(err => {
-        console.log(err);
         this.setState(this.getInitialState());
       });
   }
@@ -97,14 +96,12 @@ export class RegisterForm extends React.Component {
         .then(user => this.props.dispatch(createNewUser(user)))
         .then(() => this.setState({ success: true }))
         .catch(err => {
-          console.error(err);
           this.setState(this.getInitialState());
         });
     }
   }
 
   render() {
-    console.log(this.state.options);
     let places;
     if (this.state.options) {
       places = this.state.options.map((option, index) => (
@@ -134,7 +131,6 @@ export class RegisterForm extends React.Component {
 
     let error;
     if (this.props.registerError) {
-      console.log(this.props.registerError);
       error = (
         <div className="register__error" aria-live="polite">
           {this.props.registerError}
