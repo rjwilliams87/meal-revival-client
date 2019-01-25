@@ -7,6 +7,7 @@ export default function Geosearch(props) {
     <div className="search__container search__container--margin">
       <div>
         <input
+          aria-label="enter a city in this input field then select from the options"
           className="search__input search__input--border"
           placeholder={props.placeholder}
           type="text"

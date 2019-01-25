@@ -123,7 +123,9 @@ export class Landing extends React.Component {
               btnText={"Search"}
             />
             {this.state.query.length !== 0 ? (
-              <ul className="results__container">{places}</ul>
+              <ul aria-live="assertive" className="results__container">
+                {places}
+              </ul>
             ) : (
               <p className="form__p">
                 Select a city to explore free food donations.
@@ -132,7 +134,11 @@ export class Landing extends React.Component {
           </form>
           <div className="icon__wrapper">
             <span className="icon--arrow">
-              <a href="#scroll--target" className="icon__anchor">
+              <a
+                aria-label="click to scroll to info section"
+                href="#scroll--target"
+                className="icon__anchor"
+              >
                 <i class="fas fa-angle-down fa-4x" />
               </a>
             </span>
@@ -142,7 +148,12 @@ export class Landing extends React.Component {
         <div className="section__container flex--column section--sm section--margin">
           <p className="p--bold p--lrg">Want to list your donations?</p>
           <Link to="/register">
-            <button className="join__btn btn--red">Join Here</button>
+            <button
+              aria-label="click to sign up"
+              className="join__btn btn--red"
+            >
+              Join Here
+            </button>
           </Link>
         </div>
         <Footer />

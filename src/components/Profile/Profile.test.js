@@ -13,15 +13,23 @@ describe("<Profile />", () => {
     );
   });
 
-  it("should call dispatch when mounted", () => {
+  it("should call dispatch when on mount", () => {
     const wrapper = shallow(<Profile dispatch={dispatch} match={match} />);
     expect(dispatch).toHaveBeenCalled();
   });
 
-  //   it("should render wrapper div after receiving props", () => {
-  //     const wrapper = shallow(
-  //       <Profile dispatch={dispatch} match={match} user={true} donations={[]} />
-  //     );
-  //     expect(wrapper.hasClass("grey")).toEqual(true);
-  //   });
+  // it("should render with correct props", () => {
+  //   const wrapper = shallow(
+  //     <Profile
+  //       dispatch={dispatch}
+  //       match={match}
+  //       loggedIn={false}
+  //       user="user"
+  //       donations={[
+  //         { id: 1, expiry: "2019-01-01", info: "info", delivery: "No" }
+  //       ]}
+  //     />
+  //   );
+  //   expect(wrapper.props().loggedIn).toEqual(false);
+  // });
 });

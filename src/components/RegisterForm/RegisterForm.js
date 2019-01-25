@@ -163,6 +163,7 @@ export class RegisterForm extends React.Component {
             {error}
             <div className="register-form__sec">
               <Field
+                aria-label="enter email address"
                 className="register-form__input"
                 label="email"
                 labelClass="register-form__label"
@@ -176,6 +177,7 @@ export class RegisterForm extends React.Component {
           <div className="register-form__row flex--column">
             <div className="register-form__sec">
               <Field
+                aria-label="enter a password with at least 10 characters and no white space"
                 className="register-form__input"
                 label="password"
                 labelClass="register-form__label"
@@ -188,11 +190,11 @@ export class RegisterForm extends React.Component {
           </div>
           <div className="register-form__row flex--column">
             <div className="register-form__sec">
-              <label className="register-form__label">address</label>
-              {/* {this.state.query.length !== 0 && !this.state.coords ? (
-                <ul className="options__container">{places}</ul>
-              ) : null} */}
+              <label htmlFor="address" className="register-form__label">
+                address
+              </label>
               <input
+                aria-label="enter your address you do not have to select one of the options that will be listed"
                 id="address"
                 type="text"
                 className="register-form__input register-form__input--lrg"
@@ -216,7 +218,9 @@ export class RegisterForm extends React.Component {
           </div>
         </fieldset>
         {this.state.query.length !== 0 && !this.state.coords ? (
-          <ul className="options__container">{places}</ul>
+          <ul aria-live="polite" className="options__container">
+            {places}
+          </ul>
         ) : null}
       </form>
     );

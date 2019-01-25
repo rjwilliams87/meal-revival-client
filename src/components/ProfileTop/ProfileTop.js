@@ -26,19 +26,19 @@ export default class ProfileTop extends React.Component {
         </div>
         <div className="company-contact__box">
           <p className="contact__p">
-            <i class="fas fa-map-marker-alt icon__contact" />
+            <i className="fas fa-map-marker-alt icon__contact" />
             {address}
           </p>
           <p className="contact__p">
-            <i class="fas fa-user icon__contact" />
+            <i className="fas fa-user icon__contact" />
             {contactName}
           </p>
           <p className="contact__p">
-            <i class="fas fa-envelope icon__contact" />
+            <i className="fas fa-envelope icon__contact" />
             {email}
           </p>
           <p className="contact__p">
-            <i class="fas fa-phone icon__contact" />
+            <i className="fas fa-phone icon__contact" />
             {phone}
           </p>
         </div>

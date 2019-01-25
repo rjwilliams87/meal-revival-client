@@ -18,6 +18,11 @@ describe("<ProfileTop />", () => {
     shallow(<ProfileTop user={user} />);
   });
 
+  it("should render with correct props", () => {
+    const wrapper = mount(<ProfileTop user="Success" />);
+    expect(wrapper.props().user).toEqual("Success");
+  });
+
   it("should insert props into correct element", () => {
     const wrapper = shallow(<ProfileTop user={user} />);
     expect(

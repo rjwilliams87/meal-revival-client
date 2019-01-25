@@ -35,7 +35,7 @@ export default class ProfileTable extends React.Component {
             onClick={this.handleClick}
             id={donation._id}
           >
-            <i class="fas fa-trash" id={donation._id} />
+            <i className="fas fa-trash" id={donation._id} />
           </button>
         </td>
       );
