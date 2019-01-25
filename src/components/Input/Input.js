@@ -29,6 +29,8 @@ export default class Input extends React.Component {
           type={this.props.type}
           className={this.props.className}
           ref={input => (this.input = input)}
+          maxLength={this.props.maxLength}
+          placeholder={this.props.placeholder}
         />
         {error}
       </div>

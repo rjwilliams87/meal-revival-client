@@ -1,5 +1,6 @@
 import React from "react";
-import { reduxForm, Field, SubmissionError, focus } from "redux-form";
+import { reduxForm, Field } from "redux-form";
+import Input from "../Input/Input";
 import { length } from "../../validators";
 import "./ProfileForm.css";
 import { completeUserProfile } from "../../actions/putActions";
@@ -55,9 +56,9 @@ export class ProfileForm extends React.Component {
             <Field
               className="profile-form__input"
               name="phone"
-              type="text"
+              type="tel"
               component="input"
-              validators={[phoneLength]}
+              maxLength="10"
             />
           </div>
           <div>
@@ -67,6 +68,7 @@ export class ProfileForm extends React.Component {
             <Field
               className="profile-form__input input--lrg"
               type="text"
+              maxLength="420"
               name="about"
               component="textarea"
             />

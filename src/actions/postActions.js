@@ -44,15 +44,10 @@ export const createNewUser = user => dispatch => {
     .then(res => res.json())
     .then(res => createNewUserSuccess(res))
     .catch(err => {
+      console.log("error creating new user");
       const { code } = err;
-      const message =
-        code === 422 ? err.message : "Unable to register, please try again";
+      const message = code === 422 ? err.message : null;
       dispatch(createNewUserError(message));
-      return Promise.reject(
-        new SubmissionError({
-          _error: message
-        })
-      );
     });
 };
 

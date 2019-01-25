@@ -43,6 +43,8 @@ export class AddForm extends React.Component {
             labelClass="add-form__label"
             name="info"
             type="text"
+            placeholder="10lbs chicken and rice"
+            maxLength="25"
             component={Input}
             validate={[required, nonEmpty]}
           />

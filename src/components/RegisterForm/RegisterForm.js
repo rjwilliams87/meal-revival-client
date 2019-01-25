@@ -14,7 +14,6 @@ export class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: "",
       query: ""
     };
 
@@ -23,7 +22,6 @@ export class RegisterForm extends React.Component {
   }
   getInitialState() {
     this.setState({
-      address: "",
       query: ""
     });
   }
@@ -57,7 +55,6 @@ export class RegisterForm extends React.Component {
       .catch(err => {
         console.log(err);
         this.setState(this.getInitialState());
-        this.props.dispatch(reset("createUser"));
       });
   }
 
@@ -71,34 +68,39 @@ export class RegisterForm extends React.Component {
   }
 
   onSubmit(values) {
-    const { email, password } = values;
-    const {
-      houseNumber,
-      street,
-      city,
-      state,
-      postalCode
-    } = this.state.address.address;
-    const searchText = `${houseNumber} ${street} ${city}, ${state} ${postalCode}`;
-    axios
-      .get("https://geocoder.api.here.com/6.2/geocode.json", {
-        params: {
-          app_id: HERE_APP_ID,
-          app_code: HERE_APP_CODE,
-          searchText: searchText
-        }
-      })
-      .then(res => {
-        const coords =
-          res.data.Response.View[0].Result[0].Location.DisplayPosition;
-        const user = { email, password, address: searchText, coords };
-        return user;
-      })
-      .then(user => this.props.dispatch(createNewUser(user)))
-      .catch(err => {
-        console.error(err);
-        this.setState(this.getInitialState());
-      });
+    if (!this.state.address) {
+      this.setState({ error: "please enter valid address" });
+    } else {
+      const { email, password } = values;
+      const {
+        houseNumber,
+        street,
+        city,
+        state,
+        postalCode
+      } = this.state.address.address;
+      const searchText = `${houseNumber} ${street} ${city}, ${state} ${postalCode}`;
+      axios
+        .get("https://geocoder.api.here.com/6.2/geocode.json", {
+          params: {
+            app_id: HERE_APP_ID,
+            app_code: HERE_APP_CODE,
+            searchText: searchText
+          }
+        })
+        .then(res => {
+          const coords =
+            res.data.Response.View[0].Result[0].Location.DisplayPosition;
+          const user = { email, password, address: searchText, coords };
+          return user;
+        })
+        .then(user => this.props.dispatch(createNewUser(user)))
+        .then(() => this.setState({ success: true }))
+        .catch(err => {
+          console.error(err);
+          this.setState(this.getInitialState());
+        });
+    }
   }
 
   render() {
@@ -117,18 +119,18 @@ export class RegisterForm extends React.Component {
       ));
     }
 
-    // let successMessage;
-    // if (!this.props.error && this.props.submitSucceeded) {
-    //   successMessage = successMessage = (
-    //     <div className="msg__container">
-    //       <h2 className="msg__header">Welcome to Meal Revival!</h2>
-    //       <Link className="msg__link" to="/login">
-    //         Login Here
-    //       </Link>
-    //     </div>
-    //   );
-    //   return successMessage;
-    // }
+    let successMessage;
+    if (!this.props.registerError && this.state.success) {
+      successMessage = successMessage = (
+        <div className="msg__container">
+          <h2 className="msg__header">Welcome to Meal Revival!</h2>
+          <Link className="msg__link" to="/login">
+            Login Here
+          </Link>
+        </div>
+      );
+      return successMessage;
+    }
 
     let error;
     if (this.props.registerError) {
@@ -136,6 +138,14 @@ export class RegisterForm extends React.Component {
       error = (
         <div className="register__error" aria-live="polite">
           {this.props.registerError}
+        </div>
+      );
+    }
+    let addressError;
+    if (this.state.error) {
+      addressError = (
+        <div className="address__error" aria-live="polite">
+          {this.state.error}
         </div>
       );
     }
@@ -148,6 +158,7 @@ export class RegisterForm extends React.Component {
           <legend className="register-form__legend">
             Sign up for your free account
           </legend>
+          {successMessage}
           <div className="register-form__row flex--column">
             {error}
             <div className="register-form__sec">
@@ -178,6 +189,7 @@ export class RegisterForm extends React.Component {
           <div className="register-form__row flex--column">
             <div className="register-form__sec">
               <label className="register-form__label">address</label>
+              {addressError}
               {this.state.query.length !== 0 && !this.state.coords ? (
                 <ul className="options__container">{places}</ul>
               ) : null}

@@ -5,8 +5,7 @@
   width: 100vw;
   color: white;
   /* background: #39b18d; */
-  background: #1a66eb;
-  /* background: #02a702; */
+  background: #00008b;
 }
 
 .login-path {
@@ -150,10 +149,16 @@
     position: relative;
     /* background: #39b18d; */
     /* background: #2451b2; */
-    background: #1a66eb;
+    background: #00008b;
     /* background: #3c7e3c; */
   }
 
+  .header__1 {
+    font-size: 30px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
   .wave:before {
     content: "";
     position: absolute;
@@ -164,9 +169,5 @@
     background: url("https://uploads.codesandbox.io/uploads/user/14efc214-6667-491a-83e8-91c60da79942/T9or-wave.png");
     background-size: cover;
     background-repeat: no-repeat;
-  }
-
-  .header__1 {
-    font-size: 30px;
   }
 }

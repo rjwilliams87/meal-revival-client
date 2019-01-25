@@ -3,7 +3,7 @@
   width: 100vw;
   margin: 0 auto;
   /* background-color: #39b18d; */
-  background: #1a66eb;
+  background: #00008b;
 }
 
 .register-form__fieldset {
@@ -91,6 +91,12 @@
   font-style: italic;
   font-weight: bold;
   margin: 10px 0 0 0;
+}
+
+.address__error {
+  font-style: italic;
+  display: inline-block;
+  padding: 5px;
 }
 
 @media only screen and (min-width: 568px) {

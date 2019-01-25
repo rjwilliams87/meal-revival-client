@@ -33,23 +33,6 @@
   cursor: pointer;
 }
 
-/* .company-donation__box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  margin: 15px;
-}
-
-.company-donation__span {
-  display: block;
-}
-
-.company-donation__p {
-  margin: 20px;
-  text-align: center;
-} */
-
 .company-contact__box {
   margin: 20px auto 0 auto;
   padding: 20px;
@@ -58,7 +41,6 @@
   text-align: left;
   background-color: #fff;
   box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.295);
-  /* box-shadow: 1px 1px 1px 1px #d3d3d3; */
 }
 
 .contact__p {
@@ -68,6 +50,14 @@
 
 .box-1__container {
   padding: 20px;
+}
+
+.icon__contact {
+  margin-right: 5px;
+}
+
+.company__p {
+  max-width: 800px;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -94,7 +84,6 @@
     max-width: 400px;
     text-align: left;
     padding: 30px;
-    /* background-color: #39b18d; */
   }
 
   .box-2 {

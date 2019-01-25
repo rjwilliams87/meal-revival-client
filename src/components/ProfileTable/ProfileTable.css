@@ -27,6 +27,15 @@ td {
   text-align: center;
 }
 
+.td__info,
+.th__info {
+  display: none;
+}
+
+th {
+  padding: 5px;
+}
+
 .btn__delete {
   padding: 8px;
   text-align: center;
@@ -35,8 +44,16 @@ td {
 
 @media only screen and (min-width: 321px) {
   .table {
-    width: 80%;
+    /* width: 80%; */
+    width: 95%;
     position: relative;
     right: 0;
+  }
+}
+
+@media only screen and (min-width: 568px) {
+  .td__info,
+  .th__info {
+    display: block;
   }
 }

@@ -1,6 +1,6 @@
 .grey {
-  background-color: #d3d3d327;
   height: 100%;
+  background-size: cover;
 }
 
 .top__wrapper {
@@ -11,10 +11,6 @@
 .info__container {
   display: flex;
 }
-
-/* .icon--delete {
-  color: red;
-} */
 
 .table__sec {
   margin-top: 30px;
@@ -36,11 +32,9 @@
     min-width: 300px;
     max-width: 960px;
   }
+}
 
-  .donation__sec {
-    flex-direction: row;
-  }
-
+@media only screen and (min-width: 1000px) {
   .box--sm {
     width: 40%;
     height: 100%;
@@ -50,5 +44,9 @@
   .box--md {
     width: 60%;
     height: 100%;
+  }
+
+  .donation__sec {
+    flex-direction: row;
   }
 }

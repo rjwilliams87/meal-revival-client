@@ -1,7 +1,7 @@
 .register {
   height: 100%;
   /* background-color: #39b18d; */
-  background: #1a66eb;
+  background: #00008b;
 }
 
 .register__container {
@@ -11,6 +11,6 @@
 
 .container--green {
   /* background-color: #39b18d; */
-  background: #1a66eb;
+  background: #00008b;
   color: #fff;
 }
