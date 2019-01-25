@@ -15,6 +15,7 @@ export default class ProfileTop extends React.Component {
       <div>
         <div className="company__box">
           <div className="profile-img__container">
+            {/* ability to add images coming soon */}
             {/* <img
               className="profile-img"
               src="https://propertymarketersllc.com/wp-content/uploads/2018/05/profile-picture-placeholder.png"

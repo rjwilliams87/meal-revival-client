@@ -50,6 +50,8 @@
 
 .login-form__input {
   display: block;
+  padding: 8px;
+  font-size: 16px;
 }
 
 .login-btn__container {

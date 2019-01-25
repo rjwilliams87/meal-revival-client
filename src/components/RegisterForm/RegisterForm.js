@@ -144,7 +144,7 @@ export class RegisterForm extends React.Component {
     let addressError;
     if (this.state.error) {
       addressError = (
-        <div className="address__error" aria-live="polite">
+        <div className="form__error" aria-live="polite">
           {this.state.error}
         </div>
       );
@@ -189,10 +189,9 @@ export class RegisterForm extends React.Component {
           <div className="register-form__row flex--column">
             <div className="register-form__sec">
               <label className="register-form__label">address</label>
-              {addressError}
-              {this.state.query.length !== 0 && !this.state.coords ? (
+              {/* {this.state.query.length !== 0 && !this.state.coords ? (
                 <ul className="options__container">{places}</ul>
-              ) : null}
+              ) : null} */}
               <input
                 id="address"
                 type="text"
@@ -201,6 +200,7 @@ export class RegisterForm extends React.Component {
                 value={this.state.query}
                 validate={[require]}
               />
+              {addressError}
             </div>
           </div>
           <div className="register-form__row flex--column">
@@ -215,6 +215,9 @@ export class RegisterForm extends React.Component {
             </div>
           </div>
         </fieldset>
+        {this.state.query.length !== 0 && !this.state.coords ? (
+          <ul className="options__container">{places}</ul>
+        ) : null}
       </form>
     );
   }

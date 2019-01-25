@@ -1,7 +1,7 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
 import Input from "../Input/Input";
-import { length } from "../../validators";
+import { length, required } from "../../validators";
 import "./ProfileForm.css";
 import { completeUserProfile } from "../../actions/putActions";
 const phoneLength = length({ min: 7, max: 10 });
@@ -34,12 +34,15 @@ export class ProfileForm extends React.Component {
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
           <div>
-            <label className="profile-form__label">Company Name</label>
+            {/* <label className="profile-form__label">Company Name</label> */}
             <Field
+              label="Company Name"
+              labelClass="profile-form__label"
               className="profile-form__input"
               name="companyName"
               type="text"
-              component="input"
+              component={Input}
+              validate={[required]}
             />
           </div>
           <div>

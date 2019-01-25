@@ -57,6 +57,7 @@ export class AddForm extends React.Component {
                 name="delivery"
                 value="Yes"
                 component="input"
+                checked
               />
               Yes
             </label>

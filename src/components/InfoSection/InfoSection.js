@@ -3,7 +3,7 @@ import "./InfoSection.css";
 
 export default function InfoSection(props) {
   return (
-    <div className="section__container">
+    <div id="scroll--target" className="section__container">
       <div className="section__box">
         <span className="landing__icon">
           <i class="far fa-handshake fa-2x" />

@@ -5,13 +5,10 @@
   font-family: sans-serif;
 }
 
-html {
-  height: 100%;
-}
-
+html,
 body {
-  overflow-x: hidden;
   height: 100%;
+  overflow-x: hidden;
 }
 
 #root {
@@ -19,7 +16,7 @@ body {
 }
 
 .app__container {
-  /* height: 100%; */
+  height: 100%;
 }
 
 main {
@@ -74,7 +71,8 @@ button:hover {
 }
 
 .btn--red:hover {
-  background-color: #db3742c5;
+  background-color: #ff2a38;
+  transition: 0.5s;
 }
 
 .btn--green {

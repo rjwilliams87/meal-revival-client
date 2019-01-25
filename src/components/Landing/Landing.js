@@ -49,7 +49,8 @@ export class Landing extends React.Component {
         if (response.data.suggestions.length > 0) {
           this.setState({
             options: response.data.suggestions,
-            query: query
+            query: query,
+            address: response.data.suggestions[0]
           });
         } else {
           this.setState(this.getInitialState());
@@ -63,8 +64,14 @@ export class Landing extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    const text = e.target.textContent.toString();
-    // console.log(e.target.textContent);
+    const text = e.target.textContent;
+    // if (!this.state.address.address.city) {
+    //   text = e.target.textContent;
+    // } else {
+    //   const { city, state } = this.state.address.address;
+    //   text = `${city}, ${state}`;
+    // }
+    console.log(text);
     axios
       .get("https://geocoder.api.here.com/6.2/geocode.json", {
         params: {
@@ -78,15 +85,15 @@ export class Landing extends React.Component {
           result.data.Response.View[0].Result[0].Location.DisplayPosition;
 
         this.props.dispatch(changeCoords(coords));
-        this.setState({ query: text });
+        this.setState({ query: text, options: null });
       });
   }
 
   render() {
     let places;
     if (this.state.options) {
-      places = this.state.options.map((option, index) => (
-        <li className="results__li" key={index}>
+      places = this.state.options.map(option => (
+        <li className="results__li" key={option.address.locationId}>
           <button className="results__btn" onClick={this.handleClick}>
             {option.address.city}, {option.address.state}{" "}
             {option.address.postalCode} {option.countryCode}
@@ -109,19 +116,27 @@ export class Landing extends React.Component {
           </h3>
           <form className="landing__form" onSubmit={this.handleSubmit}>
             <Geosearch
+              // onClick={this.handleClick}
               onChange={this.onQuery}
               query={this.state.query}
-              placeholder={"Enter City"}
+              placeholder={"Kansas City, MO USA"}
               btnText={"Search"}
             />
             {this.state.query.length !== 0 ? (
               <ul className="results__container">{places}</ul>
             ) : (
               <p className="form__p">
-                Search your city for free food donations.
+                Select a city to explore free food donations.
               </p>
             )}
           </form>
+          <div className="icon__wrapper">
+            <span className="icon--arrow">
+              <a href="#scroll--target" className="icon__anchor">
+                <i class="fas fa-angle-down fa-4x" />
+              </a>
+            </span>
+          </div>
         </div>
         <InfoSection />
         <div className="section__container flex--column section--sm section--margin">
