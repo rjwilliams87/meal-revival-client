@@ -20,8 +20,10 @@ describe("<ProfileTop />", () => {
 
   it("should insert props into correct element", () => {
     const wrapper = shallow(<ProfileTop user={user} />);
-    expect(wrapper.find("h2").equals(<h2>{user.companyName}</h2>)).toEqual(
-      true
-    );
+    expect(
+      wrapper
+        .find("h2")
+        .equals(<h2 className="company__header">{user.companyName}</h2>)
+    ).toEqual(true);
   });
 });
