@@ -76,10 +76,10 @@ button:hover {
   transition: 0.5s;
 }
 
-.btn--green {
+/* .btn--green {
   background-color: #00887a;
   color: #ffffff;
-}
+} */
 
 @media only screen and (min-width: 768px) {
   .header--large {

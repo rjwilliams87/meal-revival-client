@@ -6,7 +6,7 @@ export default function InfoSection(props) {
     <div id="scroll--target" className="section__container">
       <div className="section__box">
         <span className="landing__icon">
-          <i class="far fa-handshake fa-2x" />
+          <i className="far fa-handshake fa-2x" />
         </span>
         <span className="span__header">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -19,7 +19,7 @@ export default function InfoSection(props) {
       </div>
       <div className="section__box">
         <span className="landing__icon">
-          <i class="fas fa-carrot fa-2x" />
+          <i className="fas fa-carrot fa-2x" />
         </span>
         <span className="span__header">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -32,7 +32,7 @@ export default function InfoSection(props) {
       </div>
       <div className="section__box">
         <span className="landing__icon">
-          <i class="fas fa-globe-americas fa-2x" />
+          <i className="fas fa-globe-americas fa-2x" />
         </span>
         <span className="span__header">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.

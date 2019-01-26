@@ -3,15 +3,26 @@ import "./AddForm.css";
 import { reduxForm, Field } from "redux-form";
 import { required, nonEmpty } from "../../validators";
 import Input from "../Input/Input";
+import Datepicker from "../Datepicker/Datepicker";
 import { addUserDonation } from "../../actions/postActions";
 import { reset } from "redux-form";
+// import { momentLocaliser } from "react-widgets";
+// import Moment from "moment";
+
+// Moment.locale("en");
+// momentLocaliser();
 
 export class AddForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      updated: false
+      option: "Yes"
     };
+  }
+
+  handleOptionChange(e) {
+    const option = e.target.value;
+    this.setState({ option });
   }
 
   onSubmit = async values => {
@@ -22,6 +33,7 @@ export class AddForm extends React.Component {
     await this.props.dispatch(addUserDonation(expiry, info, delivery));
     await this.props.dispatch(reset("addDonation"));
     this.props.updateDonations();
+    this.setState({ option: "Yes" });
   };
   render() {
     return (
@@ -30,6 +42,7 @@ export class AddForm extends React.Component {
           className="add-form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
+          {/* <Datepicker /> */}
           <legend className="add-form__legend">New Donation</legend>
           <Field
             className="add-form__input"
@@ -39,6 +52,8 @@ export class AddForm extends React.Component {
             type="date"
             component={Input}
             validate={[required]}
+            required
+            min="2019-01-25"
           />
           <Field
             className="add-form__input"
@@ -60,7 +75,8 @@ export class AddForm extends React.Component {
                 name="delivery"
                 value="Yes"
                 component="input"
-                checked
+                onClick={e => this.handleOptionChange(e)}
+                checked={this.state.option === "Yes"}
               />
               Yes
             </label>
@@ -71,6 +87,8 @@ export class AddForm extends React.Component {
                 name="delivery"
                 value="No"
                 component="input"
+                onClick={e => this.handleOptionChange(e)}
+                checked={this.state.option === "No"}
               />
               No
             </label>

@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProfileTop from "../ProfileTop/ProfileTop";
-import ProfileAbout from "../ProfileAbout/ProfileAbout";
 import ProfileTable from "../ProfileTable/ProfileTable";
 import Nav from "../Nav/Nav";
 import { getUserInfo, getUserDonations } from "../../actions/getActions";

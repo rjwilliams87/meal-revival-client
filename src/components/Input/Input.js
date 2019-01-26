@@ -16,12 +16,15 @@ export default class Input extends React.Component {
     }
     return (
       <div>
-        <label
-          htmlFor={this.props.input.name}
-          className={this.props.labelClass}
-        >
-          {this.props.label}
-        </label>
+        <div className="error__container">
+          <label
+            htmlFor={this.props.input.name}
+            className={this.props.labelClass}
+          >
+            {this.props.label}
+          </label>
+          {error}
+        </div>
         <Element
           {...this.props.input}
           id={this.props.input.name}
@@ -31,7 +34,7 @@ export default class Input extends React.Component {
           maxLength={this.props.maxLength}
           placeholder={this.props.placeholder}
         />
-        {error}
+        {/* {error} */}
       </div>
     );
   }

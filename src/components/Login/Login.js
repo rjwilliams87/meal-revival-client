@@ -18,7 +18,7 @@ export class Login extends React.Component {
     }
     return (
       <div className="white">
-        <Link className="link link--green" to="/">
+        <Link className="link link--blue" to="/">
           <h1 className="text--center login__header">Meal Revival</h1>
         </Link>
         <div className="login__container">

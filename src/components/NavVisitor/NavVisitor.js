@@ -16,7 +16,7 @@ export default function NavVisitor(props) {
           </li>
           <li className="nav__li">
             <Link className="nav__link" to="/donations/map">
-              Donations
+              Map
             </Link>
           </li>
           <li className="nav__li">

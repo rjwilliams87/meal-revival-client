@@ -62,7 +62,7 @@ export class Landing extends React.Component {
       })
       .catch(err => {
         console.error(err);
-        this.setState(this.getInitialState());
+        // this.setState(this.getInitialState());
       });
   }
 
@@ -118,7 +118,6 @@ export class Landing extends React.Component {
           </h3>
           <form className="landing__form" onSubmit={this.handleSubmit}>
             <Geosearch
-              // onClick={this.handleClick}
               onChange={this.onQuery}
               query={this.state.query}
               placeholder={"Kansas City, MO USA"}
@@ -141,7 +140,7 @@ export class Landing extends React.Component {
                 href="#scroll--target"
                 className="icon__anchor"
               >
-                <i class="fas fa-angle-down fa-4x" />
+                <i className="fas fa-angle-down fa-4x" />
               </a>
             </span>
           </div>

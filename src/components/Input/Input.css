@@ -1,13 +1,18 @@
 .form__error {
   padding: 8px;
-  color: #ffffff;
+  /* color: #ffffff; */
+  color: #ff0000;
   font-weight: 700;
   font-style: italic;
-  background-color: #da3843;
+  /* background-color: #da3843; */
   margin-top: 5px;
   display: inline-block;
   /* position: absolute; */
   max-width: 200px;
+}
+
+.error__container {
+  display: flex;
 }
 
 @media only screen and (min-width: 567px) {

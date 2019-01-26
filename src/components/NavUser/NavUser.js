@@ -6,7 +6,7 @@ export default function NavUser(props) {
   return (
     <div className="dropdown">
       <div className="dropbtn">
-        <i class="fas fa-bars fa-2x" />
+        <i className="fas fa-bars fa-2x" />
       </div>
       <div className="dropdown-content">
         <ul className="nav__ul">
@@ -17,7 +17,7 @@ export default function NavUser(props) {
           </li>
           <li className="nav__li">
             <Link className="nav__link" to="/donations/map">
-              Donations
+              Map
             </Link>
           </li>
           <li className="nav__li" onClick={props.clearAuth}>
