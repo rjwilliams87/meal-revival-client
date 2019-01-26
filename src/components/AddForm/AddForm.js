@@ -3,20 +3,23 @@ import "./AddForm.css";
 import { reduxForm, Field } from "redux-form";
 import { required, nonEmpty } from "../../validators";
 import Input from "../Input/Input";
-import Datepicker from "../Datepicker/Datepicker";
+import renderDateTimePicker from "../Datepicker/Datepicker";
 import { addUserDonation } from "../../actions/postActions";
 import { reset } from "redux-form";
-// import { momentLocaliser } from "react-widgets";
-// import Moment from "moment";
+import momentLocalizer from "react-widgets-moment";
+import Moment from "moment";
+import "react-widgets/dist/css/react-widgets.css";
 
-// Moment.locale("en");
-// momentLocaliser();
+//localizer for datepicker
+Moment.locale("en");
+momentLocalizer();
 
 export class AddForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      option: "Yes"
+      option: "Yes",
+      formDate: new Date()
     };
   }
 
@@ -36,24 +39,30 @@ export class AddForm extends React.Component {
     this.setState({ option: "Yes" });
   };
   render() {
+    let error;
+    if (!this.state.formDate) {
+      error = <div className="form__error">Required</div>;
+    }
     return (
       <div className="add-form__container">
         <form
           className="add-form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
-          {/* <Datepicker /> */}
           <legend className="add-form__legend">New Donation</legend>
+          <div className="error__container">
+            <label className="add-form__label" htmlFor="expiry">
+              Expires On
+            </label>
+            {error}
+          </div>
           <Field
-            className="add-form__input"
-            label="Expires On"
-            labelClass="add-form__label"
             name="expiry"
-            type="date"
-            component={Input}
+            showTime={false}
+            component={renderDateTimePicker}
+            onChange={value => this.setState({ formDate: value })}
             validate={[required]}
-            required
-            min="2019-01-25"
+            require
           />
           <Field
             className="add-form__input"

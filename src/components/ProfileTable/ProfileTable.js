@@ -30,6 +30,7 @@ export default class ProfileTable extends React.Component {
       const updateRow = (
         <td>
           <button
+            aria-label="click here to delete"
             className="btn__delete"
             onClick={this.handleClick}
             id={donation._id}

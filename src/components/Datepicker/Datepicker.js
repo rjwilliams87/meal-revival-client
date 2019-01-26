@@ -1,16 +1,22 @@
 import React from "react";
-import { DateTimePicker, momentLocalizer } from "react-widgets";
-import Moment from "moment";
+import { DateTimePicker } from "react-widgets";
 
-export default function Datepicker(props) {
+export default function renderDatePicker({
+  input: { onChange, value },
+  showTime
+}) {
   return (
     <div>
       <DateTimePicker
-        defaultValue={new Date()}
-        formant={{ raw: "MMM dd, yyyy" }}
-        time={false}
-        min={Date.now()}
+        onChange={onChange}
+        time={showTime}
+        value={!value ? null : new Date(value)}
+        min={new Date()}
+        value={new Date()}
+        // inputProps={}
       />
     </div>
   );
 }
+
+// export default renderDatePicker;
