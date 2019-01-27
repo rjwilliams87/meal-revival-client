@@ -1,22 +1,30 @@
 import React from "react";
-import { DateTimePicker } from "react-widgets";
+import DatePicker from "react-datepicker";
 
-export default function renderDatePicker({
-  input: { onChange, value },
-  showTime
-}) {
-  return (
-    <div>
-      <DateTimePicker
-        onChange={onChange}
-        time={false}
-        // value={!value ? null : new Date(value)}
-        min={new Date()}
-        format="MMM DD YYYY"
-        // inputProps={}
-      />
+const renderDatePicker = ({
+  input,
+  label,
+  labelClass,
+  selected,
+  className,
+  type,
+  meta: { touched, error }
+}) => (
+  <div>
+    <div className="error__container">
+      <label className={labelClass}>{label}</label>
+      {touched && error && <div className="form__error">{error}</div>}
     </div>
-  );
-}
+    <DatePicker
+      {...input}
+      selected={selected}
+      className={className}
+      placeholderText="MM DD YYYY"
+      type={type}
+      dateForm="MM/DD/YYYY"
+      minDate={new Date()}
+    />
+  </div>
+);
 
-// export default renderDatePicker;
+export default renderDatePicker;

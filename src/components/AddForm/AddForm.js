@@ -6,13 +6,7 @@ import Input from "../Input/Input";
 import renderDateTimePicker from "../Datepicker/Datepicker";
 import { addUserDonation } from "../../actions/postActions";
 import { reset } from "redux-form";
-import momentLocalizer from "react-widgets-moment";
-import Moment from "moment";
-import "react-widgets/dist/css/react-widgets.css";
-
-//localizer for datepicker
-Moment.locale("en");
-momentLocalizer();
+import "react-datepicker/dist/react-datepicker.css";
 
 export class AddForm extends React.Component {
   constructor(props) {
@@ -26,6 +20,12 @@ export class AddForm extends React.Component {
   handleOptionChange(e) {
     const option = e.target.value;
     this.setState({ option });
+  }
+
+  handleDateChange(value) {
+    this.setState({
+      formDate: value
+    });
   }
 
   onSubmit = async values => {
@@ -51,19 +51,17 @@ export class AddForm extends React.Component {
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
           <legend className="add-form__legend">New Donation</legend>
-          <div className="error__container">
-            <label className="add-form__label" htmlFor="expiry">
-              Expires On
-            </label>
-            {error}
-          </div>
           <Field
             name="expiry"
+            label="Expires On"
+            labelClass="add-form__label"
+            className="add-form__input"
             component={renderDateTimePicker}
+            selected={this.state.formDate}
             value={this.state.formDate}
-            // onChange={value => this.setState({ formDate: value })}
+            type="text"
+            onChange={this.handleDateChange.bind(this)}
             validate={[required]}
-            require
           />
           <Field
             className="add-form__input"
