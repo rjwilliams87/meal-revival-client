@@ -46,7 +46,7 @@ export class AddForm extends React.Component {
           className="add-form"
           onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
         >
-          <legend className="add-form__legend">New Donation</legend>
+          <legend className="add-form__legend">Add Donation</legend>
           <Field
             arial-labelby="expiry"
             name="expiry"
@@ -105,7 +105,7 @@ export class AddForm extends React.Component {
             onClick={reset}
             className="btn--red add-form__btn"
             type="submit"
-            disabled={this.props.pristine || this.props.submitting}
+            disabled={this.props.submitting}
           >
             Add
           </button>
