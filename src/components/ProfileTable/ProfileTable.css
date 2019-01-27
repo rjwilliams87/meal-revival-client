@@ -17,7 +17,8 @@
   right: 8px;
 }
 
-.table tr:nth-child(odd) {
+.table tr:nth-child(even),
+th {
   background-color: #1a67eb79;
 }
 

@@ -14,10 +14,12 @@ body {
 
 #root {
   height: 100%;
+  min-width: 300px;
 }
 
 .app__container {
   height: 100%;
+  min-width: 300px;
 }
 
 main {

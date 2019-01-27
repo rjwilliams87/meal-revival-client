@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+.login-form__container {
+  margin: 0 auto;
+}
+
 .login-form {
   padding: 20px;
   width: 70vw;

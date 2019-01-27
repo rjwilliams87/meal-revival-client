@@ -10,7 +10,6 @@
   background-color: #00008b;
   border-radius: 5px;
   /* height: 375px; */
-  width: 60%;
   margin: 0 auto;
   align-items: center;
   padding: 20px;
@@ -32,12 +31,12 @@
 .profile-form__input {
   display: block;
   height: 30px;
-  width: 300px;
+  width: 200px;
   padding: 8px;
 }
 
 .input--lrg {
-  height: 80px;
+  height: 50px;
 }
 
 .btn--margin {
@@ -48,4 +47,17 @@
   background-color: #ffffff;
   width: 420px;
   /* position: absolute; */
+}
+
+@media only screen and (min-width: 569px) {
+  .profile-form {
+    width: 60%;
+  }
+  .profile-form__input {
+    width: 300px;
+  }
+
+  .input--lrg {
+    height: 80px;
+  }
 }

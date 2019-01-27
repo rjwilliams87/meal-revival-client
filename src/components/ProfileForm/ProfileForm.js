@@ -69,9 +69,7 @@ export class ProfileForm extends React.Component {
             />
           </div>
           <div>
-            <label className="profile-form__label">
-              Brief description your organization
-            </label>
+            <label className="profile-form__label">Describe Your Company</label>
             <Field
               className="profile-form__input input--lrg"
               type="text"

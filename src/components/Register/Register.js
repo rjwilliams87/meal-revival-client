@@ -9,7 +9,7 @@ export class Register extends React.Component {
   render() {
     return (
       <div className="register">
-        <div className="register__container container--green">
+        <div className="register__container container--blue">
           <LandingNav />
           <RegisterForm registerError={this.props.error} />
         </div>

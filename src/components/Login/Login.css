@@ -14,9 +14,7 @@
   background: #fff;
   width: 100vw;
   height: 90vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin-top: 30px;
   align-items: center;
 }
 
@@ -26,4 +24,7 @@
 }
 
 @media only screen and (min-width: 668px) {
+  .login__container {
+    margin-top: 50px;
+  }
 }

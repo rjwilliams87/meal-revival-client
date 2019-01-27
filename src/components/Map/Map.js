@@ -25,7 +25,7 @@ export class Map extends React.Component {
           key={donation.id}
         >
           <Popup>
-            Expires: {donation.expiry} <br />
+            Expires: {donation.expiry.replace(/T.*$/, "")} <br />
             Info: {donation.info} <br />
             <Link to={`/profile/${donation.userId}`}>View Company Profile</Link>
           </Popup>

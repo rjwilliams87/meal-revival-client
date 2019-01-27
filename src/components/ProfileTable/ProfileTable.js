@@ -60,7 +60,7 @@ export default class ProfileTable extends React.Component {
               <th>Delivery</th>
               {this.props.loggedIn ? <th>Delete</th> : null}
             </tr>
-            {tableData}
+            <tbody>{tableData}</tbody>
           </table>
         </div>
         {this.state.isOpen && (

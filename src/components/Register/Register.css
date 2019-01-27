@@ -1,16 +1,13 @@
 .register {
   height: 100%;
-  /* background-color: #39b18d; */
   background: #00008b;
 }
 
 .register__container {
-  height: 110vh;
   overflow: hidden;
 }
 
-.container--green {
-  /* background-color: #39b18d; */
+.container--blue {
   background: #00008b;
   color: #fff;
 }

@@ -18,9 +18,11 @@ export class Login extends React.Component {
     }
     return (
       <div className="white">
-        <Link className="link link--blue" to="/">
-          <h1 className="text--center login__header">Meal Revival</h1>
-        </Link>
+        <div className="head__container">
+          <Link className="link link--blue" to="/">
+            <h1 className="text--center login__header">Meal Revival</h1>
+          </Link>
+        </div>
         <div className="login__container">
           <LoginForm loginError={this.props.error} />
           <div className="path__container">
