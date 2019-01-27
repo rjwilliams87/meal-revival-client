@@ -30,6 +30,7 @@ export class AddForm extends React.Component {
 
   onSubmit = async values => {
     let { expiry, info, delivery } = values;
+    console.log(expiry.toString());
     if (delivery === undefined) {
       delivery = "Yes";
     }
@@ -58,9 +59,9 @@ export class AddForm extends React.Component {
           </div>
           <Field
             name="expiry"
-            showTime={false}
             component={renderDateTimePicker}
-            onChange={value => this.setState({ formDate: value })}
+            value={this.state.formDate}
+            // onChange={value => this.setState({ formDate: value })}
             validate={[required]}
             require
           />
@@ -103,6 +104,7 @@ export class AddForm extends React.Component {
             </label>
           </div>
           <button
+            onClick={reset}
             className="btn--red add-form__btn"
             type="submit"
             disabled={this.props.pristine || this.props.submitting}

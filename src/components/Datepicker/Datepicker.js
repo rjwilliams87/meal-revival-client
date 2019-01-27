@@ -9,10 +9,10 @@ export default function renderDatePicker({
     <div>
       <DateTimePicker
         onChange={onChange}
-        time={showTime}
-        value={!value ? null : new Date(value)}
+        time={false}
+        // value={!value ? null : new Date(value)}
         min={new Date()}
-        value={new Date()}
+        format="MMM DD YYYY"
         // inputProps={}
       />
     </div>
