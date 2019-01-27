@@ -54,12 +54,14 @@ export default class ProfileTable extends React.Component {
         <div className="table__container">
           <h2 className="table__header">Avaliable Donations</h2>
           <table className="table">
-            <tr>
-              <th>Expires</th>
-              <th className="th__info">Info</th>
-              <th>Delivery</th>
-              {this.props.loggedIn ? <th>Delete</th> : null}
-            </tr>
+            <thead>
+              <tr>
+                <th>Expires</th>
+                <th className="th__info">Info</th>
+                <th>Delivery</th>
+                {this.props.loggedIn ? <th>Delete</th> : null}
+              </tr>
+            </thead>
             <tbody>{tableData}</tbody>
           </table>
         </div>
