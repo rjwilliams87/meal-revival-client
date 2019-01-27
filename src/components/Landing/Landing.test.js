@@ -12,6 +12,6 @@ describe("<Landing />", () => {
   it("should have empty strings in initial state", () => {
     const wrapper = shallow(<Landing />);
     expect(wrapper.state("query")).toEqual("");
-    expect(wrapper.state("address")).toEqual("");
+    expect(wrapper.state("address")).toEqual("Kansas City, MO");
   });
 });
