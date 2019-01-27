@@ -59,7 +59,6 @@
 .results__btn {
   width: 100%;
   background-color: #fff;
-  font-size: 16px;
   padding: 5px;
   text-align: left;
 }
@@ -129,6 +128,10 @@
   transition: 0.5s;
 }
 
+.landing__error {
+  text-align: center;
+}
+
 @media only screen and (min-width: 568px) {
   .landing__container {
     padding: 30px;
@@ -168,11 +171,16 @@
 
   .icon--arrow {
     position: relative;
-    right: 40px;
+    /* right: 40px; */
   }
 
   .icon__wrapper {
     top: 150px;
+  }
+
+  .landing__error {
+    position: relative;
+    right: 150px;
   }
 }
 

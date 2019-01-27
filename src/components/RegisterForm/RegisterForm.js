@@ -25,7 +25,7 @@ export class RegisterForm extends React.Component {
       query: ""
     });
   }
-
+  //sets query value and makes ajax call on that value
   onQuery(e) {
     const query = e.target.value;
     if (!query.length > 0) {
@@ -46,10 +46,13 @@ export class RegisterForm extends React.Component {
           this.setState({
             address: response.data.suggestions[0],
             options: response.data.suggestions,
-            query: query
+            query: query,
+            error: null
           });
         } else {
-          this.setState(this.getInitialState());
+          this.setState({
+            error: "please enter valid address"
+          });
         }
       })
       .catch(err => {
@@ -62,7 +65,8 @@ export class RegisterForm extends React.Component {
     const text = e.target.textContent.toString();
     this.setState({
       query: text,
-      options: null
+      options: null,
+      error: null
     });
   }
 
@@ -186,9 +190,12 @@ export class RegisterForm extends React.Component {
           </div>
           <div className="register-form__row flex--column">
             <div className="register-form__sec">
-              <label htmlFor="address" className="register-form__label">
-                address
-              </label>
+              <div className="error__container">
+                <label htmlFor="address" className="register-form__label">
+                  address
+                </label>
+                {addressError}
+              </div>
               <input
                 aria-label="enter your address you do not have to select one of the options that will be listed"
                 id="address"
@@ -196,9 +203,8 @@ export class RegisterForm extends React.Component {
                 className="register-form__input register-form__input--lrg"
                 onChange={this.onQuery}
                 value={this.state.query}
-                validate={[require]}
+                require
               />
-              {addressError}
             </div>
           </div>
           <div className="register-form__row flex--column">
@@ -206,7 +212,11 @@ export class RegisterForm extends React.Component {
               <button
                 className="register__btn btn btn--red"
                 type="submit"
-                disabled={this.props.pristine || this.props.submitting}
+                disabled={
+                  this.props.pristine ||
+                  this.props.submitting ||
+                  this.state.error
+                }
               >
                 Create Account
               </button>

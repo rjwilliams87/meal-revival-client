@@ -16,24 +16,25 @@ export class Landing extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      address: "",
-      query: ""
+      address: "Kansas City, MO",
+      query: "",
+      error: null
     };
 
     this.onQuery = this.onQuery.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   getInitialState() {
     this.setState({
-      address: "",
-      query: ""
+      address: "Kansas City, MO",
+      query: "",
+      error: null
     });
   }
 
-  //checks the input value against api for possible
-  //locations and sets state and input.value to query
-  //also creates list of options user can click on
-  //to set their targeted city/coords
+  //checks the input value against res for possible
+  //locations and sets state
   onQuery(e) {
     const query = e.target.value;
     if (!query.length > 0) {
@@ -54,32 +55,57 @@ export class Landing extends React.Component {
           this.setState({
             options: response.data.suggestions,
             query: query,
-            address: response.data.suggestions[0]
+            address: response.data.suggestions[0],
+            error: null
           });
         } else {
-          this.setState(this.getInitialState());
+          //user inputing but no valid res avaliable
+          this.setState(
+            this.setState({
+              error: "Not a valid address"
+            })
+          );
         }
       })
       .catch(err => {
         console.error(err);
-        // this.setState(this.getInitialState());
+        this.setState(
+          this.setState({
+            error: "Not valid address"
+          })
+        );
       });
   }
 
-  //gets geocoords needs to be updated to allow user the
-  //option of not clicking on one of btns but just inputing address
-  //all here api calls in app are done inside component
-  //no need to keep this values in app state/redux store
   handleClick(e) {
     e.preventDefault();
     const text = e.target.textContent;
-    console.log(text);
+    this.setState({
+      query: text,
+      address: text,
+      options: null
+    });
+  }
+
+  //gets geocoords needs
+  //ajax inside component
+  //no need to keep in redux store
+  handleSubmit() {
+    let searchText;
+    if (typeof this.state.address === "object") {
+      //user typed put didn't select from options
+      const { city, state } = this.state.address.address;
+      searchText = `${city}, ${state}`;
+    } else {
+      // user didn't input anything so use default state
+      searchText = this.state.address;
+    }
     axios
       .get("https://geocoder.api.here.com/6.2/geocode.json", {
         params: {
           app_id: HERE_APP_ID,
           app_code: HERE_APP_CODE,
-          searchText: text
+          searchText
         }
       })
       .then(result => {
@@ -87,11 +113,12 @@ export class Landing extends React.Component {
           result.data.Response.View[0].Result[0].Location.DisplayPosition;
 
         this.props.dispatch(changeCoords(coords));
-        this.setState({ query: text, options: null });
-      });
+      })
+      .catch(err => console.error(err));
   }
 
   render() {
+    //city options dropdown if exist in state from ajax call
     let places;
     if (this.state.options) {
       places = this.state.options.map(option => (
@@ -116,8 +143,10 @@ export class Landing extends React.Component {
           <h3 className="landing__header header--light header--med">
             Explore donations from local restaurants
           </h3>
-          <form className="landing__form" onSubmit={this.handleSubmit}>
+          <form className="landing__form">
             <Geosearch
+              error={this.state.error}
+              onClick={this.handleSubmit}
               onChange={this.onQuery}
               query={this.state.query}
               placeholder={"Kansas City, MO USA"}
