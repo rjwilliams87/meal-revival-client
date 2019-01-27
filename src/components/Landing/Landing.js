@@ -60,20 +60,13 @@ export class Landing extends React.Component {
           });
         } else {
           //user inputing but no valid res avaliable
-          this.setState(
-            this.setState({
-              error: "Not a valid address"
-            })
-          );
+          this.setState({
+            error: "Not a valid address"
+          });
         }
       })
-      .catch(err => {
-        console.error(err);
-        this.setState(
-          this.setState({
-            error: "Not valid address"
-          })
-        );
+      .catch(() => {
+        this.getInitialState();
       });
   }
 
