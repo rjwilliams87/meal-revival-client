@@ -40,10 +40,6 @@ export class AddForm extends React.Component {
     this.setState({ option: "Yes" });
   };
   render() {
-    let error;
-    if (!this.state.formDate) {
-      error = <div className="form__error">Required</div>;
-    }
     return (
       <div className="add-form__container">
         <form
@@ -52,9 +48,11 @@ export class AddForm extends React.Component {
         >
           <legend className="add-form__legend">New Donation</legend>
           <Field
+            arial-labelby="expiry"
             name="expiry"
             label="Expires On"
             labelClass="add-form__label"
+            labelFor="expiry"
             className="add-form__input"
             component={renderDateTimePicker}
             selected={this.state.formDate}
@@ -75,7 +73,7 @@ export class AddForm extends React.Component {
             validate={[required, nonEmpty]}
           />
           <label className="add-form__label">Can you deliver?</label>
-          <div>
+          <div role="group" id="delivery-button">
             <label>
               <Field
                 className="add-form__radio"
@@ -83,6 +81,7 @@ export class AddForm extends React.Component {
                 name="delivery"
                 value="Yes"
                 component="input"
+                aria-label="delivery-button Yes"
                 onClick={e => this.handleOptionChange(e)}
                 checked={this.state.option === "Yes"}
               />
@@ -95,6 +94,7 @@ export class AddForm extends React.Component {
                 name="delivery"
                 value="No"
                 component="input"
+                aria-label="delivery-button No"
                 onClick={e => this.handleOptionChange(e)}
                 checked={this.state.option === "No"}
               />

@@ -17,6 +17,7 @@ class App extends React.Component {
     } else if (prevProps.loggedIn && !this.props.loggedIn) {
       this.stopPeriodicRefresh();
     }
+    this.props.hideLoader();
   }
 
   componentWillUnmount() {

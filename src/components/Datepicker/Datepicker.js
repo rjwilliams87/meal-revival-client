@@ -5,6 +5,7 @@ const renderDatePicker = ({
   input,
   label,
   labelClass,
+  labelFor,
   selected,
   className,
   type,
@@ -12,7 +13,9 @@ const renderDatePicker = ({
 }) => (
   <div>
     <div className="error__container">
-      <label className={labelClass}>{label}</label>
+      <label className={labelClass} htmlFor={labelFor}>
+        {label}
+      </label>
       {touched && error && <div className="form__error">{error}</div>}
     </div>
     <DatePicker

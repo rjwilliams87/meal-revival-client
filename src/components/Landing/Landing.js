@@ -149,8 +149,8 @@ export class Landing extends React.Component {
               onClick={this.handleSubmit}
               onChange={this.onQuery}
               query={this.state.query}
-              placeholder={"Kansas City, MO USA"}
-              btnText={"Search"}
+              placeholder="Kansas City, MO USA"
+              btnText="Search"
             />
             {this.state.query.length !== 0 ? (
               <ul aria-live="assertive" className="results__container">

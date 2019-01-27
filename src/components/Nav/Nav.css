@@ -88,10 +88,10 @@ header {
   height: 100%;
 }
 
-.nav__li:hover,
+/* .nav__li:hover,
 .nav__link:hover {
   text-decoration: underline;
-}
+} */
 
 .nav__li:hover {
   background: #add8e6a1;

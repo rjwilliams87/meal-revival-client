@@ -44,7 +44,6 @@
 }
 
 .contact__p {
-  text-align: center;
   padding: 5px;
 }
 
@@ -53,7 +52,7 @@
 }
 
 .icon__contact {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .company__p {
