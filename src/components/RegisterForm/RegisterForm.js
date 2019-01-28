@@ -49,6 +49,10 @@ export class RegisterForm extends React.Component {
             query: query,
             error: null
           });
+        } else {
+          this.setState({
+            error: "Not valid"
+          });
         }
       })
       .catch(() => {

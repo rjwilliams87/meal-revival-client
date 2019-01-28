@@ -59,6 +59,9 @@ export class LoginForm extends React.Component {
               Login
             </button>
           </div>
+          <p className="demo-info">
+            demo account: demo@email.com / password123
+          </p>
         </fieldset>
       </form>
     );

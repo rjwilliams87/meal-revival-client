@@ -1,6 +1,6 @@
-.search__container--margin {
+/* .search__container--margin {
   margin-top: 50px;
-}
+} */
 
 .search__input {
   height: 40px;
@@ -20,6 +20,12 @@
   height: 40px;
   width: 250px;
   color: #fff;
+}
+
+@media only screen and (min-height: 415px) {
+  .search__container--margin {
+    margin-top: 50px;
+  }
 }
 
 @media only screen and (min-width: 768px) {

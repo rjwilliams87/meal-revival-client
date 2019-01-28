@@ -75,6 +75,12 @@
   padding: 5px;
 }
 
+.demo-info {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.85em;
+}
+
 @media only screen and (min-width: 668px) {
   .login-form {
     max-width: 550px;

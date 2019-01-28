@@ -4,7 +4,7 @@ import "./Footer.css";
 export default function Footer(props) {
   return (
     <footer className="footer">
-      <div>
+      <div class="footer__container">
         <h4 className="footer__header">Resources</h4>
         <p className="footer__p">
           <a
