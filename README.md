@@ -6,7 +6,7 @@ meal-revival-server: https://github.com/rjwilliams87/meal-revival-server
 
 ## Getting Started
 
-Check out the app with the below link. Use the dummy credentials to login!
+Check out the app with the link below. Use the dummy credentials to login!
 
 - Credentials <br />
   email: demo@email.com password: password123
@@ -18,6 +18,7 @@ Check out the app with the below link. Use the dummy credentials to login!
 
 - React
 - Redux
+- ReduxForm
 - JavaScript
 - HTML
 - CSS
