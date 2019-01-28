@@ -1,6 +1,6 @@
 import React from "react";
 import { MapControl, withLeaflet } from "react-leaflet";
-import L from "leaflet";
+// import L from "leaflet";
 import { OpenStreetMapProvider, GeoSearchControl } from "leaflet-geosearch";
 
 class GeoSearchBar extends MapControl {

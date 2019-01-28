@@ -49,14 +49,26 @@ main {
   height: 90vh;
 }
 
+.map__container {
+  height: 100%;
+}
+
 .leaflet-container {
   width: 100vw;
-  height: 100vh;
+  height: calc(100% - 65px);
   z-index: 1;
 }
 
 .map {
   height: 90vh;
+}
+
+.leaflet-top {
+  margin-top: 100px;
+}
+
+.leaflet-control-geosearch.bar {
+  width: 300px;
 }
 
 button {
@@ -90,5 +102,9 @@ button:hover {
 
   .header--med {
     font-size: 32px;
+  }
+
+  .leaflet-control-geosearch.bar {
+    width: 400px;
   }
 }

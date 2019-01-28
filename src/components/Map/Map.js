@@ -33,12 +33,12 @@ export class Map extends React.Component {
       ));
     }
     return (
-      <div>
+      <div className="map__container">
         <Nav
           loggedIn={this.props.loggedIn}
           clearAuth={() => this.clearAuth()}
         />
-        <LeafletMap center={positionX} zoom={13}>
+        <LeafletMap center={positionX} zoom={12}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="http://{s}.tile.osm.org/{z}/{x}/{y}.png"
