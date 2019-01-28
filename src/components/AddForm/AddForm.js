@@ -16,12 +16,12 @@ export class AddForm extends React.Component {
       formDate: new Date()
     };
   }
-
+  //this handles change of radio btn option
   handleOptionChange(e) {
     const option = e.target.value;
     this.setState({ option });
   }
-
+  //called when click cal date
   handleDateChange(value) {
     this.setState({
       formDate: value
@@ -30,7 +30,6 @@ export class AddForm extends React.Component {
 
   onSubmit = async values => {
     let { expiry, info, delivery } = values;
-    console.log(expiry.toString());
     if (delivery === undefined) {
       delivery = "Yes";
     }

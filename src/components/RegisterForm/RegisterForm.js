@@ -1,5 +1,5 @@
 import React from "react";
-import { reduxForm, Field, reset } from "redux-form";
+import { reduxForm, Field } from "redux-form";
 import { Link } from "react-router-dom";
 import Input from "../Input/Input";
 import { required, nonEmpty, email, isTrimmed, length } from "../../validators";
