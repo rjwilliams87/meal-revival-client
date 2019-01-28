@@ -96,7 +96,7 @@
 .register__error {
   font-style: italic;
   font-weight: bold;
-  margin: 10px 0 0 0;
+  text-align: center;
 }
 
 .address__error {
@@ -154,13 +154,25 @@
     font-size: 32px;
   }
 
-  .register__error {
+  /* .register__error {
     position: relative;
     top: 33px;
-  }
+  } */
 
   .options__container {
     width: 420px;
     left: 45px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+  .register-form {
+    margin-top: 15%;
+  }
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientations: portrait) {
+  .register-form {
+    margin-top: 15%;
   }
 }

@@ -42,7 +42,7 @@ export class LoginForm extends React.Component {
           <div className="login-form__sec login-form__padding">
             <Field
               className="login-form__input"
-              label="Password"
+              label="password"
               labelClass="login-form__label"
               name="password"
               type="password"

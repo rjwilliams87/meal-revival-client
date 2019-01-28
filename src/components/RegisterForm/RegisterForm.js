@@ -49,14 +49,12 @@ export class RegisterForm extends React.Component {
             query: query,
             error: null
           });
-        } else {
-          this.setState({
-            error: "Not valid"
-          });
         }
       })
-      .catch(err => {
-        this.setState(this.getInitialState());
+      .catch(() => {
+        this.setState({
+          error: "Not valid"
+        });
       });
   }
 
@@ -159,8 +157,9 @@ export class RegisterForm extends React.Component {
             Sign up for your free account
           </legend>
           {successMessage}
+          {error}
           <div className="register-form__row flex--column">
-            {error}
+            {/* {error} */}
             <div className="register-form__sec">
               <Field
                 aria-label="enter email address"

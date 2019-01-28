@@ -19,7 +19,7 @@ export class DeleteModal extends React.Component {
     return (
       <div className="delete__container">
         <div className="modal__container container--white">
-          <h2>Delete Donation Permanently?</h2>
+          <h2>Do you want to delete this donation?</h2>
           <button
             onClick={this.handleClick}
             className="btn--red btn modal__btn"

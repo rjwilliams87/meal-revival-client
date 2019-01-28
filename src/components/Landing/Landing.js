@@ -167,7 +167,9 @@ export class Landing extends React.Component {
             </span>
           </div>
         </div>
-        <InfoSection />
+        <section>
+          <InfoSection />
+        </section>
         <div className="section__container flex--column section--sm section--margin">
           <p className="p--bold p--lrg">Want to list your donations?</p>
           <Link to="/register">

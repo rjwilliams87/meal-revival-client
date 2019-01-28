@@ -3,8 +3,8 @@
 }
 
 .search__input {
-  height: 35px;
-  width: 200px;
+  height: 40px;
+  width: 250px;
   padding: 10px;
 }
 
@@ -17,9 +17,9 @@
 }
 
 .search__btn {
-  height: 35px;
-  width: 200px;
-  color: white;
+  height: 40px;
+  width: 250px;
+  color: #fff;
 }
 
 @media only screen and (min-width: 768px) {
