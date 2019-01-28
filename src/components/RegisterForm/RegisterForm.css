@@ -1,6 +1,6 @@
 .register-form {
   padding: 20px;
-  width: 100vw;
+  width: 300px;
   margin: 0 auto;
   /* background-color: #39b18d; */
   background: #00008b;
@@ -72,8 +72,8 @@
   background: #fff;
   width: 200px;
   position: relative;
-  bottom: 75px;
-  left: 152px;
+  bottom: 90.33px;
+  left: 30px;
 }
 
 .options__li {
@@ -105,9 +105,22 @@
   padding: 5px;
 }
 
+.position-rel {
+  position: relative;
+  bottom: 15.33px;
+}
+
+.register__p {
+  font-size: 0.8em;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  font-style: italic;
+}
+
 @media only screen and (min-width: 567px) {
   .register-form {
-    max-width: 550px;
+    width: 550px;
   }
 
   .register-form__legend {

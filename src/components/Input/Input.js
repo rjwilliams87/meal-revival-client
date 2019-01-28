@@ -34,7 +34,6 @@ export default class Input extends React.Component {
           maxLength={this.props.maxLength}
           placeholder={this.props.placeholder}
         />
-        {/* {error} */}
       </div>
     );
   }

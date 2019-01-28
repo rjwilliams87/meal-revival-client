@@ -6,7 +6,7 @@ import { required, nonEmpty, email, isTrimmed, length } from "../../validators";
 import "./RegisterForm.css";
 import { createNewUser } from "../../actions/postActions";
 import axios from "axios";
-const passwordLength = length({ min: 10, max: 72 });
+const passwordLength = length({ min: 8, max: 72 });
 const HERE_APP_ID = process.env.REACT_APP_HEREAPPID;
 const HERE_APP_CODE = process.env.REACT_APP_HEREAPPCODE;
 
@@ -51,7 +51,7 @@ export class RegisterForm extends React.Component {
           });
         } else {
           this.setState({
-            error: "please enter valid address"
+            error: "Not valid"
           });
         }
       })
@@ -72,7 +72,7 @@ export class RegisterForm extends React.Component {
 
   onSubmit(values) {
     if (!this.state.address) {
-      this.setState({ error: "please enter valid address" });
+      this.setState({ error: "Required" });
     } else {
       const { email, password } = values;
       const {
@@ -177,18 +177,19 @@ export class RegisterForm extends React.Component {
           <div className="register-form__row flex--column">
             <div className="register-form__sec">
               <Field
-                aria-label="enter a password with at least 10 characters and no white space"
+                aria-label="enter a password with at least 8 characters and no white space"
                 className="register-form__input"
-                label="password"
+                label="password *"
                 labelClass="register-form__label"
                 name="password"
                 type="password"
                 component={Input}
                 validate={[required, nonEmpty, isTrimmed, passwordLength]}
               />
+              <p className="register__p">* min 8 characters</p>
             </div>
           </div>
-          <div className="register-form__row flex--column">
+          <div className="register-form__row flex--column position-rel">
             <div className="register-form__sec">
               <div className="error__container">
                 <label htmlFor="address" className="register-form__label">
@@ -203,7 +204,6 @@ export class RegisterForm extends React.Component {
                 className="register-form__input register-form__input--lrg"
                 onChange={this.onQuery}
                 value={this.state.query}
-                require
               />
             </div>
           </div>
@@ -212,11 +212,7 @@ export class RegisterForm extends React.Component {
               <button
                 className="register__btn btn btn--red"
                 type="submit"
-                disabled={
-                  this.props.pristine ||
-                  this.props.submitting ||
-                  this.state.error
-                }
+                disabled={this.props.submitting || this.state.error}
               >
                 Create Account
               </button>
