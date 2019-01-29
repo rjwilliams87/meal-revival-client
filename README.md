@@ -2,17 +2,13 @@
 
 Meal Revival is a web app that connects local restaurants to organizations in need of food donations. Restaurants simply list their donations which can then be viewed by others based on thier location. Try it today!
 
-meal-revival-server: https://github.com/rjwilliams87/meal-revival-server
-
 ## Getting Started
 
-Check out the app with the link below. Use the dummy credentials to login!
+Check out the app with the link below. Use the demo credentials to login! <br />
+https://meal-revival.herokuapp.com/
 
 - Credentials <br />
   email: demo@email.com password: password123
-
-- App <br />
-  https://meal-revival.herokuapp.com/
 
 ## Built With
 
@@ -42,6 +38,10 @@ Select a city to view donations on the map
 Sign up to easily add/remove donations
 
 ![userprofile](assets/userprofile.png)
+
+## Server
+
+meal-revival-server: https://github.com/rjwilliams87/meal-revival-server
 
 ## Authors
 
