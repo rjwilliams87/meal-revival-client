@@ -73,10 +73,21 @@
   padding: 5px;
 }
 
+.demo__container {
+  width: 100%;
+}
+
 .demo-info {
+  width: 50%;
   text-align: center;
+  text-decoration: underline;
+  margin: 0 auto;
   margin-top: 10px;
   font-size: 0.85em;
+}
+
+.demo-info:hover {
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 668px) {
@@ -94,5 +105,9 @@
 
   .login__btn {
     height: 50px;
+  }
+
+  .demo-info {
+    width: 30%;
   }
 }

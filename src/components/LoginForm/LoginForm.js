@@ -6,6 +6,15 @@ import { userLogin } from "../../actions/auth";
 import "./LoginForm.css";
 
 export class LoginForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.demoLogin = this.demoLogin.bind(this);
+  }
+
+  demoLogin() {
+    this.props.dispatch(userLogin("demo@email.com", "password123"));
+  }
+
   onSubmit(values) {
     this.props.dispatch(userLogin(values.email, values.password)).catch();
     this.props.dispatch(reset("loginUser"));
@@ -59,9 +68,11 @@ export class LoginForm extends React.Component {
               Login
             </button>
           </div>
-          <p className="demo-info">
-            demo account: demo@email.com / password123
-          </p>
+          <div className="demo__container">
+            <p onClick={this.demoLogin} className="demo-info">
+              Click here for a demo
+            </p>
+          </div>
         </fieldset>
       </form>
     );

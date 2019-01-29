@@ -9,8 +9,10 @@ export default function InfoSection(props) {
           <i className="far fa-handshake fa-3x icon-mobile" />
         </span>
         <span className="span__header">Get connected</span> <br />
-        <br /> Meet local businesses and nonprofits aiming to combat food waste
-        and hunger by helping transfer unused food to those that need it most.
+        <br />
+        Meal Revival makes it easy for organizations in need to connect with
+        local companies that are willing to help. Simply search your city and
+        view donation listings.
       </div>
       <div className="section__box">
         <span className="landing__icon">
@@ -18,8 +20,10 @@ export default function InfoSection(props) {
         </span>
         <span className="span__header">Feed your community</span>
         <br />
-        <br /> 40 million Americans struggle with hunger. Giving to those in
-        need shouldn't be so hard, that's why Meal Revival was created.
+        <br />
+        Have food that would otherwise go to waste? Meal Revival makes it easy
+        to list that food as a free donation. Sign up for an account to start
+        list donations today.
       </div>
       <div className="section__box">
         <span className="landing__icon">
@@ -28,8 +32,9 @@ export default function InfoSection(props) {
         <span className="span__header">Reduce waste</span>
         <br />
         <br />
-        30 to 40% of our food ends up in the trash! When you donate, you're not
-        only fighting hunger, you're fighting climate change as well!
+        30 to 40% of our food ends up in the trash! Whether you're looking for
+        food or wanting to donate, together when we fight hunger we also fight
+        climate change!
       </div>
     </div>
   );

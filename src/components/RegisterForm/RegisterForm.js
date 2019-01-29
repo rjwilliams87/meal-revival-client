@@ -158,7 +158,7 @@ export class RegisterForm extends React.Component {
       >
         <fieldset className="register-form__fieldset">
           <legend className="register-form__legend">
-            Sign up for your free account
+            Sign up to list your donations
           </legend>
           {successMessage}
           {error}
@@ -172,6 +172,7 @@ export class RegisterForm extends React.Component {
                 labelClass="register-form__label"
                 name="email"
                 type="text"
+                placeholder="demo@email.com"
                 component={Input}
                 validate={[required, nonEmpty, email]}
               />
@@ -186,6 +187,7 @@ export class RegisterForm extends React.Component {
                 labelClass="register-form__label"
                 name="password"
                 type="password"
+                placeholder="password"
                 component={Input}
                 validate={[required, nonEmpty, isTrimmed, passwordLength]}
               />
@@ -204,6 +206,7 @@ export class RegisterForm extends React.Component {
                 aria-label="enter your address you do not have to select one of the options that will be listed"
                 id="address"
                 type="text"
+                placeholder="123 Main St Kansas City, MO 64111"
                 className="register-form__input register-form__input--lrg"
                 onChange={this.onQuery}
                 value={this.state.query}

@@ -31,6 +31,10 @@
     margin-top: 100px;
     justify-content: space-around;
   }
+
+  .section__box {
+    width: 33.33%;
+  }
 }
 
 @media only screen and (min-width: 668px) {
