@@ -4,6 +4,8 @@ import ProfileTop from "../ProfileTop/ProfileTop";
 import ProfileTable from "../ProfileTable/ProfileTable";
 import Nav from "../Nav/Nav";
 import { getUserInfo, getUserDonations } from "../../actions/getActions";
+import { clearAuth } from "../../actions/auth";
+import { clearAuthToken } from "../../local-storage";
 import "./Profile.css";
 
 export class Profile extends React.Component {
@@ -13,10 +15,18 @@ export class Profile extends React.Component {
       .dispatch(getUserInfo(id))
       .then(this.props.dispatch(getUserDonations(id)));
   }
+
+  clearAuth() {
+    this.props.dispatch(clearAuth());
+    clearAuthToken();
+  }
   render() {
     return (
       <div className="grey">
-        <Nav loggedIn={this.props.loggedIn} />
+        <Nav
+          loggedIn={this.props.loggedIn}
+          clearAuth={() => this.clearAuth()}
+        />
         {this.props.user && this.props.donations && (
           <div className="top__wrapper">
             <ProfileTop user={this.props.user} loggedIn={null} />
