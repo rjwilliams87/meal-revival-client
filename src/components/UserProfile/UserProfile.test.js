@@ -1,8 +1,6 @@
 import React from "react";
-import { configure, shallow, mount } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { UserProfile } from "./UserProfile";
-import Adapter from "enzyme-adapter-react-16";
-configure({ adapter: new Adapter() });
 
 const mockFetchUserDataAction = {
   type: "FETCH_USER_DATA"

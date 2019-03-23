@@ -1,8 +1,6 @@
 import React from "react";
-import { configure, shallow, mount } from "enzyme";
+import { shallow, mount } from "enzyme";
 import { Profile } from "./Profile";
-import Adapter from "enzyme-adapter-react-16";
-configure({ adapter: new Adapter() });
 
 describe("<Profile />", () => {
   const match = { params: { id: 1 } };

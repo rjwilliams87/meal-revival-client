@@ -1,8 +1,4 @@
 import * as actions from "./auth";
-import { configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-
-configure({ adapter: new Adapter() });
 
 describe("setAuthToken", () => {
   it("should return the action", () => {

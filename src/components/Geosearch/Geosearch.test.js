@@ -1,8 +1,6 @@
 import React from "react";
-import { configure, shallow } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import { shallow } from "enzyme";
 import Geosearch from "./Geosearch";
-configure({ adapter: new Adapter() });
 
 describe("<Geosearch />", () => {
   it("should render without crashing", () => {

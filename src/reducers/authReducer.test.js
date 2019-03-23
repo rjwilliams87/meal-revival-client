@@ -1,6 +1,4 @@
 import React from "react";
-import { configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
 import { authReducer } from "./authReducer";
 import * as actions from "../actions/auth";
 

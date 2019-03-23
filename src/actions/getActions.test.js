@@ -1,7 +1,4 @@
 import * as actions from "./getActions";
-import { configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-configure({ adapter: new Adapter() });
 
 describe("getRequest", () => {
   it("should return action", () => {
